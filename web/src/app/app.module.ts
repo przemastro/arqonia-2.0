@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { FormsModule }   from '@angular/forms';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -13,6 +16,9 @@ import { ObservationsComponent } from './observations/observations.component';
 import { SearchComponent } from './search/search.component';
 import { DiagramsComponent } from './diagrams/diagrams.component';
 import { TelescopesComponent } from './telescopes/telescopes.component';
+import { GenericModalComponent } from './generic-modal/generic-modal.component';
+import { LoginModalComponent } from './login-modal/login-modal.component';
+import { SignupModalComponent } from './signup-modal/signup-modal.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +32,22 @@ import { TelescopesComponent } from './telescopes/telescopes.component';
     ObservationsComponent,
     SearchComponent,
     DiagramsComponent,
-    TelescopesComponent
+    TelescopesComponent,
+    GenericModalComponent,
+    LoginModalComponent,
+    SignupModalComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    NgbModule.forRoot()
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [NgbActiveModal],
+  bootstrap: [AppComponent],
+  entryComponents: [
+    LoginModalComponent,
+    SignupModalComponent
+  ]
 })
 export class AppModule { }
