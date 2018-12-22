@@ -19,6 +19,7 @@ import { TelescopesComponent } from './telescopes/telescopes.component';
 import { GenericModalComponent } from './generic-modal/generic-modal.component';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import { SignupModalComponent } from './signup-modal/signup-modal.component';
+import { SearchFormComponent } from './search-form/search-form.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { SignupModalComponent } from './signup-modal/signup-modal.component';
     GenericModalComponent,
     LoginModalComponent,
     SignupModalComponent,
+    SearchFormComponent,
   ],
   imports: [
     BrowserModule,
