@@ -1,8 +1,10 @@
-<button class="btn btn-lg btn-outline-primary" (click)="openLogin()">Login</button>
-<button class="btn btn-lg btn-outline-primary" (click)="openSignup()">Signup</button>
+<button (click)="openLogin()">Login</button>
+<button (click)="openSignup()">Signup</button>
+
 <app-nav></app-nav>
 
 <section>
-  <router-outlet></router-outlet>
+  <router-outlet>
+  </router-outlet>
 </section>
 
