@@ -20,6 +20,11 @@ import { GenericModalComponent } from './generic-modal/generic-modal.component';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import { SignupModalComponent } from './signup-modal/signup-modal.component';
 import { SearchFormComponent } from './search-form/search-form.component';
+import { ObservationModalComponent } from './observation-modal/observation-modal.component';
+import { NewObservationModalComponent } from './new-observation-modal/new-observation-modal.component';
+import { EditObservationModalComponent } from './edit-observation-modal/edit-observation-modal.component';
+import { RemoveObservationModalComponent } from './remove-observation-modal/remove-observation-modal.component';
+import { TimeSeriesModalComponent } from './time-series-modal/time-series-modal.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +43,11 @@ import { SearchFormComponent } from './search-form/search-form.component';
     LoginModalComponent,
     SignupModalComponent,
     SearchFormComponent,
+    ObservationModalComponent,
+    NewObservationModalComponent,
+    EditObservationModalComponent,
+    RemoveObservationModalComponent,
+    TimeSeriesModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +59,11 @@ import { SearchFormComponent } from './search-form/search-form.component';
   bootstrap: [AppComponent],
   entryComponents: [
     LoginModalComponent,
-    SignupModalComponent
+    SignupModalComponent,
+    NewObservationModalComponent,
+    EditObservationModalComponent,
+    RemoveObservationModalComponent,
+    TimeSeriesModalComponent
   ]
 })
 export class AppModule { }
