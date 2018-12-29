@@ -1,0 +1,15 @@
+<app-observation-modal>
+  <div class="container">
+    <form>
+      <table class="table table-striped table-sm">
+        <tr>
+          <th *ngFor="let head of headTimeSeries">{{head}}</th>
+        </tr>
+        <tr *ngFor="let series of timeSeries">
+          <td>{{series.photometryFlux}}</td>
+          <td>{{series.photometryTime}}</td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</app-observation-modal>
