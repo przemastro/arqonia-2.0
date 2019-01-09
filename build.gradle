@@ -78,6 +78,29 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
+def dockerDir = "$projectDir/docker"
+def dockerGroup = 'Docker'
+task dockerStop(type: Exec) {
+	workingDir "$dockerDir"
+	inputs.dir "$dockerDir"
+
+	group = "$dockerGroup"
+
+	commandLine "$dockerDir/mongo-import/docker_compose_down.sh"
+}
+
+task dockerRun(type: Exec) {
+	dependsOn "build"
+	workingDir "$dockerDir"
+	inputs.dir "$dockerDir"
+
+	group = "$dockerGroup"
+
+	commandLine "$dockerDir/mongo-import/docker_compose_up.sh"
+
+	finalizedBy dockerStop
+}
+
 def webappDir = "$projectDir/src/main/webapp"
 sourceSets {
 	main {

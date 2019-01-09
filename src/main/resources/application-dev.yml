@@ -1,0 +1,10 @@
+spring:
+  data:
+    mongodb:
+      database: arqonia2
+      port: 27018
+      uri: mongodb://mongo
+
+arqonia:
+  admin:
+    username: abekalarz

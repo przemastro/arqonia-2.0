@@ -1,24 +1,30 @@
 spring:
   data:
     mongodb:
-      database: local
-      port: 27017
+      database: arqonia2
+      port: 27018
       uri: mongodb://localhost
+    profiles:
+      active: local
+
 
 
 #TODO Remove after 'full OAUth2 implementation'!
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
 
 #ONLY FOR DEVELOPMENT AND TESTING !
-logging:
-  level:
-     pl.astronomy.arqonia20: DEBUG
-     ROOT: DEBUG
+#logging:
+#  level:
+#     pl.astronomy.arqonia20: DEBUG
+#     ROOT: DEBUG
 
 arqonia:
   admin:
     username: abekalarz
+
+server:
+  port: 8081
