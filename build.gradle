@@ -85,6 +85,12 @@ task dockerBackendStop(type: Exec) {
 	group = "$dockerGroup"
 
 	commandLine "$dockerDir/mongo-import/docker_compose_down.sh"
+
+	if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
+		commandLine "$dockerDir/mongo-import/docker_compose_down.bat"
+	} else {
+		commandLine "$dockerDir/mongo-import/docker_compose_down.sh"
+	}
 }
 
 task dockerBackendRun(type: Exec) {
@@ -94,7 +100,11 @@ task dockerBackendRun(type: Exec) {
 
 	group = "$dockerGroup"
 
-	commandLine "$dockerDir/mongo-import/docker_compose_up.sh"
+	if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
+		commandLine "$dockerDir/mongo-import/docker_compose_up.bat"
+	} else {
+		commandLine "$dockerDir/mongo-import/docker_compose_up.sh"
+	}
 
 	finalizedBy dockerBackendStop
 }
