@@ -23,21 +23,19 @@ services:
     volumes:
       - ./mongo-import:/mongo-import
     command:
-      chmod +x /mongo-import/import.sh
-    command:
       /mongo-import/import.bat
     depends_on:
       - mongo
 
-#  arqonia_build_and_run:
-#    image: arqonia_build_and_run
-#    build: .
-#    ports:
-#      - 8081:8082
-#    networks:
-#      - spring-boot-network
-#    depends_on:
-#      - mongo
+  arqonia_build_and_run:
+    image: arqonia_build_and_run
+    build: .
+    ports:
+      - 8081:8082
+    networks:
+      - spring-boot-network
+    depends_on:
+      - mongo
 
 networks:
   spring-boot-network:

@@ -83,9 +83,7 @@ task dockerBackendStop(type: Exec) {
 	inputs.dir "$dockerDir"
 
 	group = "$dockerGroup"
-
-	commandLine "$dockerDir/mongo-import/docker_compose_down.sh"
-
+	
 	if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
 		commandLine "$dockerDir/mongo-import/docker_compose_down.bat"
 	} else {
