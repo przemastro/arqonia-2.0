@@ -40,3 +40,8 @@ services:
 networks:
   spring-boot-network:
     driver: bridge
+
+#    When for example we have 'ports':
+#    ports:
+#      - 8081:8080
+#    then '8081' is the host port and '8080' is the service port ('host port:service port')
