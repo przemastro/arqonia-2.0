@@ -1,4 +1,9 @@
 #!/bin/bash
 
-docker rm $(docker stop $(docker ps -a -q --filter ancestor=mongo:3.6 --format="{{.ID}}"))
-docker rm $(docker stop $(docker ps -a -q --filter ancestor=arqonia_build_and_run --format="{{.ID}}"))
+mongoImage=mongo:3.6
+arqoniaBuildImage=arqonia_build_and_run
+
+docker rm $(docker stop $(docker ps -a -q --filter ancestor=$mongoImage --format="{{.ID}}"))
+docker rm $(docker stop $(docker ps -a -q --filter ancestor=$arqoniaBuildImage --format="{{.ID}}"))
+
+docker rmi $(docker images --format '{{.Repository}}' | grep $arqoniaBuildImage)

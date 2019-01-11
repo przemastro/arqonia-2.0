@@ -2,7 +2,7 @@ spring:
   data:
     mongodb:
       database: arqonia2
-      port: 27018
+      port: 27017
       uri: mongodb://mongo
 
 arqonia:

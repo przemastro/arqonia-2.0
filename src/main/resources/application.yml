@@ -2,10 +2,10 @@ spring:
   data:
     mongodb:
       database: arqonia2
-      port: 27018
+      port: 27017
       uri: mongodb://localhost
-    profiles:
-      active: local
+  profiles:
+    active: local
 
 
 
@@ -25,6 +25,3 @@ spring:
 arqonia:
   admin:
     username: abekalarz
-
-server:
-  port: 8081

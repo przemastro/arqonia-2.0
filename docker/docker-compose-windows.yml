@@ -4,7 +4,7 @@ services:
   mongo:
     image: mongo:3.6
     ports:
-      - 27017:27018
+      - 27017:27017
     networks: 
       - spring-boot-network
     deploy:
@@ -31,7 +31,7 @@ services:
     image: arqonia_build_and_run
     build: .
     ports:
-      - 8081:8082
+      - 8080:8080
     networks:
       - spring-boot-network
     depends_on:
