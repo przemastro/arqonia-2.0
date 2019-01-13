@@ -12,11 +12,13 @@ import pl.astronomy.arqonia20.domain.user.UserRoleType
 data class DbUser @PersistenceConstructor constructor(
         @Id var id: String?,
         @Indexed(background = true, unique = true) val username: String,
+        val email: String,
         val password: String,
         val roles: List<String>
 ) {
     fun toUser() = User(
             username,
+            email,
             password,
             roles.map { UserRole(UserRoleType.valueOf(it)) }
     )
@@ -25,6 +27,7 @@ data class DbUser @PersistenceConstructor constructor(
         fun fromUser(user: User) = DbUser(
                 null,
                 user.username,
+                user.email,
                 user.password,
                 user.roles.map { it.name.name }
         )

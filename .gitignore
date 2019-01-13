@@ -24,3 +24,11 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+
+### Mac OS ###
+.DS_Store
+.DS_Store?
+
+### Project specific files ###
+/docker/jar/
+/docker/mongo-import/dump/
