@@ -22,4 +22,10 @@ openssl req -new -x509 -days 3650 -extensions v3_ca \
     -passout pass:$password -keyout private/$caKey -out $caCertificate
 
 openssl x509 -req -CA $caCertificate -CAkey private/$caKey \
-    -in $csrFile -out $certificateName -days 3650 -CAcreateserial
+    -passin pass:$password -in $csrFile -out $certificateName -days 3650 -CAcreateserial
+
+keytool -noprompt -import -keystore $keyStore -file $caCertificate -alias theCARoot \
+    -storepass $password -keypass $password
+
+keytool -import -keystore $keyStore -file $certificateName -alias $alias \
+    -storepass $password -keypass $password
