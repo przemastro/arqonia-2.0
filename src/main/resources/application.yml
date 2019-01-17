@@ -10,10 +10,10 @@ spring:
 server:
   ssl:
     key-store-type: JKS
-    key-store: classpath:keystore/https/test/arqonia_https.jks
+    key-store: classpath:keystore/https/arqonia_https.jks
     key-store-password: pass123
     key-alias: arqonia_https
-    trust-store: classpath:keystore/https/test/arqonia_https.jks
+    trust-store: classpath:keystore/https/arqonia_https.jks
     trust-store-password: pass123
 
 #server:
