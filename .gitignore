@@ -32,3 +32,4 @@
 ### Project specific files ###
 /docker/jar/
 /docker/mongo-import/dump/
+/database_store/

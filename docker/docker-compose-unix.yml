@@ -3,6 +3,8 @@ version: '3.1'
 services:
   mongo:
     image: mongo:3.6
+    volumes:
+      - ../database_store/mongo:/data/db
     ports:
       - 27017:27017
     networks: 
@@ -13,12 +15,17 @@ services:
         delay: 5s
         max_attempts: 3
         window: 30s
+    healthcheck:
+      test: ["CMD", "pgrep", "mongod"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   mongo_import:
     image: mongo:3.6
     links:
       - mongo
-    networks: 
+    networks:
       - spring-boot-network
     volumes:
       - ./mongo-import:/mongo-import
@@ -26,6 +33,7 @@ services:
       chmod +x /mongo-import/import.sh
     command:
       /mongo-import/import.sh
+    restart: on-failure
     depends_on:
       - mongo
 
@@ -34,7 +42,7 @@ services:
     build: .
     ports:
       - 8080:8080
-    networks: 
+    networks:
       - spring-boot-network
     depends_on:
       - mongo
