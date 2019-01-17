@@ -9,6 +9,7 @@ spring:
 
 server:
   ssl:
+    enabled: true # set to FALSE, if want to disable HTTPS and switch back to HTTP
     key-store-type: JKS
     key-store: classpath:keystore/https/arqonia_https.jks
     key-store-password: pass123
@@ -16,13 +17,6 @@ server:
     trust-store: classpath:keystore/https/arqonia_https.jks
     trust-store-password: pass123
 
-#server:
-#  ssl:
-#    enabled: true
-
-
-
-#TODO Remove after 'full OAUth2 implementation'!
 #management:
 #  endpoints:
 #    web:
