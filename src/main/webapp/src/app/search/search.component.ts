@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+selector: 'app-search',
+templateUrl: './search.component.html',
+styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
 
-  message:string;
-  comet: boolean = false;
-  planetoid: boolean = false;
-  star: boolean = false;
-  starElements: any;
-  cometElements: any;
-  planetoidElements: any;
+message:string;
+comet: boolean = false;
+planetoid: boolean = false;
+star: boolean = false;
+starElements: any;
+cometElements: any;
+planetoidElements: any;
 
-  receiveMessage($event) {
+receiveMessage($event) {
     this.message = $event
     console.log(this.message);
 
@@ -26,8 +26,10 @@ export class SearchComponent {
           this.planetoid = false;
           this.comet = false;
           this.starElements = [
-          {Catalog: 'SAO', ObjectName: 'Aldebaran', RA: 'ra', DE: 'de', Umag: 'Umag', Vmag: 'Vmag', Bmag: 'Bmag', BV: 'BV', UB: 'UB', RI: 'RI',
-           VI: 'VI', SpectralType: 'SpectralType'}];
+          {Catalog: 'SAO', ObjectName: 'Aldebaran', RA: '23h 0m 0', DE: '+34 4 4', Umag: '3', Vmag: '4.5', Bmag: '3.3', BV: 'BV', UB: 'UB', RI: 'RI',
+           VI: 'VI', SpectralType: 'A0'},
+           {Catalog: 'HIP', ObjectName: '12323', RA: '23h 0m 0', DE: '+35 5 4', Umag: '3.1', Vmag: '4.1', Bmag: '3.34', BV: 'BV', UB: 'UB', RI: 'RI',
+           VI: 'VI', SpectralType: 'A1'}];
           break;
        }
        case "comet": {

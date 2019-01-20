@@ -1,7 +1,24 @@
-<button (click)="openLogin()">Login</button>
-<button (click)="openSignup()">Signup</button>
-
 <app-nav></app-nav>
+<div id="menuToggle" style="z-index:100">
+  <input type="checkbox" />
+  <span></span>
+  <span></span>
+  <span></span>
+  <ul id="menu">
+    <li style="color:black">We are group of crazy people</li>
+    <li style="color:black"><a style="color:black" href="https://github.com/przemastro/Arqonia-2.0" target="_blank">Source Code</a></li>
+  </ul>
+</div>
+<div class="header home" id="header" style="margin-top: -50px;">
+  <div class="header-container" style="width:300px;margin-left: -400px;">
+    <div class="desktop-menu">
+      <a style="border-radius:5px;border-width:1px;background-color:rgba(33,134,177);
+width:75px;height:32px;margin-left: 1470px;padding-top: 8px; padding-left:18px;margin-top: 50px;" href="javascript:void(0);" (click)="openLogin()">LOGIN</a>
+      <a style="border-radius:5px;border-width:1px;background-color:orange;
+width:75px;height:32px;margin-left:1550px;padding-top: 8px; padding-left:12px;margin-top: -65px;" href="javascript:void(0);" (click)="openSignup()">SIGNUP</a>
+    </div>
+  </div>
+</div>
 
 <section>
   <router-outlet>

@@ -1,90 +1,65 @@
-<app-search-form (messageEvent)="receiveMessage($event)"></app-search-form>
-<div *ngIf="comet"><b>Category: Comet</b>
-  <table class="table table-striped table-sm">
-    <tr>
-      <th *ngFor="let head of headCometElements">{{head}}</th>
-    </tr>
-    <tr *ngFor="let el of cometElements">
-      <td>{{el.Catalog}}</td>
-      <td>{{el.ObjectName}}</td>
-      <td>{{el.Number}}</td>
-      <td>{{el.H}}</td>
-      <td>{{el.Epoch}}</td>
-      <td>{{el.M}}</td>
-      <td>{{el.omega}}</td>
-      <td>{{el.L}}</td>
-      <td>{{el.I}}</td>
-      <td>{{el.e}}</td>
-      <td>{{el.n}}</td>
-      <td>{{el.a}}</td>
-    </tr>
-  </table>
+
+<div class="container slideInLeft animated" style="margin-top:-565px;margin-left:10px;width:1070px;z-index:10">
+  <app-search-form (messageEvent)="receiveMessage($event)"></app-search-form>
+  <div *ngIf="comet"><b>Category: Comet</b>
+    <table class="table">
+      <tr>
+        <th *ngFor="let head of headCometElements">{{head}}</th>
+      </tr>
+      <tr *ngFor="let el of cometElements">
+        <td>{{el.Catalog}}</td>
+        <td>{{el.ObjectName}}</td>
+        <td>{{el.Number}}</td>
+        <td>{{el.H}}</td>
+        <td>{{el.Epoch}}</td>
+        <td>{{el.M}}</td>
+        <td>{{el.omega}}</td>
+        <td>{{el.L}}</td>
+        <td>{{el.I}}</td>
+        <td>{{el.e}}</td>
+        <td>{{el.n}}</td>
+        <td>{{el.a}}</td>
+      </tr>
+    </table>
+  </div>
+  <div *ngIf="planetoid"><b>Category: Planetoid</b>
+    <table class="table table-striped table-sm">
+      <tr>
+        <th *ngFor="let head of headPlanetoidElements">{{head}}</th>
+      </tr>
+      <tr *ngFor="let el of planetoidElements">
+        <td>{{el.Catalog}}</td>
+        <td>{{el.ObjectName}}</td>
+        <td>{{el.ObjectType}}</td>
+        <td>{{el.Date}}</td>
+        <td>{{el.e}}</td>
+        <td>{{el.omega}}</td>
+        <td>{{el.L}}</td>
+        <td>{{el.I}}</td>
+        <td>{{el.EpochDate}}</td>
+        <td>{{el.Mag}}</td>
+      </tr>
+    </table>
+  </div>
+  <div *ngIf="star"><b>Category: Star</b>
+    <table class="table table-striped table-sm">
+      <td>
+        <tr *ngFor="let head of headStarElements">{{head}}</tr>
+      </td>
+      <td *ngFor="let el of starElements">
+        <tr>{{el.Catalog}}</tr>
+        <tr>{{el.ObjectName}}</tr>
+        <tr>{{el.RA}}</tr>
+        <tr>{{el.DE}}</tr>
+        <tr>{{el.Umag}}</tr>
+        <tr>{{el.Vmag}}</tr>
+        <tr>{{el.Bmag}}</tr>
+        <tr>{{el.BV}}</tr>
+        <tr>{{el.UB}}</tr>
+        <tr>{{el.RI}}</tr>
+        <tr>{{el.VI}}</tr>
+        <tr>{{el.SpectralType}}</tr>
+      </td>
+    </table>
+  </div>
 </div>
-<div *ngIf="planetoid"><b>Category: Planetoid</b>
-  <table class="table table-striped table-sm">
-    <tr>
-      <th *ngFor="let head of headPlanetoidElements">{{head}}</th>
-    </tr>
-    <tr *ngFor="let el of planetoidElements">
-      <td>{{el.Catalog}}</td>
-      <td>{{el.ObjectName}}</td>
-      <td>{{el.ObjectType}}</td>
-      <td>{{el.Date}}</td>
-      <td>{{el.e}}</td>
-      <td>{{el.omega}}</td>
-      <td>{{el.L}}</td>
-      <td>{{el.I}}</td>
-      <td>{{el.EpochDate}}</td>
-      <td>{{el.Mag}}</td>
-    </tr>
-  </table>
-</div>
-<div *ngIf="star"><b>Category: Star</b>
-  <table class="table table-striped table-sm">
-    <tr>
-      <th *ngFor="let head of headStarElements">{{head}}</th>
-    </tr>
-    <tr *ngFor="let el of starElements">
-      <td>{{el.Catalog}}</td>
-      <td>{{el.ObjectName}}</td>
-      <td>{{el.RA}}</td>
-      <td>{{el.DE}}</td>
-      <td>{{el.Umag}}</td>
-      <td>{{el.Vmag}}</td>
-      <td>{{el.Bmag}}</td>
-      <td>{{el.BV}}</td>
-      <td>{{el.UB}}</td>
-      <td>{{el.RI}}</td>
-      <td>{{el.VI}}</td>
-      <td>{{el.SpectralType}}</td>
-    </tr>
-  </table>
-</div>
-<table class="table table-striped table-sm">
-  <tr>
-    <td>
-      <img src="images/stars.png">
-      <div>Stars Catalogs:
-        <p>HD: Henry Draper Catalog with 272150 stars.
-        <br>HR: Bright Star Catalog with 9110 stars.
-        <br>SAO: SAO Star Catalog with 258997 stars.
-        <br>GC: The General Catalog with 33342 stars.
-        <br>TYC: The Tycho-2 catalog with 2539913 stars.
-        <br>HIP: The Hipparcos catalog with 117955 stars.
-        </p>
-      </div>
-    </td>
-    <td>
-      <img src="images/planetoid.png">
-      <div>Planetoids Catalogs:
-          <p>MPC: Catalog from Minor Planet Center with 716615 objects.</p><br>
-      </div>
-    </td>
-    <td>
-      <img src="images/comet.png">
-      <div>Comets Catalogs:
-          <p>Catalog from Minor Planet Center with 874 objects.</p><br>
-      </div>
-    </td>
-  </tr>
-</table>

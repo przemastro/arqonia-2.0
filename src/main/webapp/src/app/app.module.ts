@@ -27,43 +27,43 @@ import { RemoveObservationModalComponent } from './remove-observation-modal/remo
 import { TimeSeriesModalComponent } from './time-series-modal/time-series-modal.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavComponent,
-    AboutComponent,
-    HomeComponent,
-    PhotometryComponent,
-    ReductionComponent,
-    AstrometryComponent,
-    ObservationsComponent,
-    SearchComponent,
-    DiagramsComponent,
-    TelescopesComponent,
-    GenericModalComponent,
-    LoginModalComponent,
-    SignupModalComponent,
-    SearchFormComponent,
-    ObservationModalComponent,
-    NewObservationModalComponent,
-    EditObservationModalComponent,
-    RemoveObservationModalComponent,
-    TimeSeriesModalComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    NgbModule.forRoot()
-  ],
-  providers: [NgbActiveModal],
-  bootstrap: [AppComponent],
-  entryComponents: [
-    LoginModalComponent,
-    SignupModalComponent,
-    NewObservationModalComponent,
-    EditObservationModalComponent,
-    RemoveObservationModalComponent,
-    TimeSeriesModalComponent
-  ]
+declarations: [
+AppComponent,
+NavComponent,
+AboutComponent,
+HomeComponent,
+PhotometryComponent,
+ReductionComponent,
+AstrometryComponent,
+ObservationsComponent,
+SearchComponent,
+DiagramsComponent,
+TelescopesComponent,
+GenericModalComponent,
+LoginModalComponent,
+SignupModalComponent,
+SearchFormComponent,
+ObservationModalComponent,
+NewObservationModalComponent,
+EditObservationModalComponent,
+RemoveObservationModalComponent,
+TimeSeriesModalComponent,
+],
+imports: [
+BrowserModule,
+AppRoutingModule,
+FormsModule,
+NgbModule.forRoot()
+],
+providers: [NgbActiveModal],
+bootstrap: [AppComponent],
+entryComponents: [
+LoginModalComponent,
+SignupModalComponent,
+NewObservationModalComponent,
+EditObservationModalComponent,
+RemoveObservationModalComponent,
+TimeSeriesModalComponent
+]
 })
 export class AppModule { }

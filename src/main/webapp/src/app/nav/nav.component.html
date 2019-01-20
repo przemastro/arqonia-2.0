@@ -1,8 +1,156 @@
-<header>
-  <div class="container">
-    <nav>
-      <div><a routerLink="/">{{home}}</a></div>
-      <div><a routerLink="/about">About</a></div>
-    </nav>
+
+
+<div class="header home" id="header" style="margin-left:40px;padding-top: 0px; padding-left:5px;margin-top: 10px;">
+
+  <div class="form" style="margin-left:20px;">
+    <div class="input-group-append">
+      <input type="text" class="form-control" id="search-top" placeholder="Search...">
+      <button routerLink="/search" class="btn-search" type="submit">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
   </div>
-</header>
+</div>
+
+<div style="width:155px;margin-left:1090px;margin-top:60px;text-align:right;border-radius:5px;
+    border-image-slice: 1;
+    border-width: 1px;
+    background-color:rgba(28,51,83,.52);">
+  <div>
+    <div class="section" style="height:45px;padding-top:0px;">
+      <div class="slidecontainer" style="margin: 0 auto;text-align:center;">
+        <span class="name">ZOOM</span>
+        <input type="range" min="1" max="100" value="50" class="slider" id="zoom" style="margin: 0 auto;text-align:center;">
+      </div>
+    </div>
+  </div>
+</div>
+<div style="width:155px;margin-left:1090px;margin-top:10px;text-align:right;border-radius:5px;
+    border-image-slice: 1;
+    border-width: 1px;
+    background-color:rgba(28,51,83,.52);">
+  <div class="distribution-map" style="margin-top:0px;margin-left:-600px;">
+    <button class="map-point" style="top:76%;left:82.5%">
+      <div class="content">
+        <div class="centered-y">
+          <a routerLink="/search">
+            <span>ALDEBARAN</span>
+          </a>
+        </div>
+      </div>
+    </button>
+  </div>
+  <div>
+    <div class="section">
+      <a routerLink="/">
+        <span class="name">HOME</span>
+        <img draggable="false" src="./assets/images/home.png">
+      </a>
+    </div>
+    <div class="section" id="reduction">
+      <!--<a routerLink="/reduction">-->
+      <span class="name">CCD DATA REDUCTION</span>
+      <img draggable="false" src="./assets/images/reduction.png">
+      <!--</a>-->
+    </div>
+    <div class="section" id="photometry">
+      <!--<a routerLink="/photometry">-->
+      <span class="name">PHOTOMETRY LAB</span>
+      <img draggable="false" src="./assets/images/photometry.png">
+      <!--</a>-->
+    </div>
+    <div class="section" id="astrometry">
+      <span class="name">ASTROMETRY LAB</span>
+      <img draggable="false" src="./assets/images/astrometry.png">
+    </div>
+    <div class="section" id="spectroscopy">
+      <span class="name">SPECTROSCOPY LAB</span>
+      <img draggable="false" src="./assets/images/spectroscopy.png">
+    </div>
+    <div class="section" id="series">
+      <!--<a routerLink="/observations">-->
+      <span class="name">TIME SERIES</span>
+      <img draggable="false" src="./assets/images/observations.png">
+      <!--</a>-->
+    </div>
+    <div class="section" id="dashboards">
+      <!--<a routerLink="/diagrams">-->
+      <span class="name">DASHBOARDS</span>
+      <img draggable="false" src="./assets/images/diagrams.png">
+      <!--</a>-->
+    </div>
+    <div class="section" id="observatories">
+      <span class="name">OBSERVATORIES</span>
+      <img draggable="false" src="./assets/images/telescopes.png">
+    </div>
+  </div>
+</div>
+
+
+<div style="width:155px;margin-left:1090px;margin-top:10px;text-align:right;border-radius:5px;
+    border-image-slice: 1;
+    border-width: 1px;
+    background-color:rgba(28,51,83,.52);">
+  <div>
+    <div class="section" id="stars-div">
+      <!--<a routerLink="/">-->
+      <span class="name">STARS</span>
+      <input style="margin-right:25px;" type="checkbox" id="stars"/>
+      <label style="margin-top:-22px;margin-left:125px;" for="stars"></label>
+      <!--</a>-->
+    </div>
+    <div class="section" id="comets-div">
+      <span class="name">COMETS</span>
+      <input style="margin-right:25px;" type="checkbox" id="comets"/>
+      <label style="margin-top:-22px;margin-left:125px;" for="comets">
+      </label>
+    </div>
+    <div class="section" id="planetoids-div">
+      <span class="name">PLANETOIDS</span>
+      <input style="margin-right:25px;" type="checkbox" id="planetoids"/>
+      <label style="margin-top:-22px;margin-left:125px;" for="planetoids">
+      </label>
+    </div>
+  </div>
+</div>
+
+<div style="width:155px;margin-left:1090px;margin-top:10px;text-align:right;border-radius:5px;
+    border-image-slice: 1;
+    border-width: 1px;
+    background-color:rgba(28,51,83,.52);">
+  <div>
+    <div class="section" id="magnitudo-div">
+      <div class="slidecontainer" style="margin: 0 auto;text-align:center;">
+        <span class="name">ABSOLUTE MAGNITUDE</span>
+        <input type="range" min="1" max="100" value="50" class="slider" id="magnitudo" style="margin: 0 auto;text-align:center;">
+      </div>
+    </div>
+    <div class="section" id="distance-div" style="margin-top:15px;">
+      <div class="slidecontainer" style="margin: 0 auto;text-align:center;">
+        <span class="name">DISTANCE</span>
+        <input type="range" min="1" max="100" value="50" class="slider" id="distance" style="margin: 0 auto;text-align:center;">
+      </div>
+    </div>
+    <div class="section" id="spectral-div" style="margin-top:15px;">
+      <span class="name">SPECRTAL TYPE</span>
+      <input style="margin-right:25px;" type="checkbox" id="spectral"/>
+      <label style="margin-top:-22px;margin-left:125px;" for="spectral"></label>
+    </div>
+  </div>
+</div>
+
+<div style="width:155px;margin-left:1090px;margin-top:10px;text-align:right;border-radius:5px;
+    border-image-slice: 1;
+    border-width: 1px;
+    background-color:rgba(28,51,83,.52);">
+  <div>
+    <div class="section">
+      <!--<a routerLink="/">-->
+      <span class="name">EQUATORIAL GRID</span>
+      <input style="margin-right:25px;" type="checkbox" id="grid"/>
+      <label style="margin-top:-22px;margin-left:125px;" for="grid"></label>
+      <!--</a>-->
+    </div>
+  </div>
+</div>
+

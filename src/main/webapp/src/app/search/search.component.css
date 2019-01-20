@@ -1,0 +1,27 @@
+.table > tbody > tr {
+    background-color:rgba(0,0,0,0.5);
+    border-color: rgba(33,134,177);
+    font-family:Montserrat,sans-serif;
+    font-weight: normal;
+    border-radius:5px;
+}
+
+b{
+    font-family:Montserrat,sans-serif;
+    font-weight: normal;
+}
+
+.table {
+  overflow: hidden;
+  border: 0px;
+}
+
+th, td {
+  padding: 1em;
+  border-bottom: 1px solid rgba(33,134,177);
+  border-top: 1px solid rgba(33,134,177);
+}
+
+th{
+    background-color:transparent;
+}
