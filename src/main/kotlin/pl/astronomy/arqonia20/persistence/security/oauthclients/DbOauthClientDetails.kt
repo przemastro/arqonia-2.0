@@ -8,6 +8,7 @@ import pl.astronomy.arqonia20.config.security.oauthclients.OauthClientDetails
 // TODO Find out way to be safer! -? I mean, implement and verify 'resourceIds' validation !
 // Example of class with use of this: https://github.com/spring-projects/spring-security-oauth/blob/master/tests/annotation/multi/src/main/java/demo/Application.java
 
+// TODO Add field 'createdAt' !
 @Document(collection = "oauth_client_details")
 data class DbOauthClientDetails @PersistenceConstructor constructor(
         @Id val id: String,

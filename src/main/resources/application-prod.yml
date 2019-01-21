@@ -1,0 +1,21 @@
+spring:
+  data:
+    mongodb:
+      database: arqonia2
+      port: 27017
+      uri: mongodb://localhost
+  profiles:
+    active: prod
+
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+
+#ONLY FOR DEVELOPMENT AND TESTING !
+#logging:
+#  level:
+#     pl.astronomy.arqonia20: DEBUG
+#     ROOT: DEBUG
+

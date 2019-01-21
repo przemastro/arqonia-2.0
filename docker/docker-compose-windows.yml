@@ -5,6 +5,8 @@ services:
     image: mongo:3.6
     ports:
       - 27017:27017
+    volumes:
+      - ../database_store/mongo:/data/db
     networks: 
       - spring-boot-network
     deploy:
@@ -13,6 +15,11 @@ services:
         delay: 5s
         max_attempts: 3
         window: 30s
+    healthcheck:
+      test: ["CMD", "pgrep", "mongod"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   mongo_import:
     image: mongo:3.6
@@ -24,6 +31,7 @@ services:
       - ./mongo-import:/mongo-import
     command:
       /mongo-import/import.bat
+    restart: on-failure
     depends_on:
       - mongo
 

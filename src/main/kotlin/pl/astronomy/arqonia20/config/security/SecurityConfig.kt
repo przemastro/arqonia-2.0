@@ -91,7 +91,7 @@ class SecurityConfig(
     @Bean
     protected fun jwtTokenEnhancer(): JwtAccessTokenConverter {
         val keyStoreKeyFactory = KeyStoreKeyFactory(
-                ClassPathResource("arqonia_jwt_key.jks"),
+                ClassPathResource("keystore/jwt/arqonia_jwt_key.jks"),
                 userRepository.findByUsername(adminUsername).password.toCharArray())
 
         val converter = JwtAccessTokenConverter()

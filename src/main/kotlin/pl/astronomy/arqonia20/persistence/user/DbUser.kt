@@ -8,6 +8,7 @@ import pl.astronomy.arqonia20.domain.user.User
 import pl.astronomy.arqonia20.domain.user.UserRole
 import pl.astronomy.arqonia20.domain.user.UserRoleType
 
+// TODO Add filed: 'createdAt'  !
 @Document(collection = "users")
 data class DbUser @PersistenceConstructor constructor(
         @Id var id: String?,
