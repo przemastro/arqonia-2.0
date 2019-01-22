@@ -92,7 +92,6 @@ sourceSets {
 	// So that we can place source code in 'src/integration/java':
 	integration {
 		groovy {
-
 			// So that we can compile against the business classes (GreeterService, ...):
 			compileClasspath += main.output
 			// So that we can compile against the libs used by the business classes:
@@ -105,25 +104,21 @@ sourceSets {
 
 			// So that test- and business classes can be used at runtime:
 			runtimeClasspath += test.runtimeClasspath
-
 		}
 	}
 }
 
 task integrationTest(type: Test) {
-
 	// So that Gradle knows where the integration test classes are:
-//	testClassesDir = sourceSets.integration.output.classesDir
 	testClassesDirs = sourceSets.integration.output
 
 	// So that Gradle knows which runtime class path to use:
 	classpath = sourceSets.integration.runtimeClasspath
-
 }
-
 
 def dockerDir = "$projectDir/docker"
 def dockerGroup = 'docker'
+
 task dockerBackendStop(type: Exec) {
 	workingDir "$dockerDir"
 	inputs.dir "$dockerDir"
