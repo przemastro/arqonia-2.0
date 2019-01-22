@@ -4,7 +4,7 @@ import pl.astronomy.arqonia20.BaseIntegrationTest
 
 class SignupEndpointTest extends BaseIntegrationTest {
 
-    def "should respond '200 Ok' and return response from file '#fileWithResponse' for query parameters 'include=#include'"() {
+    def "test should pass!"() {
         given:
         def var1 = "correctValue"
 

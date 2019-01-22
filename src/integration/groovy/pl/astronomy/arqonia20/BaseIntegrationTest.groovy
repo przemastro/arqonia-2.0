@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
+import org.springframework.data.mongodb.MongoDbFactory
 import org.springframework.test.context.ActiveProfiles
 import spock.lang.Shared
 import spock.lang.Specification
@@ -25,6 +26,9 @@ class BaseIntegrationTest extends Specification {
 
     @Autowired
     TestRestTemplate restTemplate
+
+    @Autowired
+    MongoDbFactory mongoDbFactory
 
     protected String localUrl(String endpoint) {
         return "http://localhost:$port$endpoint"
