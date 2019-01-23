@@ -109,6 +109,8 @@ sourceSets {
 }
 
 task integrationTest(type: Test) {
+	group = "verification"
+
 	// So that Gradle knows where the integration test classes are:
 	testClassesDirs = sourceSets.integration.output
 

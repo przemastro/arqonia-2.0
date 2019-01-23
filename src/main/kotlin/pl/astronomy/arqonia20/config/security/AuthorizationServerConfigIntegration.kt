@@ -16,8 +16,8 @@ import pl.astronomy.arqonia20.config.security.oauthclients.OauthClientDetailsRep
 
 @Configuration
 @EnableAuthorizationServer
-@Profile("!integration")
-class AuthorizationServerConfig(
+@Profile("integration")
+class AuthorizationServerConfigIntegration(
         private val tokenStore: TokenStore,
         private val userApprovalHandler: UserApprovalHandler,
         @Qualifier("authenticationManagerBean") private val authenticationManager: AuthenticationManager,
@@ -29,15 +29,15 @@ class AuthorizationServerConfig(
     override fun configure(clients: ClientDetailsServiceConfigurer) {
         val builder = clients.inMemory()
 
-        clientDetailsRepository.findAll().forEach {
-            builder
-                    .withClient(it.id)
-                    .authorizedGrantTypes(*it.authorizedGrantTypes)
-                    .redirectUris(*it.webServerRedirectUri)
-                    .scopes(*it.scope)
-                    .autoApprove(it.autoApprove)
-                    .accessTokenValiditySeconds(it.accessTokenValidity)
-        }
+//        clientDetailsRepository.findAll().forEach {
+        builder
+                .withClient("integrationClientId")
+                .authorizedGrantTypes("implicit")
+                .redirectUris("http://localhost:8083/")
+                .scopes("read", "write", "foo", "bar")
+                .autoApprove(true)
+                .accessTokenValiditySeconds(3600)
+//        }
 
     }
 

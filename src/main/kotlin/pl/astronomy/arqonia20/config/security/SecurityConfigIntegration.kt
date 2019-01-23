@@ -29,8 +29,8 @@ import pl.astronomy.arqonia20.domain.user.UserRepository
 
 @Configuration
 @EnableWebSecurity
-@Profile("!integration")
-class SecurityConfig(
+@Profile("integration")
+class SecurityConfigIntegration(
         private val clientDetailsService: ClientDetailsService,
         private val arqoniaUserDetailsService: ArqoniaUserDetailsService,
         private val userRepository: UserRepository,
@@ -94,7 +94,7 @@ class SecurityConfig(
     protected fun jwtTokenEnhancer(): JwtAccessTokenConverter {
         val keyStoreKeyFactory = KeyStoreKeyFactory(
                 ClassPathResource("keystore/jwt/arqonia_jwt_key.jks"),
-                userRepository.findByUsername(adminUsername).password.toCharArray())
+                "arqoniaSuperPass12".toCharArray())
 
         val converter = JwtAccessTokenConverter()
         converter.setKeyPair(keyStoreKeyFactory.getKeyPair("arqonia_jwt_key"))
