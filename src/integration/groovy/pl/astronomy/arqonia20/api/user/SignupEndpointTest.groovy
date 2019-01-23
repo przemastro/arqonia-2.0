@@ -1,13 +1,11 @@
 package pl.astronomy.arqonia20.api.user
 
 import pl.astronomy.arqonia20.BaseIntegrationTest
+import pl.astronomy.arqonia20.domain.user.User
+import pl.astronomy.arqonia20.domain.user.UserRole
+import pl.astronomy.arqonia20.domain.user.UserRoleType
 
 class SignupEndpointTest extends BaseIntegrationTest {
-
-    // TODO Add initialization of MongoDB starting collections (with help of Embed Mongo)
-    def setup() {
-
-    }
 
     def "test should pass!"() {
         given:
@@ -19,5 +17,25 @@ class SignupEndpointTest extends BaseIntegrationTest {
         then:
         response == var1
     }
+
+    def "should register new normal user"() {
+        given:
+        User userDto = new User(
+                "user1",
+                "user1@gmail.com",
+                "pass123",
+                [new UserRole(UserRoleType.USER)]
+        )
+
+        when:
+        // TODO Implement 'password' flow for integration tests
+        // URL: https://www.baeldung.com/how-to-use-resttemplate-with-basic-authentication-in-spring
+        def response = restTemplate.exchange(localUrl("/signup"), )
+
+        then:
+        response.statusCode.value() == 201
+    }
+
+    private def create
 
 }

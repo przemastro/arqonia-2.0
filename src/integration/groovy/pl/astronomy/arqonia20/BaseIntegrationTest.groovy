@@ -1,6 +1,8 @@
 package pl.astronomy.arqonia20
 
 import com.github.tomakehurst.wiremock.junit.WireMockClassRule
+import com.google.common.base.Charsets
+import com.google.common.io.Resources
 import org.junit.ClassRule
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
@@ -32,6 +34,10 @@ class BaseIntegrationTest extends Specification {
 
     protected String localUrl(String endpoint) {
         return "http://localhost:$port$endpoint"
+    }
+
+    static String getFileContent(String filename) throws IOException {
+        return Resources.toString(Resources.getResource(filename), Charsets.UTF_8)
     }
 
 }
