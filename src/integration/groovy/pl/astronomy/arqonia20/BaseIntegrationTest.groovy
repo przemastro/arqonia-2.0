@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.data.mongodb.MongoDbFactory
+import org.springframework.http.HttpEntity
+import org.springframework.http.HttpHeaders
+import org.springframework.http.MediaType
 import org.springframework.test.context.ActiveProfiles
 import spock.lang.Shared
 import spock.lang.Specification
@@ -40,4 +43,26 @@ class BaseIntegrationTest extends Specification {
         return Resources.toString(Resources.getResource(filename), Charsets.UTF_8)
     }
 
+    // Usage example: "prepareEntity(userDto, createBasicAuthHeaders("integrationClientId", "secret")),"
+    protected <T> HttpEntity<T> prepareEntity(T data, Map<String, List<String>> additionalHeaders = [:]) {
+        def headers = new HttpHeaders() {{
+            set("Content-Type", MediaType.APPLICATION_JSON_VALUE)
+        }}
+
+        headers.putAll(additionalHeaders)
+        return new HttpEntity<T>(data, headers)
+    }
+
+    protected HttpHeaders createBasicAuthHeaders(String username, String password) {
+        return new HttpHeaders() {{
+            String auth = username + ":" + password
+            byte[] encodedAuth = Base64.encoder.encode(auth.getBytes(Charsets.UTF_8))
+
+            String authHeader = "Basic " + new String( encodedAuth)
+
+            set("Authorization", authHeader)
+        }}
+    }
+
 }
+
