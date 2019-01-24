@@ -32,7 +32,7 @@ class SignupEndpointTest extends BaseIntegrationTest {
         when:
         // TODO Implement 'password' flow for integration tests
         // URL: https://www.baeldung.com/how-to-use-resttemplate-with-basic-authentication-in-spring
-        def response = restTemplate.exchange(
+        def response = restTemplate().exchange(
                 localUrl("/signup"),
                 HttpMethod.POST,
                 prepareEntity(userDto),
