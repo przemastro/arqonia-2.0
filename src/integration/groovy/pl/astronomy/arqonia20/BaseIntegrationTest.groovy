@@ -19,54 +19,38 @@ import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory
 import org.springframework.test.context.ActiveProfiles
+import org.springframework.test.context.ContextConfiguration
 import org.springframework.web.client.RestTemplate
+import pl.astronomy.arqonia20.config.IntegrationConfiguration
 import spock.lang.Shared
 import spock.lang.Specification
-
-import javax.net.ssl.SSLContext
 
 @SpringBootTest(classes = [Application],
         properties = "application.environment=integration",
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ContextConfiguration(classes = [IntegrationConfiguration])
 @ActiveProfiles(profiles = "integration")
 class BaseIntegrationTest extends Specification {
 
     @Value('${local.server.port}')
     protected int port
 
-    @Value('${server.ssl.trust-store}')
-    private Resource trustStore
-
-    @Value('${server.ssl.trust-store-password}')
-    private String trustStorePassword
-
     @ClassRule
     @Shared
     WireMockClassRule wiremock = new WireMockClassRule(12346)
 
     @Autowired
-    TestRestTemplate restTemplate
+    RestTemplate restTemplate
 
     @Autowired
     MongoDbFactory mongoDbFactory
 
     protected String localUrl(String endpoint) {
-        return "https://localhost:8080/$endpoint"
+        return "https://localhost:$port$endpoint"
     }
 
     static String getFileContent(String filename) throws IOException {
         return Resources.toString(Resources.getResource(filename), Charsets.UTF_8)
-    }
-
-    RestTemplate restTemplate() throws Exception {
-        SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(trustStore.getURL(), trustStorePassword.toCharArray())
-                .build()
-        SSLConnectionSocketFactory socketFactory = new SSLConnectionSocketFactory(sslContext)
-        HttpClient httpClient = HttpClients.custom()
-                .setSSLSocketFactory(socketFactory)
-                .build()
-        HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory(httpClient);
-        return new RestTemplate(factory)
     }
 
     // Usage example: "prepareEntity(userDto, createBasicAuthHeaders("integrationClientId", "secret")),"
