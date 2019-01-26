@@ -1,16 +1,18 @@
-<div class="container">
-    <form (ngSubmit)="onSubmit()" #searchForm="ngForm">
-      <div class="form-group">
-        <label for="name">Search</label>
-        <input type="text" class="form-control" id="name"
-               required
-               [(ngModel)]="model.name" name="name"
-               #name="ngModel">
-        <div [hidden]="name.valid || name.pristine"
-             class="alert alert-danger">
-          Object name is required
-        </div>
+<form (ngSubmit)="onSubmit()" #searchForm="ngForm">
+  <div class="form-group">
+    <div class="form">
+      <div class="input-group-append">
+        <input type="text" class="form-control" id="name" placeholder="Search..."
+               required [(ngModel)]="model.name" #name="ngModel">
+        <button class="btn-search" type="submit" [disabled]="!searchForm.form.valid" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <i class="glyphicon glyphicon-search"></i>
+        </button>
       </div>
-      <button type="submit" [disabled]="!searchForm.form.valid">Submit</button>
-    </form>
-</div>
+    </div>
+    <input type="radio" name="optradio" checked>Star
+    <input type="radio" name="optradio">Comet
+    <input type="radio" name="optradio">Planetoid
+  </div>
+</form>
+
+

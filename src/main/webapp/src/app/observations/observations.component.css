@@ -1,0 +1,44 @@
+.table > tbody > tr {
+    background-color:rgba(0,0,0,0.5);
+    font-family:Montserrat,sans-serif;
+    font-weight: normal;
+}
+
+.search-table {
+    background-color:rgba(3,50,128,.001) !important;
+    font-family:Montserrat,sans-serif;
+    font-weight: normal;
+}
+
+.form-control{
+    border-radius:0px;
+    width: 250px;
+    height: 50px;
+    background-color:rgba(28,51,83);
+}
+
+.modal-content{
+  	border-radius:0px;
+    border:1px solid;
+    border-color: black;
+    background-color:rgba(28,51,83);
+    text-align:left;
+    margin:0 auto;
+    width:300px;
+    height:600px;
+    color:#fff;
+    font-family:Montserrat,sans-serif;
+    font-weight: normal;
+}
+
+.form-check-input{
+    height:25px;
+    width:25px;
+    text-align:center;
+}
+
+
+.url{
+background-color:rgba(3,50,128,.001) !important;
+border:0px solid;
+}
