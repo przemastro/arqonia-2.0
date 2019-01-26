@@ -1,5 +1,9 @@
 
-<div class="container slideInLeft animated" style="margin-top:-565px;margin-left:10px;width:1070px;z-index:10">
+<div class="container slideInLeft animated" style="margin:0 auto;z-index:10;float:left;
+max-width:100%;min-width:100%;min-height:565px;border-radius:5px;margin-bottom:50px;left:0;">
+  <button routerLink="/" type="button" class="close" aria-label="Close">
+    <span style="color:white" aria-hidden="true">&times;</span>
+  </button>
   <app-search-form (messageEvent)="receiveMessage($event)"></app-search-form>
   <div *ngIf="comet"><b>Category: Comet</b>
     <table class="table">

@@ -1,0 +1,71 @@
+.inner-container{
+  display:inline-block;
+  width:100%;
+}
+
+.inner-container .search-result{
+  width:50%;
+  display:inline-block;
+  border:4px solid;
+  border-right:2px solid;
+  border-bottom:2px solid;
+  border-color:rgba(0,0,0,0.5);
+  height:300px;
+  border-top-left-radius: 5px;
+}
+
+.inner-container .light-curve{
+  width:50%;
+  display:inline-block;
+  text-align:center;
+  border:4px solid;
+  border-left:2px solid;
+  border-bottom:2px solid;
+  border-color:rgba(0,0,0,0.5);
+  border-top-right-radius: 5px;
+  height:300px;
+}
+
+#observations-datetime{
+  width:25%;
+  display:inline-block;
+  border:4px solid;
+  border-top:2px solid;
+  border-right:2px solid;
+  border-color:rgba(0,0,0,0.5);
+  height:220px;
+  border-radius-bottom-left: 5px;
+}
+
+#observations-filter{
+  width:25%;
+  display:inline-block;
+  border:4px solid;
+  border-top:2px solid;
+  border-right:2px solid;
+  border-left:2px solid;
+  border-color:rgba(0,0,0,0.5);
+  height:220px;
+}
+
+#photometric-points{
+  width:25%;
+  display:inline-block;
+  border:4px solid;
+  border-top:2px solid;
+  border-right:2px solid;
+  border-left:2px solid;
+  border-color:rgba(0,0,0,0.5);
+  height:220px;
+}
+
+#hr-diagram{
+  width:25%;
+  display:inline-block;
+  border:4px solid;
+  border-top:2px solid;
+  border-left:2px solid;
+  border-color:rgba(0,0,0,0.5);
+  height:220px;
+  border-radius-bottom-right: 5px;
+}

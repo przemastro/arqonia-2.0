@@ -1,4 +1,5 @@
 import { Component, Input, OnInit  } from '@angular/core';
+import {NgForm} from '@angular/forms';
 
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 

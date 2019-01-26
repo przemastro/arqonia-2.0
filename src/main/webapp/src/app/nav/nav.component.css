@@ -1,7 +1,74 @@
-#spectroscopy, #astrometry, #observatories, #photometry, #reduction, #series, #dashboards,
+#spectroscopy, #astrometry, #observatories, #photometry, #reduction, #series,
 #stars-div, #comets-div, #planetoids-div, #magnitudo-div, #spectral-div, #distance-div, #zoom{
     opacity:.4;
     cursor:default;
+}
+
+.zoom{
+  margin-left:0px;
+  margin-top:0px;
+  text-align:right;
+  border-radius:5px;
+  width:100%;
+  border-image-slice: 1;
+  border-width: 1px;
+  background-color:rgba(28,51,83,.52);
+}
+
+.zoom .section{
+  height:48px;
+  margin-top:0px;
+  padding-top:2px;
+}
+
+.right-menu{
+  width:100%;
+  margin-left:0px;
+  margin-top:10px;
+  text-align:right;
+  border-radius:5px;
+  border-image-slice: 1;
+  border-width: 1px;
+  background-color:rgba(28,51,83,.52);
+}
+
+.object-filters{
+  width:100%;
+  margin-left:0px;
+  margin-top:10px;
+  text-align:right;
+  border-radius:5px;
+  border-image-slice: 1;
+  border-width: 1px;
+  background-color:rgba(28,51,83,.52);
+}
+
+.filters{
+  width:100%;
+  margin-left:0px;
+  margin-top:10px;
+  text-align:right;
+  border-radius:5px;
+  border-image-slice: 1;
+  border-width: 1px;
+  background-color:rgba(28,51,83,.52);
+}
+
+.grid{
+  width:100%;
+  margin-left:0px;
+  margin-top:10px;
+  text-align:right;
+  border-radius:5px;
+  border-image-slice: 1;
+  border-width: 1px;
+  background-color:rgba(28,51,83,.52);
+  height:100%
+}
+
+label{
+  margin-right:5px;
+  float:right;
 }
 
 img{
@@ -17,13 +84,18 @@ img{
 
 img {
   font-size: 24px;
-  margin-right: 0px;
-  margin-left: 5px;
 }
 
 .section{
     height:30px;
     padding-top:8px;
+    margin-top:0px;
+}
+
+.filters .section{
+    height:30px;
+    padding-top:8px;
+    margin-top:12px;
 }
 
 .name{
@@ -104,4 +176,14 @@ label:active:after {
     border:0px;
     background-color: rgba(33,134,177);
     color:white;
+}
+
+.slider{
+  margin: 0 auto;
+  text-align:center;
+}
+
+.slidecontainer{
+  margin: 0 auto;
+  text-align:center;
 }
