@@ -17,13 +17,24 @@ spring:
 #    trust-store: classpath:keystore/https.prod/arqonia_https.jks
 #    trust-store-password: pass123
 
+#server:
+#  ssl:
+#    enabled: true # set to FALSE, if want to disable HTTPS and switch back to HTTP
+#    key-store-type: JKS
+#    key-store: classpath:keystore/https.try/arqonia_https.jks
+#    key-store-password: pass123
+#    key-alias: arqonia_https
+#  port: 8443
+
+
 server:
   ssl:
     enabled: true # set to FALSE, if want to disable HTTPS and switch back to HTTP
     key-store-type: JKS
-    key-store: classpath:keystore/https.try/arqonia_https.jks
-    key-store-password: pass123
-    key-alias: arqonia_https
+    key-store: classpath:keystore/https.try2/server/server.jks
+    key-store-password: secret
+    key-password: secret
+    key-alias: localhost
   port: 8443
 
 #management:
