@@ -27,15 +27,15 @@ spring:
 #  port: 8443
 
 
-#server:
-#  ssl:
-#    enabled: true # set to FALSE, if want to disable HTTPS and switch back to HTTP
-#    key-store-type: JKS
-#    key-store: classpath:keystore/https.try2/server/server.jks
-#    key-store-password: secret
-#    key-password: secret
-#    key-alias: localhost
-#  port: 8443
+server:
+  ssl:
+    enabled: true # set to FALSE, if want to disable HTTPS and switch back to HTTP
+    key-store-type: JKS
+    key-store: classpath:keystore/https.try2/server/server.jks
+    key-store-password: secret
+    key-password: secret
+    key-alias: localhost
+  port: 8443
 
 #management:
 #  endpoints:

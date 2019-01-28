@@ -19,8 +19,8 @@ export class AppService {
   constructor(
     private _router: Router, private _http: HttpClient, private oauthService: OAuthService){
         this.oauthService.configure({
-            loginUrl: 'http://localhost:8080/oauth/authorize',
-            redirectUri: 'http://localhost:8080/',
+            loginUrl: 'https://localhost:8443/oauth/authorize',
+            redirectUri: 'https://localhost:8443/',
             clientId: 'sampleClientId',
             scope: 'read write foo bar',
             oidc: false
