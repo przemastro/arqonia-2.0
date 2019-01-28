@@ -51,7 +51,9 @@ class SecurityConfig(
     @Order(Ordered.HIGHEST_PRECEDENCE)
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
-        http.authorizeRequests().antMatchers("/login").permitAll()
+        http.authorizeRequests()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/oauth").permitAll()
                 .antMatchers("/signup").permitAll()
 //                .antMatchers("/oauth/token/revokeById/**").permitAll()
 //                .antMatchers("/tokens/**").permitAll()

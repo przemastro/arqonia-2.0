@@ -7,6 +7,7 @@ import { DiagramsComponent } from './diagrams/diagrams.component';
 import { SearchComponent } from './search/search.component';
 import { ObservationsComponent } from './observations/observations.component';
 import { ReductionComponent } from './reduction/reduction.component';
+import {OauthComponent} from "./oauth.component";
 
 const routes: Routes = [
 { path: '', component: HomeComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
 { path: 'observations', component: ObservationsComponent },
 { path: 'diagrams', component: DiagramsComponent },
 { path: 'search', component: SearchComponent },
+{ path: 'gettoken', component: OauthComponent },
 ];
 
 @NgModule({

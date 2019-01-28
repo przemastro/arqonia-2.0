@@ -22,8 +22,12 @@
     "@ng-bootstrap/ng-bootstrap": "^4.0.1",
     "core-js": "^2.5.4",
     "rxjs": "~6.3.3",
+    "rxjs-compat": "^6.3.3",
     "tslib": "^1.9.0",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "angular-oauth2-oidc": "5.0.2",
+    "ng2-cookies": ">=1.0.12",
+    "@angular/http": "~7.1.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.11.0",
