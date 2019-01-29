@@ -55,6 +55,7 @@ class SecurityConfig(
                 .antMatchers("/login").permitAll()
                 .antMatchers("/oauth").permitAll()
                 .antMatchers("/signup").permitAll()
+                .antMatchers("/*").permitAll()
 //                .antMatchers("/oauth/token/revokeById/**").permitAll()
 //                .antMatchers("/tokens/**").permitAll()
                 .anyRequest().authenticated()

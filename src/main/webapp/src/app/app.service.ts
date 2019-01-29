@@ -30,17 +30,18 @@ export class AppService {
     }
  
   obtainAccessToken(){
-      this.oauthService.initImplicitFlow();
+    console.log("Getting access token...");
+    this.oauthService.initImplicitFlow();
+    console.log("Getting access token finished!");
   }
 
   getResource(resourceUrl) : Observable<any>{
-    var headers = new HttpHeaders({'Content-type': 'application/x-www-form-urlencoded; charset=utf-8', 'Authorization': 'Bearer '+this.oauthService.getAccessToken()});
+    var headers = new HttpHeaders({'Content-type': 'application/x-www-form-urlencoded; charset=utf-8', 'Authorization': 'Bearer ' + this.oauthService.getAccessToken()});
     return this._http.get(resourceUrl, { headers: headers })
                    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
   isLoggedIn(){
-console.log(this.oauthService.getAccessToken());  
     if (this.oauthService.getAccessToken() === null){
        return false;
     }
@@ -50,5 +51,9 @@ console.log(this.oauthService.getAccessToken());
   logout() {
       this.oauthService.logOut();
       location.reload();
+  }
+
+  logAccessToken() {
+    console.log(this.oauthService.getAccessToken());
   }
 }

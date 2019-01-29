@@ -1,4 +1,6 @@
-<button (click)="openLogin()">Login</button>
+<button *ngIf="!checkIfIsLoggedIn()" (click)="login()">Login</button>
+<button *ngIf="checkIfIsLoggedIn()" (click)="logout()">Logout</button>
+<button (click)="checkTokenStatus()">Check token status</button>
 <button (click)="openSignup()">Signup</button>
 
 <app-nav></app-nav>
