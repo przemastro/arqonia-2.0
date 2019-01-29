@@ -18,11 +18,6 @@ export class AppComponent {
     private modalService: NgbModal,
     private appService: AppService) {}
 
-  openLogin() {
-    const modalRef = this.modalService.open(LoginModalComponent);
-    modalRef.componentInstance.title = 'Login';
-  }
-
   login() {
     console.log("OAuth login status...");
     console.log(this.appService.obtainAccessToken());
@@ -45,6 +40,13 @@ export class AppComponent {
     } else {
       console.log("Token was not obtained!");
     }
+  }
+
+  getForEntity(resourceUrl) {
+    this.appService.getResource(resourceUrl)
+      .subscribe((response) => {
+        console.log(response.body)
+      });
   }
 
   openSignup() {
