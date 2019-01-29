@@ -61,16 +61,16 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     NgbModule.forRoot(),
     OAuthModule.forRoot()
-  ],
-  providers: [NgbActiveModal],
-  bootstrap: [AppComponent],
-  entryComponents: [
-    LoginModalComponent,
-    SignupModalComponent,
-    NewObservationModalComponent,
-    EditObservationModalComponent,
-    RemoveObservationModalComponent,
-    TimeSeriesModalComponent
-  ]
+],
+providers: [NgbActiveModal],
+bootstrap: [AppComponent],
+entryComponents: [
+LoginModalComponent,
+SignupModalComponent,
+NewObservationModalComponent,
+EditObservationModalComponent,
+RemoveObservationModalComponent,
+TimeSeriesModalComponent
+]
 })
 export class AppModule { }

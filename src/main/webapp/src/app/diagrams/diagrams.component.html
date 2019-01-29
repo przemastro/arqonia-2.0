@@ -1,3 +1,77 @@
-<p>
-  diagrams works!
-</p>
+<div class="container slideInLeft animated">
+  <button routerLink="/" type="button" class="close" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div class="inner-container">
+    <div class="search-result">
+      <div *ngIf="comet"><b>Category: Comet</b>
+        <table class="table">
+          <tr>
+            <th *ngFor="let head of headCometElements">{{head}}</th>
+          </tr>
+          <tr *ngFor="let el of cometElements">
+            <td>{{el.Catalog}}</td>
+            <td>{{el.ObjectName}}</td>
+            <td>{{el.Number}}</td>
+            <td>{{el.H}}</td>
+            <td>{{el.Epoch}}</td>
+            <td>{{el.M}}</td>
+            <td>{{el.omega}}</td>
+            <td>{{el.L}}</td>
+            <td>{{el.I}}</td>
+            <td>{{el.e}}</td>
+            <td>{{el.n}}</td>
+            <td>{{el.a}}</td>
+          </tr>
+        </table>
+      </div>
+      <div *ngIf="planetoid"><b>Category: Planetoid</b>
+        <table class="table table-striped table-sm">
+          <tr>
+            <th *ngFor="let head of headPlanetoidElements">{{head}}</th>
+          </tr>
+          <tr *ngFor="let el of planetoidElements">
+            <td>{{el.Catalog}}</td>
+            <td>{{el.ObjectName}}</td>
+            <td>{{el.ObjectType}}</td>
+            <td>{{el.Date}}</td>
+            <td>{{el.e}}</td>
+            <td>{{el.omega}}</td>
+            <td>{{el.L}}</td>
+            <td>{{el.I}}</td>
+            <td>{{el.EpochDate}}</td>
+            <td>{{el.Mag}}</td>
+          </tr>
+        </table>
+      </div>
+      <div *ngIf="star"><b>Category: Star</b>
+        <table class="table table-striped table-sm">
+          <td>
+            <tr *ngFor="let head of headStarElements">{{head}}</tr>
+          </td>
+          <td *ngFor="let el of starElements">
+            <tr>{{el.Catalog}}</tr>
+            <tr>{{el.ObjectName}}</tr>
+            <tr>{{el.RA}}</tr>
+            <tr>{{el.DE}}</tr>
+            <tr>{{el.Umag}}</tr>
+            <tr>{{el.Vmag}}</tr>
+            <tr>{{el.Bmag}}</tr>
+            <tr>{{el.BV}}</tr>
+            <tr>{{el.UB}}</tr>
+            <tr>{{el.RI}}</tr>
+            <tr>{{el.VI}}</tr>
+            <tr>{{el.SpectralType}}</tr>
+          </td>
+        </table>
+      </div>
+    </div>
+    <div class="light-curve">Light Curve</div>
+    <div class="diagrams-bottom">
+      <div id="observations-datetime">Number of observations vs. datetime</div>
+      <div id="observations-filter">Number of observations vs. filter</div>
+      <div id="photometric-points">PhotometricPoints (by User)</div>
+      <div id="hr-diagram">HR diagram</div>
+    </div>
+  </div>
+</div>

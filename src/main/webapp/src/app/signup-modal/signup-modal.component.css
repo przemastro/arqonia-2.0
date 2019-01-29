@@ -1,0 +1,24 @@
+.container{
+    width:300px;
+}
+
+.form-group{
+    width:300px;
+    margin:0 auto;
+    color:#fff;
+    font-family:Montserrat,sans-serif;
+    font-weight: normal;
+    margin-bottom:0px;
+    margin-top:10px;
+}
+
+.form-control{
+   	border-radius:30px;
+    border:1px solid rgba(33,134,177);
+    width: 240px;
+    height:35px;
+    text-align:left;
+    font-size:8px;
+    color: rgba(33,134,177);
+    background-color:rgba(17,39,66);
+}
