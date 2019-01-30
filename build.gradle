@@ -71,7 +71,7 @@ dependencies {
 
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	testImplementation group: 'org.springframework', name: 'spring-test', version: '5.0.5.RELEASE'
-//	testImplementation('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
+	testImplementation group: 'de.flapdoodle.embed', name: 'de.flapdoodle.embed.mongo', version: '2.2.0'
 	testImplementation('io.projectreactor:reactor-test')
 	testImplementation('org.springframework.security:spring-security-test')
 	testImplementation group: 'com.github.tomakehurst', name: 'wiremock', version: '2.6.0'
@@ -92,7 +92,6 @@ sourceSets {
 	// So that we can place source code in 'src/integration/java':
 	integration {
 		groovy {
-
 			// So that we can compile against the business classes (GreeterService, ...):
 			compileClasspath += main.output
 			// So that we can compile against the libs used by the business classes:
@@ -105,25 +104,23 @@ sourceSets {
 
 			// So that test- and business classes can be used at runtime:
 			runtimeClasspath += test.runtimeClasspath
-
 		}
 	}
 }
 
 task integrationTest(type: Test) {
+	group = "verification"
 
 	// So that Gradle knows where the integration test classes are:
-//	testClassesDir = sourceSets.integration.output.classesDir
 	testClassesDirs = sourceSets.integration.output
 
 	// So that Gradle knows which runtime class path to use:
 	classpath = sourceSets.integration.runtimeClasspath
-
 }
-
 
 def dockerDir = "$projectDir/docker"
 def dockerGroup = 'docker'
+
 task dockerBackendStop(type: Exec) {
 	workingDir "$dockerDir"
 	inputs.dir "$dockerDir"

@@ -25,35 +25,42 @@ import { NewObservationModalComponent } from './new-observation-modal/new-observ
 import { EditObservationModalComponent } from './edit-observation-modal/edit-observation-modal.component';
 import { RemoveObservationModalComponent } from './remove-observation-modal/remove-observation-modal.component';
 import { TimeSeriesModalComponent } from './time-series-modal/time-series-modal.component';
+import {OAuthModule} from "angular-oauth2-oidc";
+import {OauthComponent} from "./oauth.component";
+
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-declarations: [
-AppComponent,
-NavComponent,
-AboutComponent,
-HomeComponent,
-PhotometryComponent,
-ReductionComponent,
-AstrometryComponent,
-ObservationsComponent,
-SearchComponent,
-DiagramsComponent,
-TelescopesComponent,
-GenericModalComponent,
-LoginModalComponent,
-SignupModalComponent,
-SearchFormComponent,
-ObservationModalComponent,
-NewObservationModalComponent,
-EditObservationModalComponent,
-RemoveObservationModalComponent,
-TimeSeriesModalComponent,
-],
-imports: [
-BrowserModule,
-AppRoutingModule,
-FormsModule,
-NgbModule.forRoot()
+  declarations: [
+    AppComponent,
+    NavComponent,
+    AboutComponent,
+    HomeComponent,
+    PhotometryComponent,
+    ReductionComponent,
+    AstrometryComponent,
+    ObservationsComponent,
+    SearchComponent,
+    DiagramsComponent,
+    TelescopesComponent,
+    GenericModalComponent,
+    LoginModalComponent,
+    SignupModalComponent,
+    SearchFormComponent,
+    ObservationModalComponent,
+    NewObservationModalComponent,
+    EditObservationModalComponent,
+    RemoveObservationModalComponent,
+    TimeSeriesModalComponent,
+    OauthComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    NgbModule.forRoot(),
+    OAuthModule.forRoot()
 ],
 providers: [NgbActiveModal],
 bootstrap: [AppComponent],

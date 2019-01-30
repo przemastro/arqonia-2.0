@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Profile
 import org.springframework.core.Ordered
 import org.springframework.core.annotation.Order
+import org.springframework.core.env.Environment
 import org.springframework.core.io.ClassPathResource
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
@@ -28,11 +30,13 @@ import pl.astronomy.arqonia20.domain.user.UserRepository
 
 @Configuration
 @EnableWebSecurity
+//@Profile("!integration")
 class SecurityConfig(
         private val clientDetailsService: ClientDetailsService,
         private val arqoniaUserDetailsService: ArqoniaUserDetailsService,
         private val userRepository: UserRepository,
-        @Value("\${arqonia.admin.username}") private val adminUsername: String
+        @Value("\${arqonia.admin.username}") private val adminUsername: String,
+        private val environment: Environment
 ) : WebSecurityConfigurerAdapter() {
 
     @Autowired
@@ -47,33 +51,16 @@ class SecurityConfig(
     @Order(Ordered.HIGHEST_PRECEDENCE)
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
-        http.authorizeRequests().antMatchers("/login").permitAll()
+        http.authorizeRequests()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/oauth").permitAll()
                 .antMatchers("/signup").permitAll()
+                .antMatchers("/*").permitAll()
 //                .antMatchers("/oauth/token/revokeById/**").permitAll()
 //                .antMatchers("/tokens/**").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().permitAll()
                 .and().csrf().disable()
-
-//        http
-//                .sessionManagement()
-//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//                .and()
-//                .csrf().disable()
-//                .authorizeRequests()
-//                .antMatchers("/about").permitAll()
-//                .antMatchers("/signup").permitAll()
-//                .antMatchers("/login").permitAll()
-//                .antMatchers("/oauth/token").permitAll()
-//                .antMatchers("/oauth/authorize").permitAll()
-//                .antMatchers("/oauth/confirm_access").permitAll()
-//                .antMatchers("/actuator/**").permitAll() // TODO Remove after 'full OAUth2 implementation'!
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin().permitAll()
-//                .and()
-//                .httpBasic()
-//                .realmName("CRM_REALM")
     }
 
     @Order(Ordered.HIGHEST_PRECEDENCE)
@@ -90,9 +77,15 @@ class SecurityConfig(
 
     @Bean
     protected fun jwtTokenEnhancer(): JwtAccessTokenConverter {
-        val keyStoreKeyFactory = KeyStoreKeyFactory(
-                ClassPathResource("keystore/jwt/arqonia_jwt_key.jks"),
-                userRepository.findByUsername(adminUsername).password.toCharArray())
+        val keyStoreKeyFactory = if (environment.activeProfiles.contains("integration")) {
+            KeyStoreKeyFactory(
+                    ClassPathResource("keystore/jwt/arqonia_jwt_key.jks"),
+                    "arqoniaSuperPass12".toCharArray())
+        } else {
+            KeyStoreKeyFactory(
+                    ClassPathResource("keystore/jwt/arqonia_jwt_key.jks"),
+                    userRepository.findByUsername(adminUsername).password.toCharArray())
+        }
 
         val converter = JwtAccessTokenConverter()
         converter.setKeyPair(keyStoreKeyFactory.getKeyPair("arqonia_jwt_key"))

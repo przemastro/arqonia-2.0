@@ -9,7 +9,6 @@ export class DiagramsComponent implements OnInit {
   comet: boolean = false;
   planetoid: boolean = false;
   star: boolean = true;
-  starElements: any;
   cometElements: any;
   planetoidElements: any;
 
@@ -20,4 +19,7 @@ export class DiagramsComponent implements OnInit {
    VI: 'VI', SpectralType: 'A1'}];
   headStarElements = ['Catalog', 'ObjectName', 'RA', 'DE', 'Umag', 'Vmag', 'Bmag', 'BV', 'UB', 'RI', 'VI', 'SpectralType'];
 
+  ngOnInit() {
+
+  }
 }

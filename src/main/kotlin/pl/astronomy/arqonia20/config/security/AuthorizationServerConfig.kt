@@ -2,6 +2,7 @@ package pl.astronomy.arqonia20.config.security
 
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.context.annotation.Configuration
+import org.springframework.core.env.Environment
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter
@@ -20,21 +21,33 @@ class AuthorizationServerConfig(
         private val userApprovalHandler: UserApprovalHandler,
         @Qualifier("authenticationManagerBean") private val authenticationManager: AuthenticationManager,
         private val clientDetailsRepository: OauthClientDetailsRepository,
-        private val jwtTokenEnhancer: JwtAccessTokenConverter
+        private val jwtTokenEnhancer: JwtAccessTokenConverter,
+        private val environment: Environment
 ): AuthorizationServerConfigurerAdapter() {
 
     @Throws(Exception::class)
     override fun configure(clients: ClientDetailsServiceConfigurer) {
         val builder = clients.inMemory()
 
-        clientDetailsRepository.findAll().forEach {
+        if (environment.activeProfiles.contains("integration")) {
             builder
-                    .withClient(it.id)
-                    .authorizedGrantTypes(*it.authorizedGrantTypes)
-                    .redirectUris(*it.webServerRedirectUri)
-                    .scopes(*it.scope)
-                    .autoApprove(it.autoApprove)
-                    .accessTokenValiditySeconds(it.accessTokenValidity)
+                    .withClient("integrationClientId")
+                    .secret("secret")
+                    .authorizedGrantTypes("password", "refresh_token")
+                    .scopes("read", "write")
+                    .autoApprove(true)
+                    .accessTokenValiditySeconds(3600)
+                    .refreshTokenValiditySeconds(3600 * 24)
+        } else {
+            clientDetailsRepository.findAll().forEach {
+                builder
+                        .withClient(it.id)
+                        .authorizedGrantTypes(*it.authorizedGrantTypes)
+                        .redirectUris(*it.webServerRedirectUri)
+                        .scopes(*it.scope)
+                        .autoApprove(it.autoApprove)
+                        .accessTokenValiditySeconds(it.accessTokenValidity)
+            }
         }
 
     }
