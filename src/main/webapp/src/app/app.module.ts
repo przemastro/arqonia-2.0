@@ -30,6 +30,14 @@ import {OauthComponent} from "./oauth.component";
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { NvD3Module } from 'ng2-nvd3';
+import { NgxWidgetGridModule } from 'ngx-widget-grid';
+
+// d3 and nvd3 should be included somewhere
+import 'd3';
+import 'nvd3';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +63,8 @@ import { HttpClientModule } from '@angular/common/http';
     OauthComponent,
   ],
   imports: [
+    NvD3Module,
+    NgxWidgetGridModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
