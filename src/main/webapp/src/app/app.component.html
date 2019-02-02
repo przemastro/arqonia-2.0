@@ -22,12 +22,16 @@
           </div>
         </div>
       </div>
+      <div>
+        <span *ngIf="!checkIfIsLoggedIn()" ><a href="javascript:void(0);" (click)="login()">LOGIN</a></span>
+        <span *ngIf="checkIfIsLoggedIn()"><a href="javascript:void(0);" (click)="logout()">LOGOUT</a></span>
+        <span><a href="javascript:void(0);" (click)="getForEntity('/api/hello')">GET PROTECTED HELLO</a></span>
+        <span><a href="javascript:void(0);" (click)="checkTokenStatus()">CHECK TOKEN STATUS</a></span>
+      </div>
     </div>
     <div class="top-right-menu">
-      <span *ngIf="!checkIfIsLoggedIn()" ><a href="javascript:void(0);" (click)="login()">LOGIN</a></span>
-      <span *ngIf="checkIfIsLoggedIn()"><a href="javascript:void(0);" (click)="logout()">LOGOUT</a></span>
-      <span><a href="javascript:void(0);" (click)="getForEntity('/api/hello')">GET PROTECTED HELLO</a></span>
-      <span><a href="javascript:void(0);" (click)="checkTokenStatus()">CHECK TOKEN STATUS</a></span>
+      <span><a href="javascript:void(0);" (click)="openLogin()">LOGIN</a></span>
+      <span><a href="javascript:void(0);" (click)="openSignup()">SIGNUP</a></span>
     </div>
   </div>
   <div class="middle">

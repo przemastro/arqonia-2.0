@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
+import { User } from '../user';
+import { UserService } from '../user.service';
 declare var $:any;
 
 @Component({
@@ -7,6 +10,9 @@ templateUrl: './home.component.html',
 styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+users: User[];
+
+constructor(private userService: UserService) { }
 
 ngOnInit(){
     var $polystar = $('.polystar');
@@ -24,4 +30,5 @@ ngOnInit(){
       $polystar.get(0).load();
     });
   }
+
 }

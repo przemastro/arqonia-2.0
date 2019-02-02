@@ -50,6 +50,11 @@ constructor(
       });
   }
 
+  openLogin() {
+    const modalRef = this.modalService.open(LoginModalComponent);
+    modalRef.componentInstance.title = 'Login';
+  }
+
   openSignup() {
     const modalRef = this.modalService.open(SignupModalComponent);
     modalRef.componentInstance.title = 'SignUp';
