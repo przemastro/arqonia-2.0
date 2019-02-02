@@ -50,6 +50,7 @@ constructor(
       });
   }
 
+  /** open Modals by calling modalService */
   openLogin() {
     const modalRef = this.modalService.open(LoginModalComponent);
     modalRef.componentInstance.title = 'Login';

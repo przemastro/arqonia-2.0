@@ -8,10 +8,11 @@ templateUrl: './diagrams.component.html',
 styleUrls: ['./diagrams.component.css']
 })
 export class DiagramsComponent implements OnInit {
-
+/** Firstly call and define grid 6x6 */
 @ViewChild('grid') grid: NgxWidgetGridComponent;
 public rows = 6;
 public cols = 6;
+/** Now define all initial widgets. Initial position and size*/
 public widgets: any[] = [
 {
 top: 1,
@@ -57,7 +58,7 @@ width: 2,
 color: '#337ab7'
 }
 ];
-
+/** We need some basic information what to display */
 public showGrid = false;
 public highlightNextPosition = false;
 private _editable = true;
@@ -72,7 +73,7 @@ public set editable(editable: boolean) {
 
 constructor() { }
 
-
+/** Let's define diagrams by definings options and data */
 options5;
 data5;
 
@@ -297,15 +298,17 @@ toggleHighlight(doHighlight: boolean) {
     this.highlightNextPosition = !!doHighlight;
   }
 
+/** Add new widget */
   addWidget() {
     const nextPosition = this.grid.getNextPosition();
     if (nextPosition) {
-      this.widgets.push({color: this.generateHslaColors(), ...nextPosition});
+      this.widgets.push({ ...nextPosition});
     } else {
       console.warn('No Space Available!! ');
     }
   }
 
+/** Remove widget */
   askDeleteWidget(index) {
     console.log('deleting', index);
     this.widgets.splice(index, 1);
@@ -337,14 +340,6 @@ toggleHighlight(doHighlight: boolean) {
     }
   }
 
-  generateHslaColors(saturation?, lightness?, alpha?) {
-    const h = this.getRandomIntInclusive(0, 360 * 10);
-    const s = saturation >= 0 && saturation <= 100 ? saturation : 80;
-    const l = lightness >= 0 && lightness <= 100 ? lightness : 80;
-    const a = alpha >= 0 && alpha <= 100 ? alpha : 100;
-    return `hsla(${h / 10},${s}%,${l}%,${a})`;
-  }
-
   getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -356,6 +351,7 @@ toggleHighlight(doHighlight: boolean) {
     console.log(e);
 }
 
+/** Some initial data and frame for Search table */
   comet: boolean = false;
   planetoid: boolean = false;
   star: boolean = true;
