@@ -6,7 +6,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { OAuthService } from 'angular-oauth2-oidc';
 
- export class Foo {
+export class Foo {
   constructor(
     public id: number,
     public name: string) { }

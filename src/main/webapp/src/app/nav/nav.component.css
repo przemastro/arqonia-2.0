@@ -1,26 +1,11 @@
+/* inactive icons */
 #spectroscopy, #astrometry, #observatories, #photometry, #reduction, #series,
 #stars-div, #comets-div, #planetoids-div, #magnitudo-div, #spectral-div, #distance-div, #zoom{
     opacity:.4;
     cursor:default;
 }
 
-.zoom{
-  margin-left:0px;
-  margin-top:0px;
-  text-align:right;
-  border-radius:5px;
-  width:100%;
-  border-image-slice: 1;
-  border-width: 1px;
-  background-color:rgba(28,51,83,.52);
-}
-
-.zoom .section{
-  height:48px;
-  margin-top:0px;
-  padding-top:2px;
-}
-
+/* right menu */
 .right-menu{
   width:100%;
   margin-left:0px;
@@ -31,7 +16,21 @@
   border-width: 1px;
   background-color:rgba(28,51,83,.52);
 }
-
+.zoom{
+  margin-left:0px;
+  margin-top:0px;
+  text-align:right;
+  border-radius:5px;
+  width:100%;
+  border-image-slice: 1;
+  border-width: 1px;
+  background-color:rgba(28,51,83,.52);
+}
+.zoom .section{
+  height:48px;
+  margin-top:0px;
+  padding-top:2px;
+}
 .object-filters{
   width:100%;
   margin-left:0px;
@@ -42,7 +41,6 @@
   border-width: 1px;
   background-color:rgba(28,51,83,.52);
 }
-
 .filters{
   width:100%;
   margin-left:0px;
@@ -53,7 +51,6 @@
   border-width: 1px;
   background-color:rgba(28,51,83,.52);
 }
-
 .grid{
   width:100%;
   margin-left:0px;
@@ -65,51 +62,40 @@
   background-color:rgba(28,51,83,.52);
   height:100%
 }
-
 label{
   margin-right:5px;
   float:right;
 }
-
 img{
     width:25px;
     margin-top:-10px;
+    font-size: 24px;
 }
-
 .icon{
   display: inline-block;
   margin-left: 0px;
   vertical-align:middle;
 }
-
-img {
-  font-size: 24px;
-}
-
 .section{
     height:30px;
     padding-top:8px;
     margin-top:0px;
 }
-
 .filters .section{
     height:30px;
     padding-top:8px;
     margin-top:12px;
 }
-
 .name{
     font-size:10px;
     margin-left:-5px;
     vertical-align: top;
 }
-
 input[type=checkbox]{
 	height: 0;
 	width: 0;
 	visibility: hidden;
 }
-
 label {
 	cursor: pointer;
 	text-indent: -9999px;
@@ -120,7 +106,6 @@ label {
 	border-radius: 100px;
 	position: relative;
 }
-
 label:after {
 	content: '';
 	position: absolute;
@@ -132,57 +117,25 @@ label:after {
 	border-radius: 90px;
 	transition: 0.3s;
 }
-
 input:checked + label {
 	background: rgb(33, 134, 177);
 }
-
 input:checked + label:after {
 	left: calc(100% - 0px);
 	transform: translateX(-100%);
 }
-
 label:active:after {
 	width: 10px;
 }
-
-.form-control{
-    border-radius: 0px;
-    border-color: rgba(33,134,177);
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-    width: 200px;
-    height: 30px;
-    background-color:rgba(28,51,83,.52);
-}
-
 .input-group-append{
     width:300px;
     font-family:Montserrat,sans-serif;
     font-weight: normal;
 }
-
-.form{
-    text-align:center;
-    margin-left:50px;
-}
-
-.btn-search{
-      border-top-right-radius: 30px;
-      border-bottom-right-radius: 30px;
-    width:40px;
-    height:30px;
-    font-size:12px;
-    border:0px;
-    background-color: rgba(33,134,177);
-    color:white;
-}
-
 .slider{
   margin: 0 auto;
   text-align:center;
 }
-
 .slidecontainer{
   margin: 0 auto;
   text-align:center;

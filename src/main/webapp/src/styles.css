@@ -9,31 +9,16 @@ body,html{
     background-color:black;
     overflow: hidden;
 }
-
-*{
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent
-}
-::-moz-selection{
-    background:#3d73e8;
-    color:#fff
-}
-::selection{
-    background:#3d73e8;
-    color:#fff
-}
-:focus{
-    outline:0
-}
 a{
     text-decoration:none;
     transition:.3s
 }
-
-.navbar-toggler{
-    z-index:100;
+a:hover{
+    text-decoration:none;
+    transition:.3s
 }
 
+/* main */
 .main{
     height:100%;
     width:100%;
@@ -41,19 +26,11 @@ a{
     background-position:center center;
     color:#fff;
 	  opacity:0.8;
+	  z-index:-1;
 }
-.main{
-    z-index:-1;
-}
-
 .main .container{
     background-color:rgba(28,51,83,.52);
     margin:0 auto;
-}
-
-
-.main .container:hover{
-    background-color:rgba(28,51,83,.52);
 }
 
 /* modals */
@@ -146,30 +123,6 @@ a{
     outline: none;
 }
 .btn:focus{
-    box-shadow:0 0 0 .0rem rgba(0,123,255,.25);
-}
-.btn-search{
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-    width:60px;
-    height:50px;
-    font-size:12px;
-    border:0px;
-    background-color: rgba(33,134,177);
-    color:white;
-}
-.btn-search:hover{
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-    width:60px;
-    height:50px;
-    font-size:12px;
-    border:0px;
-    background-color: rgba(33,134,177);
-    color:white;
-    outline: none;
-}
-.btn-search:focus{
     box-shadow:0 0 0 .0rem rgba(0,123,255,.25);
 }
 .read-only{
@@ -314,62 +267,13 @@ a{
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
-.animated.infinite {
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-}
-.animated.delay-1s {
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
-}
-.animated.delay-2s {
-  -webkit-animation-delay: 2s;
-  animation-delay: 2s;
-}
-.animated.delay-3s {
-  -webkit-animation-delay: 3s;
-  animation-delay: 3s;
-}
-.animated.delay-4s {
-  -webkit-animation-delay: 4s;
-  animation-delay: 4s;
-}
-.animated.delay-5s {
-  -webkit-animation-delay: 5s;
-  animation-delay: 5s;
-}
-.animated.fast {
-  -webkit-animation-duration: 800ms;
-  animation-duration: 800ms;
-}
-.animated.faster {
-  -webkit-animation-duration: 500ms;
-  animation-duration: 500ms;
-}
-.animated.slow {
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-}
-.animated.slower {
-  -webkit-animation-duration: 3s;
-  animation-duration: 3s;
-}
 
-@media (print), (prefers-reduced-motion) {
-  .animated {
-    -webkit-animation: unset !important;
-    animation: unset !important;
-    -webkit-transition: none !important;
-    transition: none !important;
-  }
-}
-
+/* left menu */
 .description {
   max-width: 600px;
   margin: 0 auto;
   color: rgba(229, 229, 229, 0.7);
 }
-
 p {
   font-size: 12pt;
   margin-bottom: 12pt;

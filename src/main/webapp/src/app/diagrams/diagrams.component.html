@@ -5,31 +5,11 @@
   <div class="inner-container">
     <div class="dashboard-container">
       <div class="form">
-        <!--<button class="btn btn-sm"
-                [hidden]="!editable"
-                (mouseover)="toggleHighlight(true)"
-                (mouseleave)="toggleHighlight(false)"
-                (click)="addWidget()">
-          Widget
-        </button>-->
-        <!--<div class="toggle-switch">
-          <input type="checkbox"
-                 id="grid"
-                 [(ngModel)]="showGrid">
-          <label for="grid">Grid</label>
-        </div>-->
       </div>
-      <ngx-widget-grid [rows]="rows"
-                       [columns]="cols"
-                       [highlightNextPosition]="highlightNextPosition"
-                       #grid
-                       [showGrid]="showGrid"
-                       (gridFull)="onGridFull($event)"
-                       (widgetPositionChange)="onWidgetChange($event)" style="height:93%;width:97%;margin-top:-15px">
-        <ngx-widget *ngFor="let widget of widgets;let $index = index;"
-                    [position]="widget"
-                    [movable]="editable"
-                    [resizable]="editable">
+      <ngx-widget-grid [rows]="rows" [columns]="cols" [highlightNextPosition]="highlightNextPosition"
+                       #grid [showGrid]="showGrid" (gridFull)="onGridFull($event)" (widgetPositionChange)="onWidgetChange($event)"
+                       style="height:93%;width:97%;margin-top:-15px">
+        <ngx-widget *ngFor="let widget of widgets;let $index = index;" [position]="widget" [movable]="editable" [resizable]="editable">
           <div style="height:100%;width:100%; display:flex;">
             <div class="search-result">
               <div *ngIf="comet"><b>Category: Comet</b>
@@ -96,56 +76,27 @@
             </div>
           </div>
         </ngx-widget>
-        <ngx-widget *ngFor="let widget of widgets2;let $index = index;"
-                    [position]="widget"
-                    [movable]="editable"
-                    [resizable]="editable">
+        <ngx-widget *ngFor="let widget of widgets2;let $index = index;" [position]="widget" [movable]="editable" [resizable]="editable">
           <div style="height:100%;width:100%; display:flex;">
             <nvd3 style="fill:white;margin: 5 auto;" [options]="options2" [data]="data2"></nvd3>
           </div>
         </ngx-widget>
-        <ngx-widget *ngFor="let widget of widgets3;let $index = index;"
-                    [position]="widget"
-                    [movable]="editable"
-                    [resizable]="editable">
+        <ngx-widget *ngFor="let widget of widgets3;let $index = index;" [position]="widget" [movable]="editable" [resizable]="editable">
           <div style="height:100%;width:100%; display:flex;">
             <nvd3 style="fill:white;" [options]="options3" [data]="data3"></nvd3>
           </div>
         </ngx-widget>
-        <ngx-widget *ngFor="let widget of widgets4;let $index = index;"
-                    [position]="widget"
-                    [movable]="editable"
-                    [resizable]="editable">
+        <ngx-widget *ngFor="let widget of widgets4;let $index = index;" [position]="widget" [movable]="editable" [resizable]="editable">
           <div style="height:100%;width:100%; display:flex;">
             <nvd3 style="fill:white;" [options]="options3" [data]="data3"></nvd3>
           </div>
         </ngx-widget>
-        <ngx-widget *ngFor="let widget of widgets5;let $index = index;"
-                    [position]="widget"
-                    [movable]="editable"
-                    [resizable]="editable">
+        <ngx-widget *ngFor="let widget of widgets5;let $index = index;" [position]="widget" [movable]="editable" [resizable]="editable">
           <div style="height:100%;width:100%; display:flex;">
             <nvd3 style="fill:white;" [options]="options5" [data]="data5"></nvd3>
           </div>
         </ngx-widget>
       </ngx-widget-grid>
-      <!--<div class="light-curve" style="display:inline-block;">
-        Light Curve
-        <nvd3 [options]="options4" [data]="data4"></nvd3>
-      </div>-->
-      <!--<div class="diagrams-bottom">
-        <div id="observations-datetime">
-          Number of observations vs. datetime
-          <nvd3 style="fill:white;" [options]="options3" [data]="data3"></nvd3>
-        </div>
-        <div id="observations-filter">
-          Number of observations vs. filter
-          <nvd3 style="fill:white;" [options]="options5" [data]="data5"></nvd3>
-        </div>
-        <div id="hr-diagram">
-          HR diagram
-          <nvd3 [options]="options" [data]="data"></nvd3>
-        </div>
-      </div>-->
     </div>
   </div>
+</div>
