@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
-import { NewUser } from '../User';
+import { NewUser } from '../user';
 import { UserService } from '../user.service';
 @Component({
   selector: 'app-signup-modal',

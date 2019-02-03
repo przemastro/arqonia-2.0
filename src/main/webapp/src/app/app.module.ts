@@ -26,7 +26,6 @@ import { EditObservationModalComponent } from './edit-observation-modal/edit-obs
 import { RemoveObservationModalComponent } from './remove-observation-modal/remove-observation-modal.component';
 import { TimeSeriesModalComponent } from './time-series-modal/time-series-modal.component';
 import {OAuthModule} from "angular-oauth2-oidc";
-import {OauthComponent} from "./oauth.component";
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -58,7 +57,6 @@ import 'nvd3';
     EditObservationModalComponent,
     RemoveObservationModalComponent,
     TimeSeriesModalComponent,
-    OauthComponent,
   ],
   imports: [
     NvD3Module,

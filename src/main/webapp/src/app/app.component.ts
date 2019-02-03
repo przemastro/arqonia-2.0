@@ -3,21 +3,21 @@ import { GenericModalComponent } from './generic-modal/generic-modal.component';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import { SignupModalComponent } from './signup-modal/signup-modal.component';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import {AppService} from "./app.service";
+import {OauthService} from "./oauth.service";
 declare var $:any;
 
 @Component({
-selector: 'app-root',
-templateUrl: './app.component.html',
-styleUrls: ['./app.component.css'],
-  providers: [AppService]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  providers: [OauthService]
 })
 export class AppComponent implements OnInit{
 title = 'app';
 
 constructor(
     private modalService: NgbModal,
-    private appService: AppService) {}
+    private appService: OauthService) {}
 
   login() {
     console.log("OAuth login status...");

@@ -25,14 +25,20 @@ export class UserService {
 
   /** Is used by loginModalComponent */
   loginUser (user: User): Observable<User> {
-     console.log('Login User')
-    return this.http.post<User>(`${this.apiUrl}/login`, user, { responseType: 'json'}).pipe(
+    console.log('Login User');
+
+    let formData = [user].map(user => "username=" + user.username + "&password=" + user.password).pop();
+
+    return this.http.post<User>(`${this.apiUrl}/login`, formData,
+      { responseType: 'json', headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}},
+      )
+      .pipe(
       catchError(this.handleError<User>('loginUser'))
     );
   }
 
   addUser (newUser: NewUser): Observable<NewUser> {
-     console.log('SignUp User')
+     console.log('SignUp User');
     return this.http.post<NewUser>(`${this.apiUrl}/signup`, newUser, httpOptions).pipe(
       catchError(this.handleError<NewUser>('SignUpUser'))
     );
