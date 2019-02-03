@@ -33,7 +33,8 @@ constructor(private userService: UserService,
       .subscribe(user => {
         this.users.push(user);
       });
-    this.oauthService.obtainAccessToken();
+    // TODO Neede workaorund, becase it will open Spring Login Page (and doesn't matter if user was logged or not with out login modal)
+    // this.oauthService.obtainAccessToken();
     /**close all active modals after click Login*/
     this.activeModal.close();
   }
