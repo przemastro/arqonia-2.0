@@ -8,7 +8,12 @@ describe('GenericModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GenericModalComponent ]
+      declarations: [
+         GenericModalComponent
+         ],
+      providers: [
+         NgbActiveModal
+         ]
     })
     .compileComponents();
   }));

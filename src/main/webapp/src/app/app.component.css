@@ -1,8 +1,4 @@
-.main-container{
-  display:block;
-  width:100%;
-}
-
+/* header */
 .header{
     width:100%;
     height:10%;
@@ -11,18 +7,16 @@
     display:inline-block;
 }
 
+/* hamburger menu */
 #menuToggle{
 z-index:100;
 }
-
 #menu > li > a{
 color:black
 }
-
 #menu > li{
 color:black
 }
-
 #menuToggle
 {
   display: block;
@@ -33,7 +27,6 @@ color:black
   -webkit-user-select: none;
   user-select: none;
 }
-
 #menuToggle input
 {
   display: block;
@@ -43,11 +36,10 @@ color:black
   top: -7px;
   right: -5px;
   cursor: pointer;
-  opacity: 0; /* hide this */
-  z-index: 2; /* and place it over the hamburger */
+  opacity: 0;
+  z-index: 2;
   -webkit-touch-callout: none;
 }
-
 #menuToggle span
 {
   display: block;
@@ -68,12 +60,10 @@ color:black
 {
   transform-origin: 0% 0%;
 }
-
 #menuToggle span:nth-last-child(2)
 {
   transform-origin: 0% 100%;
 }
-
 #menuToggle input:checked ~ span
 {
   opacity: 1;
@@ -90,7 +80,6 @@ color:black
   opacity: 1;
   transform: rotate(-45deg) translate(0, -1px);
 }
-
 #menu
 {
   position: absolute;
@@ -104,13 +93,11 @@ color:black
   transform: translate(-100%, 0%);
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
-
 #menuToggle input:checked ~ ul
 {
   transform: scale(1.0, 1.0);
   opacity: 1;
 }
-
 #menu li
 {
   padding: 10px 0;
@@ -118,6 +105,7 @@ color:black
   margin-left: 100px;
 }
 
+/* top left menu */
 .top-left-menu{
   display: inline;
   margin:10px;
@@ -125,6 +113,7 @@ color:black
   width: 83%;
 }
 
+/* top right menu */
 .top-right-menu{
   display: inline;
   margin:10px;
@@ -133,21 +122,21 @@ color:black
   text-align:center;
   padding:10px;
 }
-
 .top-right-menu span{
   margin:10px;
 }
 
+/* middle section */
 .middle-left{
   width: 85.3%;
   float:left;
 }
-
 .middle-right{
   width:14%;
   float:right;
 }
 
+/* footer */
 .footer {
   left: 0;
   bottom: 0;
@@ -163,15 +152,7 @@ color:black
   z-index:0;
 }
 
-.slider{
-  margin: 0 auto;
-  text-align:center;
-}
-
-.btn:focus{
-    box-shadow:0 0 0 .0rem rgba(0,123,255,.25);
-}
-
+/* buttons*/
 .btn-search{
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
@@ -182,7 +163,6 @@ color:black
     background-color: rgba(33,134,177);
     color:white;
 }
-
 .btn-search:hover{
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
@@ -194,16 +174,15 @@ color:black
     color:white;
     outline: none;
 }
-
 .btn-search:focus{
     box-shadow:0 0 0 .0rem rgba(0,123,255,.25);
 }
 
+/* search */
 .form-group{
     text-align:center;
     margin-left:50px;
 }
-
 .form-control{
     border-radius: 0px;
     border-color: rgba(33,134,177);
@@ -213,7 +192,6 @@ color:black
     height: 30px;
     background-color:rgba(28,51,83,.52);
 }
-
 .input-group-append{
     width:300px;
     font-family:Montserrat,sans-serif;
