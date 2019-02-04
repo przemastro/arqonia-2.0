@@ -52,7 +52,7 @@ class SecurityConfig(
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
         http.authorizeRequests()
-                .antMatchers("/login").permitAll()
+//                .antMatchers("/login").permitAll()
                 .antMatchers("/oauth").permitAll()
                 .antMatchers("/signup").permitAll()
                 .antMatchers("/*").permitAll()

@@ -30,7 +30,8 @@
       </div>
     </div>
     <div class="top-right-menu">
-      <span><a href="javascript:void(0);" (click)="openLogin()">LOGIN</a></span>
+      <span *ngIf="!checkIfIsLoggedIn()"><a href="javascript:void(0);" (click)="openLogin()">LOGIN</a></span>
+      <span *ngIf="checkIfIsLoggedIn()"><a href="javascript:void(0);" (click)="logout()">LOGOUT</a></span>
       <span><a href="javascript:void(0);" (click)="openSignup()">SIGNUP</a></span>
     </div>
   </div>
