@@ -64,7 +64,8 @@ class SecurityConfig(
 //                .antMatchers("/login").permitAll()
 //                .antMatchers("/oauth").permitAll()
 //                .antMatchers("/signup").permitAll()
-                .antMatchers("/*").permitAll()
+                .antMatchers("/*").permitAll() // TODO Probably detailed list of urls is needed...
+                .antMatchers("/assets/images/*").permitAll()
 //                .antMatchers("/oauth/token/revokeById/**").permitAll()
 //                .antMatchers("/tokens/**").permitAll()
                 .anyRequest().authenticated()
