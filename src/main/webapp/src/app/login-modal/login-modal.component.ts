@@ -1,8 +1,8 @@
-import { Component, OnInit  } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
-import { User } from '../user';
-import { UserService } from '../user.service';
+import {User} from '../user';
+import {UserService} from '../user.service';
 import {OauthService} from "../oauth.service";
 
 @Component({
@@ -12,11 +12,12 @@ import {OauthService} from "../oauth.service";
   providers: [OauthService]
 })
 export class LoginModalComponent implements OnInit {
-isLoggedIn: boolean = false;
+  isLoggedIn: boolean = false;
 
-constructor(private userService: UserService,
-            private activeModal: NgbActiveModal,
-            private oauthService: OauthService) { }
+  constructor(private userService: UserService,
+              private activeModal: NgbActiveModal,
+              private oauthService: OauthService) {
+  }
 
   ngOnInit() {
   }
@@ -26,12 +27,10 @@ constructor(private userService: UserService,
     password = password.trim();
 
     /** call Service loginUser and use values of username and password as array User. loginUser is of type User*/
-    this.userService.loginUser({ username, password} as User)
+    this.userService.loginUser({username, password} as User)
       .subscribe(user => {
-        this.isLoggedIn = true;
-        console.log("Logged user " + "'" + username + "'");
-        console.log('is logged in ? ' + this.isLoggedIn);
-
+          this.isLoggedIn = true;
+          console.log("Logged user " + "'" + username + "'");
         },
         (error) => {
           console.log(error.message); // TODO This error message should be passed to the login modal frontend in case of wrong logging process !
