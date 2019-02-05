@@ -31,10 +31,7 @@ export class UserService {
 
     return this.http.post<User>(`${this.apiUrl}/login`, formData,
       { responseType: 'json', headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}},
-      )
-      .pipe(
-      catchError(this.handleError<User>('loginUser'))
-    );
+      );
   }
 
   addUser (newUser: NewUser): Observable<NewUser> {
