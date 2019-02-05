@@ -26,18 +26,27 @@ import pl.astronomy.arqonia20.config.security.userdetails.ArqoniaUserDetailsServ
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler
+import pl.astronomy.arqonia20.config.security.customlogin.CustomAccessDeniedHandler
+import pl.astronomy.arqonia20.config.security.customlogin.MySavedRequestAwareAuthenticationSuccessHandler
+import pl.astronomy.arqonia20.config.security.customlogin.RestAuthenticationEntryPoint
 import pl.astronomy.arqonia20.domain.user.UserRepository
 
 @Configuration
 @EnableWebSecurity
 //@Profile("!integration")
 class SecurityConfig(
+        private val restAuthenticationEntryPoint: RestAuthenticationEntryPoint,
+        private val mySuccessHandler: MySavedRequestAwareAuthenticationSuccessHandler,
+        private val accessDeniedHandler: CustomAccessDeniedHandler,
         private val clientDetailsService: ClientDetailsService,
         private val arqoniaUserDetailsService: ArqoniaUserDetailsService,
         private val userRepository: UserRepository,
         @Value("\${arqonia.admin.username}") private val adminUsername: String,
         private val environment: Environment
 ) : WebSecurityConfigurerAdapter() {
+
+    private val myFailureHandler = SimpleUrlAuthenticationFailureHandler()
 
     @Autowired
     @Throws(Exception::class)
@@ -53,14 +62,17 @@ class SecurityConfig(
     override fun configure(http: HttpSecurity) {
         http.authorizeRequests()
 //                .antMatchers("/login").permitAll()
-                .antMatchers("/oauth").permitAll()
-                .antMatchers("/signup").permitAll()
+//                .antMatchers("/oauth").permitAll()
+//                .antMatchers("/signup").permitAll()
                 .antMatchers("/*").permitAll()
 //                .antMatchers("/oauth/token/revokeById/**").permitAll()
 //                .antMatchers("/tokens/**").permitAll()
                 .anyRequest().authenticated()
-                .and().formLogin().permitAll()
+//                .and().formLogin().permitAll()
                 .and().csrf().disable()
+                .exceptionHandling().accessDeniedHandler(accessDeniedHandler).authenticationEntryPoint(restAuthenticationEntryPoint)
+                .and().formLogin().successHandler(mySuccessHandler).failureHandler(myFailureHandler)
+
     }
 
     @Order(Ordered.HIGHEST_PRECEDENCE)
