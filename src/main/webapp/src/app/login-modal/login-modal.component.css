@@ -20,3 +20,15 @@
     color: rgba(33,134,177);
     background-color:rgba(28,51,83);
 }
+
+.error-message{
+  word-wrap:break-word;
+  position:absolute;
+  opacity:1;
+  transition:opacity 1000ms;
+  color:#dc3545;
+  font-size:11pt;
+  margin-top:10px;
+  margin-right:10px;
+  margin-left:10px;
+}

@@ -14,6 +14,9 @@ export class LoginModalComponent implements OnInit {
   isLoggedIn: boolean = false;
   errorMessage: string = '';
 
+  hideErrorMessage = () => { document.getElementById('errorDiv').style.opacity = '0' };
+  showErrorMessage = () => { document.getElementById('errorDiv').style.opacity = '1' };
+
   constructor(private activeModal: NgbActiveModal,
               private securityService: SecurityService) {
   }
@@ -24,6 +27,8 @@ export class LoginModalComponent implements OnInit {
   startProcessLogin(username: string, password: string): void {
     username = username.trim();
     password = password.trim();
+    this.errorMessage = '';
+    this.showErrorMessage();
 
     /** call Service loginUser and use values of username and password as array User. loginUser is of type User*/
     this.securityService.loginUser({username, password} as User)
@@ -33,9 +38,10 @@ export class LoginModalComponent implements OnInit {
           console.log("Logged user " + "'" + username + "'");
         },
         (error) => {
-         this.errorMessage = error.status === 401 ? 'Wrong username or password. Pleas try again.' : 'error.message';
+          this.errorMessage = error.status === 401 ? 'Wrong username or password. Pleas try again.' : 'error.message';
+          this.disappearingErrorMessageById('errorDiv');
 
-          console.warn('Error occurred: '+ error.message + ', with status code: ' + error.status);
+          console.warn('Error occurred: ' + error.message + ', with status code: ' + error.status);
         },
         () => {
           if (this.isLoggedIn) {
@@ -47,4 +53,9 @@ export class LoginModalComponent implements OnInit {
           this.activeModal.close();
         });
   }
+
+  protected disappearingErrorMessageById(id: string) {
+      setTimeout(this.hideErrorMessage, 3000);
+  }
+
 }
