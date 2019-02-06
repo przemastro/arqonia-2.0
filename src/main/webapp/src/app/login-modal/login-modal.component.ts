@@ -38,7 +38,7 @@ export class LoginModalComponent implements OnInit {
           console.log("Logged user " + "'" + username + "'");
         },
         (error) => {
-          this.errorMessage = error.status === 401 ? 'Wrong username or password. Pleas try again.' : 'error.message';
+          this.errorMessage = error.status === 401 ? 'Wrong username or password. Pleas try again.' : error.message;
           this.disappearingErrorMessageById('errorDiv');
 
           console.warn('Error occurred: ' + error.message + ', with status code: ' + error.status);
