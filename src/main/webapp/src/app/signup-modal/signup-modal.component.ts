@@ -13,10 +13,10 @@ export class SignupModalComponent implements OnInit {
   errorMessage: string = '';
 
   hideErrorMessage = () => {
-    document.getElementById('errorDiv').style.opacity = '0'
+    document.getElementById('errorDivSignup').style.opacity = '0'
   };
   showErrorMessage = () => {
-    document.getElementById('errorDiv').style.opacity = '1'
+    document.getElementById('errorDivSignup').style.opacity = '1'
   };
 
   constructor(private userService: UserService,
@@ -49,7 +49,7 @@ export class SignupModalComponent implements OnInit {
           },
           (error) => {
             this.errorMessage = error.status !== 201 ? 'Registering process failed. Pleas try again.' : '';
-            this.disappearingErrorMessageById('errorDiv');
+            this.disappearingErrorMessage();
 
             console.warn('Error occurred: ' + error.message + ', with status code: ' + error.status);
           },
@@ -63,7 +63,7 @@ export class SignupModalComponent implements OnInit {
     }
   }
 
-  protected disappearingErrorMessageById(id: string) {
+  protected disappearingErrorMessage() {
     setTimeout(this.hideErrorMessage, 3000);
   }
 }
