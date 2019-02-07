@@ -1,6 +1,7 @@
 package pl.astronomy.arqonia20.api.user
 
 import org.springframework.http.HttpStatus
+import javax.validation.Valid
 import org.springframework.web.bind.annotation.*
 import pl.astronomy.arqonia20.domain.user.SignupService
 import pl.astronomy.arqonia20.domain.user.User
@@ -20,7 +21,7 @@ class SignupEndpoint(
     @PostMapping
     @CrossOrigin(origins = ["https://localhost:8443"])
     @ResponseStatus(HttpStatus.CREATED)
-    fun signup(@RequestBody user: User) {
+    fun signup(@RequestBody @Valid user: User) {
         logger.info("Saving user credentials...")
 
         signupService.addUser(
