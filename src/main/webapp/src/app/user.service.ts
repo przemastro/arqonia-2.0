@@ -4,7 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
 
-import {User, NewUser} from './user';
+import {User} from './user';
 import {MessageService} from './message.service';
 
 const httpOptions = {
@@ -23,10 +23,10 @@ export class UserService {
     private messageService: MessageService) {
   }
 
-  addUser(newUser: NewUser): Observable<NewUser> {
+  addUser(user: User): Observable<User> {
     console.log('SignUp User');
-    return this.http.post<NewUser>(`${this.apiUrl}/signup`, newUser, httpOptions).pipe(
-      catchError(this.handleError<NewUser>('SignUpUser'))
+    return this.http.post<User>(`${this.apiUrl}/signup`, user, httpOptions).pipe(
+      catchError(this.handleError<User>('SignUpUser'))
     );
   }
 

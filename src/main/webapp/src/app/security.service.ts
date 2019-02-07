@@ -36,8 +36,17 @@ export class SecurityService {
     );
   }
 
+  logout() {
+    this.oauthService.logOut();
+    location.reload();
+  }
+
   obtainAccessToken(){
     this.oauthService.initImplicitFlow();
+  }
+
+  isLoggedIn(){
+    return this.oauthService.getAccessToken() !== null;
   }
 
   getResource(resourceUrl) : Observable<any>{
@@ -47,15 +56,6 @@ export class SecurityService {
     });
 
     return this._http.get(resourceUrl, {headers: headers, observe: 'response'});
-  }
-
-  isLoggedIn(){
-    return this.oauthService.getAccessToken() !== null;
-  }
-
-  logout() {
-      this.oauthService.logOut();
-      location.reload();
   }
 
   logAccessToken() {

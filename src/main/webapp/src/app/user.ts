@@ -1,13 +1,14 @@
 export class User {
-  id: number;
   username: string;
   password: string;
+  email: string;
+  roles: Array<UserRole>
 }
 
-export class NewUser {
-  id: number;
-  username: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
+export class UserRole {
+  name: RoleType;
+}
+
+export enum RoleType {
+  ADMIN, USER
 }
