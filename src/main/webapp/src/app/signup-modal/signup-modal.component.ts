@@ -12,13 +12,6 @@ import {UserService} from '../user.service';
 export class SignupModalComponent implements OnInit {
   errorMessage: string = '';
 
-  hideErrorMessage = () => {
-    document.getElementById('errorDivSignup').style.opacity = '0'
-  };
-  showErrorMessage = () => {
-    document.getElementById('errorDivSignup').style.opacity = '1'
-  };
-
   constructor(private userService: UserService,
               private activeModal: NgbActiveModal) {
   }
@@ -46,7 +39,7 @@ export class SignupModalComponent implements OnInit {
           },
           (error) => {
             this.errorMessage = error.status !== 201 ? 'Registering process failed. Pleas try again.' : '';
-            this.disappearingErrorMessage();
+            this.hideErrorMessage();
 
             console.warn('Error occurred: ' + error.message + ', with status code: ' + error.status);
           },
@@ -57,11 +50,17 @@ export class SignupModalComponent implements OnInit {
           });
     } else {
       this.errorMessage = "Passwords didn't match. Please try again.";
-      this.disappearingErrorMessage();
+      this.hideErrorMessage();
     }
   }
 
-  protected disappearingErrorMessage() {
-    setTimeout(this.hideErrorMessage, 3000);
+  protected hideErrorMessage() {
+    setTimeout(function () {
+      document.getElementById('errorDiv').style.opacity = '0'
+    }, 3000);
   }
+
+  protected showErrorMessage() {
+    document.getElementById('errorDiv').style.opacity = '1'
+  };
 }

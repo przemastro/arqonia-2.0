@@ -21,7 +21,7 @@
     background-color:rgba(28,51,83);
 }
 
-.error-message-login{
+.error-message{
   word-wrap:break-word;
   position:absolute;
   opacity:1;

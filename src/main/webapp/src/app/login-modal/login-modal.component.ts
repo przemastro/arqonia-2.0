@@ -14,13 +14,6 @@ export class LoginModalComponent implements OnInit {
   isLoggedIn: boolean = false;
   errorMessage: string = '';
 
-  hideErrorMessage = () => {
-    document.getElementById('errorDivLogin').style.opacity = '0'
-  };
-  showErrorMessage = () => {
-    document.getElementById('errorDivLogin').style.opacity = '1'
-  };
-
   constructor(private activeModal: NgbActiveModal,
               private securityService: SecurityService) {
   }
@@ -43,7 +36,7 @@ export class LoginModalComponent implements OnInit {
         },
         (error) => {
           this.errorMessage = error.status === 401 ? 'Wrong username or password. Pleas try again.' : error.message;
-          this.disappearingErrorMessage();
+          this.hideErrorMessage();
 
           console.warn('Error occurred: ' + error.message + ', with status code: ' + error.status);
         },
@@ -58,8 +51,14 @@ export class LoginModalComponent implements OnInit {
         });
   }
 
-  protected disappearingErrorMessage() {
-    setTimeout(this.hideErrorMessage, 3000);
+  protected hideErrorMessage() {
+    setTimeout(function () {
+      document.getElementById('errorDiv').style.opacity = '0'
+    }, 3000);
+  }
+
+  protected showErrorMessage() {
+    document.getElementById('errorDiv').style.opacity = '1';
   }
 
 }
