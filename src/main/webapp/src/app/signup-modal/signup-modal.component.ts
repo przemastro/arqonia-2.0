@@ -31,9 +31,6 @@ export class SignupModalComponent implements OnInit {
     username = username.trim();
     email = email.trim();
     password = password.trim();
-    console.log(username);
-    console.log(email);
-    console.log(password);
 
     this.errorMessage = '';
     this.showErrorMessage();
@@ -60,6 +57,7 @@ export class SignupModalComponent implements OnInit {
           });
     } else {
       this.errorMessage = "Passwords didn't match. Please try again.";
+      this.disappearingErrorMessage();
     }
   }
 
