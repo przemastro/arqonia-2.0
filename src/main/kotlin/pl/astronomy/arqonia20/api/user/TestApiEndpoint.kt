@@ -12,7 +12,7 @@ import pl.astronomy.arqonia20.logger
 class TestApiEndpoint {
 
     @GetMapping("/hello")
-    @CrossOrigin(origins = ["http://localhost:8080"])
+    @CrossOrigin(origins = ["https://localhost:8443"])
     @ResponseStatus(HttpStatus.OK)
     fun hello(): User {
         logger.info("Trying to get 'Hello World' message...")

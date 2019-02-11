@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { TimeSeriesModalComponent } from './time-series.component';
+import { ObservationModalComponent } from '../observation-modal/observation-modal.component';
+import { TimeSeriesModalComponent } from './time-series-modal.component';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 describe('TimeSeriesModalComponent', () => {
   let component: TimeSeriesModalComponent;
@@ -8,7 +9,13 @@ describe('TimeSeriesModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TimeSeriesModalComponent ]
+      declarations: [
+         TimeSeriesModalComponent,
+         ObservationModalComponent
+         ],
+      providers: [
+         NgbActiveModal
+         ]
     })
     .compileComponents();
   }));

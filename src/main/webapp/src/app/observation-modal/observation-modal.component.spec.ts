@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ObservationModalComponent } from './observation-modal.component';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 describe('ObservationModalComponent', () => {
   let component: ObservationModalComponent;
@@ -8,7 +8,12 @@ describe('ObservationModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ObservationModalComponent ]
+      declarations: [
+         ObservationModalComponent
+         ],
+      providers: [
+         NgbActiveModal
+         ]
     })
     .compileComponents();
   }));

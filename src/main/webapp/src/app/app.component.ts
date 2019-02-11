@@ -1,53 +1,84 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { GenericModalComponent } from './generic-modal/generic-modal.component';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import { SignupModalComponent } from './signup-modal/signup-modal.component';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import {AppService} from "./app.service";
+import {SecurityService} from "./security.service";
+import { DataService } from "./data.service";
 declare var $:any;
 
 @Component({
-selector: 'app-root',
-templateUrl: './app.component.html',
-styleUrls: ['./app.component.css'],
-  providers: [AppService]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  providers: [SecurityService,DataService]
 })
 export class AppComponent implements OnInit{
-title = 'app';
+
+message:string;
+flag:boolean;
+headStarElements:any = [];
+starElements:any = [];
 
 constructor(
     private modalService: NgbModal,
-    private appService: AppService) {}
+    private data: DataService,
+    private securityService: SecurityService
+    ) {}
+
+
+  /** search */
+  ngOnInit() {
+    this.data.currentObjectFlag.subscribe(flag => this.flag = flag);
+    this.data.currentObjectType.subscribe(headStarElements => this.headStarElements = headStarElements)
+    this.data.currentObjectData.subscribe(starElements => this.starElements = starElements)
+  }
+
+  sendObject(object: string, objectType: string) {
+    object = object.trim();
+    objectType = objectType.trim();
+    this.data.changeHeader(objectType);
+    this.data.changeObjectFlag(objectType);
+    this.data.changeData(objectType);
+  }
+
+/** */
 
   login() {
     console.log("OAuth login status...");
-    console.log(this.appService.obtainAccessToken());
+    console.log(this.securityService.obtainAccessToken());
   }
 
   logout() {
     console.log("OAuth log out status...");
-    console.log(this.appService.logout());
+    console.log(this.securityService.logout());
   }
 
   checkIfIsLoggedIn() {
-    return this.appService.isLoggedIn();
+    return this.securityService.isLoggedIn();
   }
 
   checkTokenStatus() {
     console.log("OAuth token value...");
 
     if (this.checkIfIsLoggedIn()) {
-      console.log(this.appService.logAccessToken());
+      console.log(this.securityService.logAccessToken());
     } else {
       console.log("Token was not obtained!");
     }
   }
 
   getForEntity(resourceUrl) {
-    this.appService.getResource(resourceUrl)
+    this.securityService.getResource(resourceUrl)
       .subscribe((response) => {
         console.log(response.body)
       });
+  }
+
+  /** open Modals by calling modalService */
+  openLogin() {
+    const modalRef = this.modalService.open(LoginModalComponent);
+    modalRef.componentInstance.title = 'Login';
   }
 
   openSignup() {
@@ -55,6 +86,8 @@ constructor(
     modalRef.componentInstance.title = 'SignUp';
   }
 
-  ngOnInit(){
 }
+
+export class Search {
+  constructor( public name: string) {}
 }
