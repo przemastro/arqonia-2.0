@@ -15,8 +15,22 @@
       <div class="form-group">
         <div class="form">
           <div class="input-group-append">
-            <input type="text" class="form-control" id="search-top" placeholder="Search...">
-            <button routerLink="/diagrams" class="btn-search" type="submit">
+
+            <select style="border-top-left-radius:30px;border-bottom-left-radius:30px;width:90px;height:30px;
+                           background-color:rgb(33, 134, 177);text-align:center; -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';border-color:rgb(33, 134, 177);border-width:1px;border-right-width:0px;font-family:Montserrat,sans-serif;
+    font-weight: normal;" id="objectType">
+              <option class="defualt-text">-- Select --</option>
+              <option value="star">Star</option>
+              <option value="planetoid">Planetoid</option>
+              <option value="comet">Comet</option>
+            </select>
+
+            <input type="text" class="form-control" id="search-top" placeholder="Search..."
+                   required #object>
+            <button (click)="sendObject(object.value, object.value)" routerLink="/diagrams" class="btn-search" type="submit">
               <i class="glyphicon glyphicon-search"></i>
             </button>
           </div>

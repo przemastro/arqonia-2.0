@@ -186,15 +186,18 @@ color:black
 .form-control{
     border-radius: 0px;
     border-color: rgba(33,134,177);
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
     width: 200px;
     height: 30px;
     background-color:rgba(28,51,83,.52);
 }
 .input-group-append{
-    width:300px;
+    width:400px;
     font-family:Montserrat,sans-serif;
     font-weight: normal;
 }
-
+.selectDefault, .selectDiv option {
+    font-family:Montserrat,sans-serif;
+    font-weight: normal;
+    }

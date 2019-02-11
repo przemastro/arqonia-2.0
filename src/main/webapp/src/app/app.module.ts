@@ -13,13 +13,11 @@ import { PhotometryComponent } from './photometry/photometry.component';
 import { ReductionComponent } from './reduction/reduction.component';
 import { AstrometryComponent } from './astrometry/astrometry.component';
 import { ObservationsComponent } from './observations/observations.component';
-import { SearchComponent } from './search/search.component';
 import { DiagramsComponent } from './diagrams/diagrams.component';
 import { TelescopesComponent } from './telescopes/telescopes.component';
 import { GenericModalComponent } from './generic-modal/generic-modal.component';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import { SignupModalComponent } from './signup-modal/signup-modal.component';
-import { SearchFormComponent } from './search-form/search-form.component';
 import { ObservationModalComponent } from './observation-modal/observation-modal.component';
 import { NewObservationModalComponent } from './new-observation-modal/new-observation-modal.component';
 import { EditObservationModalComponent } from './edit-observation-modal/edit-observation-modal.component';
@@ -45,13 +43,11 @@ import 'nvd3';
     ReductionComponent,
     AstrometryComponent,
     ObservationsComponent,
-    SearchComponent,
     DiagramsComponent,
     TelescopesComponent,
     GenericModalComponent,
     LoginModalComponent,
     SignupModalComponent,
-    SearchFormComponent,
     ObservationModalComponent,
     NewObservationModalComponent,
     EditObservationModalComponent,

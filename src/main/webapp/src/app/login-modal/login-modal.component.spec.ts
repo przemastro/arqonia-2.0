@@ -3,6 +3,7 @@ import { GenericModalComponent } from '../generic-modal/generic-modal.component'
 import { LoginModalComponent } from './login-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import {OauthService} from "../oauth.service";
 
 describe('LoginModalComponent', () => {
   let component: LoginModalComponent;
@@ -18,7 +19,8 @@ describe('LoginModalComponent', () => {
         HttpClientModule,
       ],
       providers: [
-        NgbActiveModal
+        NgbActiveModal,
+        OauthService
       ]
     })
     .compileComponents();
