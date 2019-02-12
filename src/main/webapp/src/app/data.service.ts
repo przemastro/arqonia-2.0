@@ -40,23 +40,23 @@ constructor() { }
 
   object:any = [];
   objectHeader:any = [];
+  objectName:string = '';
   star: boolean = false;
   comet: boolean = false;
   planetoid: boolean = false;
 
-  changeObjectFlag(objectType: string) {
+  changeObjectFlag(objectType: string, objectName: string) {
     this.objectFlagSource.next(this.getObjectFlag(objectType))
   }
 
-  changeData(objectType: string) {
+  changeData(objectType: string, objectName: string) {
     this.objectDataSource.next(this.getObject(objectType));
   }
 
   changeHeader(objectType: string) {
-    console.log('inside change', objectType);
     /**this.objectHeaderSource.next(this.getHeader(objectType));*/
   }
-/**
+
   getHeader(objectType: string) {
     console.log('objectType', objectType);
     switch(objectType) {
@@ -77,7 +77,7 @@ constructor() { }
       }
     }
   }
-*/
+
   getObject(objectType: string) {
     switch(objectType) {
       case "star": {

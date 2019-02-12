@@ -8,10 +8,10 @@ import { DataService } from "./data.service";
 declare var $:any;
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [SecurityService,DataService]
+selector: 'app-root',
+templateUrl: './app.component.html',
+styleUrls: ['./app.component.css'],
+providers: [SecurityService,DataService]
 })
 export class AppComponent implements OnInit{
 
@@ -19,6 +19,8 @@ message:string;
 flag:boolean;
 headStarElements:any = [];
 starElements:any = [];
+public objectType:string;
+public objectName:string;
 
 constructor(
     private modalService: NgbModal,
@@ -34,12 +36,16 @@ constructor(
     this.data.currentObjectData.subscribe(starElements => this.starElements = starElements)
   }
 
-  sendObject(object: string, objectType: string) {
-    object = object.trim();
-    objectType = objectType.trim();
-    this.data.changeHeader(objectType);
-    this.data.changeObjectFlag(objectType);
-    this.data.changeData(objectType);
+  sendObject(object: string) {
+    this.objectName = object.trim();
+    console.log(object, this.objectType);
+    this.data.changeHeader(this.objectType);
+    this.data.changeObjectFlag(this.objectType, this.objectName);
+    this.data.changeData(this.objectType, this.objectName);
+  }
+
+  selectObjectType (event: any) {
+    this.objectType = event.target.value;
   }
 
 /** */

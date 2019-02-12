@@ -71,7 +71,7 @@ ngOnInit() {
   this.data.currentObjectType.subscribe(objectType => this.objectType = objectType)
   this.data.currentObjectHeader.subscribe(headStarElements => this.headStarElements = headStarElements)
   this.data.currentObjectData.subscribe(starElements => this.starElements = starElements)
-  this.star = false;
+
 
 var myColors = ["#337ab7"];
 
