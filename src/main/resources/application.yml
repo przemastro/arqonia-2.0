@@ -7,26 +7,6 @@ spring:
   profiles:
     active: local
 
-#server:
-#  ssl:
-#    enabled: true # set to FALSE, if want to disable HTTPS and switch back to HTTP
-#    key-store-type: JKS
-#    key-store: classpath:keystore/https.prod/arqonia_https.jks
-#    key-store-password: pass123
-#    key-alias: arqonia_https
-#    trust-store: classpath:keystore/https.prod/arqonia_https.jks
-#    trust-store-password: pass123
-
-#server:
-#  ssl:
-#    enabled: true # set to FALSE, if want to disable HTTPS and switch back to HTTP
-#    key-store-type: JKS
-#    key-store: classpath:keystore/https.try/arqonia_https.jks
-#    key-store-password: pass123
-#    key-alias: arqonia_https
-#  port: 8443
-
-
 server:
   ssl:
     enabled: true # set to FALSE, if want to disable HTTPS and switch back to HTTP
@@ -36,6 +16,12 @@ server:
     key-password: secret
     key-alias: localhost
   port: 8443
+
+simbadClient:
+  url: http://simbad.u-strasbg.fr/simbad/sim-tap/sync
+  connectionTimeout: 300
+  socketTimeout: 300
+  query: SELECT id2.id FROM ident AS id1 JOIN ident AS id2 USING(oidref) WHERE id1.id = '';
 
 #management:
 #  endpoints:

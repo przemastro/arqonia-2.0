@@ -1,6 +1,5 @@
 package pl.astronomy.arqonia20.config.security.customlogin
 
-
 import java.io.IOException
 
 import javax.servlet.ServletException
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Component
 import org.springframework.util.StringUtils
 
 @Component
-class MySavedRequestAwareAuthenticationSuccessHandler : SimpleUrlAuthenticationSuccessHandler() {
+class CustomAuthenticationSuccessHandler : SimpleUrlAuthenticationSuccessHandler() {
 
     private var requestCache: RequestCache = HttpSessionRequestCache()
 
