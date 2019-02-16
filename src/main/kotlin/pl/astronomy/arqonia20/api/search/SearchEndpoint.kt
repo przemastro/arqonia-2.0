@@ -13,10 +13,10 @@ class SearchEndpoint(
 ) {
     @PostMapping
     @CrossOrigin(origins = ["https://localhost:8443"])
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     fun search(
             @RequestParam(required = true) objectName: String,
-            @RequestParam(required = false, defaultValue = "star") objectType: String): Mono<Any> {
+            @RequestParam(required = false, defaultValue = "star") objectType: String): Mono<*> {
         logger.info("Searching user credentials...")
 
         return searchService

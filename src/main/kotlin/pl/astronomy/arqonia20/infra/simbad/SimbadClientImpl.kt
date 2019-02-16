@@ -6,6 +6,7 @@ import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpMethod
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Component
+import org.springframework.util.LinkedMultiValueMap
 import org.springframework.util.MultiValueMap
 import org.springframework.web.reactive.function.BodyInserters
 import org.springframework.web.reactive.function.client.WebClient
@@ -17,23 +18,35 @@ class SimbadClientImpl(
         simbadWebClient: WebClient,
         @Value("\${simbadClient.url}") private val url: String,
         @Value("\${simbadClient.query}") private val query: String
-): SimbadClient {
+) : SimbadClient {
     private val client = simbadWebClient.mutate()
             .baseUrl(url)
             .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
             .build()
 
-    override fun getAllIdentifiers(objectName: String): Mono<AllIdentifiers> {
-        lateinit var formData: MultiValueMap<String, String>
-        // TODO All rest of form data ! (see PostMan) !
-        formData.add("request", "doQuery")
+    override fun getAllIdentifiers(objectName: String): Mono<AllIdentifiers> =
+            client.post()
+                    .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                    .accept(MediaType.APPLICATION_JSON)
+                    .body(BodyInserters.fromFormData(formData(objectName)))
+                    .retrieve()
+                    .bodyToMono(AllIdentifiers::class.java)
 
-        return client.method(HttpMethod.POST)
-                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .accept( MediaType.APPLICATION_JSON )
-                .body(BodyInserters.fromFormData(formData))
-                .retrieve()
-                .bodyToMono(AllIdentifiers::class.java)
+    private fun formData(objectName: String): MultiValueMap<String, String> {
+        val formData: MultiValueMap<String, String> = LinkedMultiValueMap<String, String>()
+
+        with(formData) {
+            this.add("request", "doQuery")
+            this.add("lang", "adql")
+            this.add("format", "json")
+            this.add("maxrec", "1000")
+            this.add("runid", "Arqonia Sync Query")
+            this.add("upload", "")
+            this.add("query", String.format(query, objectName))
+            this.add("phase", "run")
+        }
+
+        return formData
     }
 
 }

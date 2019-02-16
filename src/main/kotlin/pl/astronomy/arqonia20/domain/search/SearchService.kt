@@ -7,7 +7,8 @@ import reactor.core.publisher.Mono
 class SearchService(
         private val simbadClient: SimbadClient
 ) {
-    fun searchByType(objectName: String, objectType: String): Mono<Any> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    fun searchByType(objectName: String, objectType: String): Mono<*> {
+//        TODO("not implemented")
+        return simbadClient.getAllIdentifiers(objectName)
     }
 }
