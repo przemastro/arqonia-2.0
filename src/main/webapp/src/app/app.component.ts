@@ -28,7 +28,6 @@ constructor(
     private securityService: SecurityService
     ) {}
 
-
   /** search */
   ngOnInit() {
     this.data.currentObjectFlag.subscribe(flag => this.flag = flag);

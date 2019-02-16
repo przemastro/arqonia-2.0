@@ -3,8 +3,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
-import {OAuthModule} from "angular-oauth2-oidc";
-import {OauthService} from "./oauth.service";
+import { OAuthModule } from "angular-oauth2-oidc";
+import { SecurityService } from "./security.service";
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -19,7 +19,7 @@ describe('AppComponent', () => {
         NavComponent
       ],
       providers: [
-        OauthService
+        SecurityService
         ]
     }).compileComponents();
   }));
