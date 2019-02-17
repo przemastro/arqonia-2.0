@@ -63,17 +63,14 @@ constructor() { }
       case "star": {
         console.log(this.headStarElements);
         return this.headStarElements;
-        break;
       }
       case "comet": {
         console.log(this.headCometElements);
         return this.headCometElements;
-        break;
       }
       case "planetoid": {
         console.log(this.headPlanetoidElements);
         return this.headPlanetoidElements;
-        break;
       }
     }
   }
@@ -83,17 +80,14 @@ constructor() { }
       case "star": {
         console.log(this.starElements);
         return this.starElements;
-        break;
       }
       case "comet": {
         console.log(this.starElements);
         return this.cometElements;
-        break;
       }
       case "planetoid": {
         console.log(this.starElements);
         return this.planetoidElements;
-        break;
       }
     }
   }

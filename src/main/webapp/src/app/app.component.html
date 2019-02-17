@@ -36,17 +36,20 @@
           </div>
         </div>
       </div>
-      <div>
-        <span *ngIf="!checkIfIsLoggedIn()" ><a href="javascript:void(0);" (click)="login()">LOGIN</a></span>
-        <span *ngIf="checkIfIsLoggedIn()"><a href="javascript:void(0);" (click)="logout()">LOGOUT</a></span>
-        <span><a href="javascript:void(0);" (click)="getForEntity('/api/hello')">GET PROTECTED HELLO</a></span>
-        <span><a href="javascript:void(0);" (click)="checkTokenStatus()">CHECK TOKEN STATUS</a></span>
-      </div>
     </div>
     <div class="top-right-menu">
-      <span *ngIf="!checkIfIsLoggedIn()"><a href="javascript:void(0);" (click)="openLogin()">LOGIN</a></span>
-      <span *ngIf="checkIfIsLoggedIn()"><a href="javascript:void(0);" (click)="logout()">LOGOUT</a></span>
-      <span><a href="javascript:void(0);" (click)="openSignup()">SIGNUP</a></span>
+         <span *ngIf="!checkIfIsLoggedIn()"><a class="btn" style="width:80px;height:30px" href="javascript:void(0);" (click)="openLogin()">LOGIN</a></span>
+      <span *ngIf="checkIfIsLoggedIn()"><a class="btn" style="width:80px;height:30px" href="javascript:void(0);" (click)="logout()">LOGOUT</a></span>
+      <span><a class="btn" style="width:80px;height:30px" href="javascript:void(0);" (click)="openSignup()">SIGNUP</a></span>
+
+      <div class="buttons">
+        <button type="button" class =" zoom-out btn btn-default" style="width:35px;height:30px">
+          <span class="glyphicon glyphicon-minus" style="margin-top:-10px;margin-left:0px"></span>
+        </button>
+        <button type="button" class =" zoom-in btn btn-default" style="width:35px;height:30px;margin-top:8px">
+          <span class="glyphicon glyphicon-plus" style="margin-top:-10px;margin-left:0px"></span>
+        </button>
+      </div>
     </div>
   </div>
   <div class="middle">
@@ -60,9 +63,82 @@
     </div>
   </div>
   <div class="footer">
-    <div class="section" id="time-div">
-      <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="50" class="slider" id="time">
+    <div class="section" id="time-div" style="display:inline-block;margin-left:140px">
+          <div class="section" id="reduction">
+            <img draggable="false" src="./assets/images/reduction.png" data-toggle="tooltip" data-placement="top" title="CCD Data Reduction">
+            <img draggable="false" src="./assets/images/photometry.png" data-toggle="tooltip" data-placement="top" title="Photometry Lab">
+            <img draggable="false" src="./assets/images/astrometry.png" data-toggle="tooltip" data-placement="top" title="Astrometry Lab">
+            <img draggable="false" src="./assets/images/spectroscopy.png" data-toggle="tooltip" data-placement="top" title="Spectroscopy Lab">
+            <a routerLink="/observations">
+              <img draggable="false" src="./assets/images/observations.png" data-toggle="tooltip" data-placement="top" title="Time Series">
+            </a>
+            <img draggable="false" src="./assets/images/telescopes.png" data-toggle="tooltip" data-placement="top" title="Observatories">
+          </div>
+    </div>
+    <div class="btn-group dropup" style="float:right;margin-right:10px">
+      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        FILTERS
+      </button>
+      <div class="dropdown-menu" style="background-color:rgba(28,51,83);height:345px">
+        <div class="zoom">
+          <div>
+            <div class="section">
+              <span class="name">ZOOM</span>
+              <input type="range" min="1" max="100" value="50" class="slider" id="zoom">
+            </div>
+          </div>
+        </div>
+        <div class="object-filters">
+          <div>
+            <div class="section" id="stars-div">
+              <span class="name">STARS</span>
+              <input type="checkbox" id="stars"/>
+              <label for="stars"></label>
+            </div>
+            <div class="section" id="comets-div">
+              <span class="name">COMETS</span>
+              <input type="checkbox" id="comets"/>
+              <label for="comets">
+              </label>
+            </div>
+            <div class="section" id="planetoids-div">
+              <span class="name">PLANETOIDS</span>
+              <input type="checkbox" id="planetoids"/>
+              <label for="planetoids">
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="filters">
+          <div>
+            <div class="section" id="magnitudo-div">
+              <div class="slidecontainer">
+                <span class="name">ABSOLUTE MAGNITUDE</span>
+                <input type="range" min="1" max="100" value="50" class="slider" id="magnitudo">
+              </div>
+            </div>
+            <div class="section" id="distance-div">
+              <div class="slidecontainer">
+                <span class="name">DISTANCE</span>
+                <input type="range" min="1" max="100" value="50" class="slider" id="distance">
+              </div>
+            </div>
+            <div class="section" id="spectral-div">
+              <span class="name">SPECRTAL TYPE</span>
+              <input type="checkbox" id="spectral"/>
+              <label for="spectral"></label>
+            </div>
+          </div>
+        </div>
+        <div class="grid">
+          <div>
+            <div class="section">
+              <span class="name">EQUATORIAL GRID</span>
+              <input type="checkbox" id="grid"/>
+              <label for="grid"></label>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

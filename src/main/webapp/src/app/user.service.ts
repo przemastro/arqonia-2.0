@@ -6,6 +6,7 @@ import {catchError, map, tap} from 'rxjs/operators';
 
 import {User} from './user';
 import {MessageService} from './message.service';
+import {Environment} from './environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,7 +17,7 @@ const httpOptions = {
 @Injectable(({providedIn: 'root'}) as any)
 export class UserService {
 
-  private apiUrl = 'https://localhost:8443';  // URL to web api
+  private apiUrl = Environment.baseUrl;  // URL to web api
 
   constructor(
     private http: HttpClient,
