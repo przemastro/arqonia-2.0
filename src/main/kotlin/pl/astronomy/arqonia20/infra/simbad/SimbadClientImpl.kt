@@ -15,7 +15,6 @@ import pl.astronomy.arqonia20.exceptions.SimbadClientException
 import pl.astronomy.arqonia20.logger
 import reactor.core.publisher.Mono
 
-// https://stackoverflow.com/questions/43575538/what-is-the-right-way-to-handle-errors-in-spring-webflux
 @Component
 class SimbadClientImpl(
         simbadWebClient: WebClient,
@@ -24,12 +23,11 @@ class SimbadClientImpl(
 ) : SimbadClient {
     private val client = simbadWebClient.mutate()
             .baseUrl(url)
-            .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+            .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_FORM_URLENCODED_VALUE)
             .build()
 
     override fun getAllIdentifiers(objectName: String): Mono<AllIdentifiers> =
             client.post()
-                    .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                     .accept(MediaType.APPLICATION_JSON)
                     .body(BodyInserters.fromFormData(formData(objectName)))
                     .retrieve()
