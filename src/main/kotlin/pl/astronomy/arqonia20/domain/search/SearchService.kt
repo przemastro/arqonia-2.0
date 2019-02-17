@@ -8,7 +8,6 @@ class SearchService(
         private val simbadClient: SimbadClient
 ) {
     fun searchByType(objectName: String, objectType: String): Mono<*> {
-//        TODO("not implemented")
         return simbadClient.getAllIdentifiers(objectName)
     }
 }
