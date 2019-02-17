@@ -8,11 +8,12 @@ import pl.astronomy.arqonia20.logger
 import reactor.core.publisher.Mono
 
 @RestController
-@RequestMapping("/search")
+//@RequestMapping("/search")
+@RequestMapping
 class SearchEndpoint(
         private val searchService: SearchService
 ) {
-    @PostMapping("/v2")
+    @PostMapping("/search-v2")
     @CrossOrigin(origins = ["https://localhost:8443"])
     @ResponseStatus(HttpStatus.OK)
     fun searchV2(
@@ -24,7 +25,7 @@ class SearchEndpoint(
                 .searchByType(objectName, objectType)
     }
 
-    @PostMapping
+    @PostMapping("/search")
     @CrossOrigin(origins = ["https://localhost:8443"])
     @ResponseStatus(HttpStatus.OK)
     fun search(
