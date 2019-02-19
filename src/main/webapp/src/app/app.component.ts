@@ -4,6 +4,8 @@ import { LoginModalComponent } from './login-modal/login-modal.component';
 import { SignupModalComponent } from './signup-modal/signup-modal.component';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import {SecurityService} from "./security.service";
+
+import {Object} from './objects';
 import { DataService } from "./data.service";
 declare var $:any;
 
@@ -19,8 +21,10 @@ message:string;
 flag:boolean;
 headStarElements:any = [];
 starElements:any = [];
-public objectType:string;
-public objectName:string;
+
+public objectType:string = '';
+public objectName:string = '';
+
 
 constructor(
     private modalService: NgbModal,
@@ -35,12 +39,21 @@ constructor(
     this.data.currentObjectData.subscribe(starElements => this.starElements = starElements)
   }
 
-  sendObject(object: string) {
-    this.objectName = object.trim();
-    console.log(object, this.objectType);
+  sendObject(objectName: string, objectType:string) {
+    objectName = objectName.trim();
+    objectType = 'star'
+    console.log(objectName, this.objectType);
     this.data.changeHeader(this.objectType);
-    this.data.changeObjectFlag(this.objectType, this.objectName);
-    this.data.changeData(this.objectType, this.objectName);
+    this.data.changeObjectFlag(this.objectType, objectName);
+    this.data.changeData({objectName, objectType} as Object)
+        .subscribe(
+        (data:any) => {
+                console.log(data);
+            },
+            error => {
+                console.log(error);
+            }
+    );
   }
 
   selectObjectType (event: any) {

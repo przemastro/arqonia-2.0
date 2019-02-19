@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import {Environment} from './environment';
+import {Object} from "./objects";
 
 @Injectable()
 export class DataService {
@@ -14,7 +18,9 @@ currentObjectHeader = this.objectHeaderSource.asObservable();
 currentObjectData = this.objectDataSource.asObservable();
 flag:boolean;
 
-constructor() { }
+constructor(
+    private http: HttpClient,
+    private _http: HttpClient){}
 
   starElements = [
           {Catalog: 'SAO', ObjectName: 'Aldebaran', RA: '23h 0m 0', DE: '+34 4 4', Umag: '3', Vmag: '4.5', Bmag: '3.3', BV: 'BV', UB: 'UB', RI: 'RI', VI: 'VI', SpectralType: 'A0'},
@@ -49,8 +55,13 @@ constructor() { }
     this.objectFlagSource.next(this.getObjectFlag(objectType))
   }
 
-  changeData(objectType: string, objectName: string) {
-    this.objectDataSource.next(this.getObject(objectType));
+  private apiUrl = Environment.baseUrl;
+  changeData(object: Object): Observable<Object> {
+    this.objectDataSource.next(this.getObject('star'));
+    let formData = [object].map(object => "objectName=" + object.objectName + "&objectType=" + object.objectType).pop();
+    console.log(formData);
+    return this.http.post<Object>(`${this.apiUrl}/search`, formData, {responseType: 'json', headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}}
+    );
   }
 
   changeHeader(objectType: string) {
@@ -112,3 +123,4 @@ constructor() { }
     }
   }
 }
+
