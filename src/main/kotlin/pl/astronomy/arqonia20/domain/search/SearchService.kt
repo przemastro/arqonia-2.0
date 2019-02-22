@@ -9,15 +9,24 @@ import reactor.core.publisher.Mono
 class SearchService(
         private val simbadClient: SimbadClient,
         private val vizierClient: VizierClient,
-        @Value("\${simbadClient.selectedCatalogs}") private val selectedCatalogs: List<String>
+        @Value("\${selectedCatalogs.startingNames}") private val selectedCatalogs: List<String>,
+        @Value("\${selectedCatalogs.tableNames}") private val tableNames: List<String>
 ) {
     fun searchByType(objectName: String, objectType: String): Mono<*> {
         logger.info("vizier checking...")
         // 1. Get all identifiers from Simbad
-//        return simbadClient.getAllIdentifiers(objectName)
+        simbadClient.getAllIdentifiers(objectName)
 
         // 2. Filter all identifiers only for chosen one:
 
+        simbadClient.getAllIdentifiers(objectName)
+                .flatMap {
+                    Mono.fromCallable {
+                        it.data
+                                .flatten()
+                                .filter { selectedCatalogs.contains(it.substringBefore(" ")) }
+                    }
+                }
 
         // 3. Get details for all filtered identifiers
         return vizierClient.getObjectDetailsByCatalog("I/239/hip_main", "21421")

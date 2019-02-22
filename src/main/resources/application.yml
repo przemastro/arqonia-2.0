@@ -22,13 +22,17 @@ simbadClient:
   connectionTimeout: 300
   socketTimeout: 300
   query: SELECT id2.id FROM ident AS id1 JOIN ident AS id2 USING(oidref) WHERE id1.id = '%s';
-  selectedCatalogs: SAO,HIP,TYC,HD,HR,GC
 
 vizierClient:
   url: http://tapvizier.u-strasbg.fr/TAPVizieR/tap/view
   connectionTimeout: 300
   socketTimeout: 300
   query: SELECT TOP 100 * FROM "%s" WHERE recno = '%s';
+
+selectedCatalogs:
+  startingNames: SAO, HIP, TYC, HD, HR, GC
+  tableNames: I/131A/sao, I/239/hip_main, I/239/tyc_main, III/135A/catalog, V/50/catalog, I/113A/catalog
+
 
 #management:
 #  endpoints:
