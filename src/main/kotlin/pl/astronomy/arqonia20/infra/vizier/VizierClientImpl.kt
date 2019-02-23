@@ -18,18 +18,17 @@ import reactor.core.publisher.Mono
 @Component
 class VizierClientImpl(
         vizierWebClient: WebClient,
-        @Value("\${vizierClient.url}") private val url: String,
-        @Value("\${vizierClient.query}") private val query: String
+        @Value("\${vizierClient.url}") private val url: String
 ) : VizierClient {
     private val client = vizierWebClient.mutate()
             .baseUrl(url)
             .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_FORM_URLENCODED_VALUE)
             .build()
 
-    override fun getObjectDetailsByCatalog(tableName: String, identifier: String): Mono<*> =
+    override fun getObjectDetailsByCatalog(query: String, identifier: String): Mono<*> =
             client.post()
                     .accept(MediaType.APPLICATION_JSON)
-                    .body(BodyInserters.fromFormData(formData(tableName, identifier)))
+                    .body(BodyInserters.fromFormData(formData(query, identifier)))
                     .retrieve()
                     .onStatus(HttpStatus::isError) {
                         Mono.error(VizierClientException(it.statusCode()))
@@ -37,11 +36,11 @@ class VizierClientImpl(
                     .bodyToMono(ObjectType::class.java)
                     .doOnSuccess { identifiers ->
                         if (identifiers.data.isEmpty()) {
-                            throw ObjectNotFoundException(HttpStatus.NOT_FOUND, tableName, identifier)
+                            throw ObjectNotFoundException(HttpStatus.NOT_FOUND, query, identifier)
                         }
                     }
 
-    private fun formData(tableName: String, identifier: String): MultiValueMap<String, String> {
+    private fun formData(query: String, identifier: String): MultiValueMap<String, String> {
         val formData: MultiValueMap<String, String> = LinkedMultiValueMap<String, String>()
 
         with(formData) {
@@ -50,7 +49,7 @@ class VizierClientImpl(
             this.add("lang", "adql")
             this.add("format", "json")
             this.add("request", "doQuery")
-            this.add("query", String.format(query, tableName, identifier))
+            this.add("query", String.format(query, identifier))
         }
 
         return formData

@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import pl.astronomy.arqonia20.domain.search.SearchService
 import pl.astronomy.arqonia20.logger
+import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 @RestController
@@ -19,6 +20,7 @@ class SearchEndpoint(
     fun searchV2(
             @RequestParam(required = true) objectName: String,
             @RequestParam(required = false, defaultValue = "star") objectType: String): Mono<*> {
+//            @RequestParam(required = false, defaultValue = "star") objectType: String): Flux<*> {
         logger.info("Searching user credentials...")
 
         return searchService
