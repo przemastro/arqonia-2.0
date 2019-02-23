@@ -13,11 +13,9 @@ class SearchService(
         private val simbadClient: SimbadClient,
         private val vizierClient: VizierClient,
         @Value("\${selectedCatalogs.startingNames}") private val selectedCatalogs: List<String>,
-        @Value("\${selectedCatalogs.tableNames}") private val tableNames: List<String>,
         private val vizierQueries: VizierQueriesConfig
 ) {
     fun searchByType(objectName: String, objectType: String): Mono<*> {
-//    fun searchByType(objectName: String, objectType: String): Flux<*> {
         logger.info("vizier checking...")
         // 1. Get all identifiers from Simbad
         simbadClient.getAllIdentifiers(objectName)
@@ -36,7 +34,10 @@ class SearchService(
                     Mono.zip(
                             vizierClient.getObjectDetailsByCatalog(vizierQueries.queries.getValue("SAO"), "94027"),
                             vizierClient.getObjectDetailsByCatalog(vizierQueries.queries.getValue("HIP"), "21421"),
-                            vizierClient.getObjectDetailsByCatalog(vizierQueries.queries.getValue("TYC"), "1266  1416 1")
+                            vizierClient.getObjectDetailsByCatalog(vizierQueries.queries.getValue("TYC"), "1266  1416 1"),
+                            vizierClient.getObjectDetailsByCatalog(vizierQueries.queries.getValue("HD"), "29139"),
+                            vizierClient.getObjectDetailsByCatalog(vizierQueries.queries.getValue("HR"), "1457"),
+                            vizierClient.getObjectDetailsByCatalog(vizierQueries.queries.getValue("GC"), "5605")
                     )
                 }
 

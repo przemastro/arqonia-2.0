@@ -36,7 +36,7 @@ vizier-queries:
     TYC: SELECT TOP 100 * FROM "I/239/tyc_main" where "I/239/tyc_main".TYC = '%s';
     HD: SELECT TOP 100 * FROM "III/135A/catalog" WHERE recno = '%s';
     HR: SELECT TOP 100 * FROM "V/50/catalog" WHERE recno = '%s';
-    GC: SELECT TOP 100 * FROM "I/113A/catalog" where "%s".TYC = '%s';
+    GC: SELECT TOP 100 * FROM "I/113A/catalog" WHERE recno = '%s';
 
 #  query: SELECT TOP 100 * FROM "%s" WHERE recno = '%s';
 
