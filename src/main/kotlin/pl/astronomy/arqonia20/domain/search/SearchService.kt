@@ -34,22 +34,13 @@ class SearchService(
                 }
                 .flatMap {
                     Mono.zip(
-                            vizierClient.getObjectDetailsByCatalog("I/239/hip_main", "21421"),
-                            vizierClient.getObjectDetailsByCatalog("I/131A/sao", "94027"),
-                            vizierClient.getObjectDetailsByCatalog("I/131A/sao", "94027")
+                            vizierClient.getObjectDetailsByCatalog(vizierQueries.queries.getValue("SAO"), "94027"),
+                            vizierClient.getObjectDetailsByCatalog(vizierQueries.queries.getValue("HIP"), "21421"),
+                            vizierClient.getObjectDetailsByCatalog(vizierQueries.queries.getValue("TYC"), "1266  1416 1")
                     )
                 }
 
         return selectedIds
-
-//        return Mono.zip(
-//                vizierClient.getObjectDetailsByCatalog("I/239/hip_main", "21421"),
-//                vizierClient.getObjectDetailsByCatalog("I/131A/sao", "94027"),
-//                vizierClient.getObjectDetailsByCatalog("I/131A/sao", "94027")
-//        )
-
-//                .zipWith(vizierClient.getObjectDetailsByCatalog("I/239/hip_main", "21421"))
-//                .zipWith(vizierClient.getObjectDetailsByCatalog("I/131A/sao", "94027"))
 
         // 3. Get details for all filtered identifiers
 //        return vizierClient.getObjectDetailsByCatalog("I/239/hip_main", "21421")
@@ -63,6 +54,6 @@ class SearchService(
 @Component
 @ConfigurationProperties("vizier-queries")
 class VizierQueriesConfig {
-    lateinit var map: Map<String, String>
+    lateinit var queries: Map<String, String>
 }
 
