@@ -5,7 +5,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Service
 import pl.astronomy.arqonia20.logger
-import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 @Service
@@ -23,29 +22,40 @@ class SearchService(
         // 2. Filter all identifiers only for chosen one:
 
         val selectedIds = simbadClient.getAllIdentifiers(objectName)
-                .flatMap {
+                .flatMap { ids ->
                     Mono.fromCallable {
-                        it.data
+                        ids.data
                                 .flatten()
                                 .filter { selectedCatalogs.contains(it.substringBefore(" ")) }
                     }
                 }
-                .flatMap {
+                .flatMap { ids ->
+                    logger.info("adamo" + ids.first { it.contains("SAO") }.substringAfter(" "))
+
                     Mono.zip(
-                            vizierClient.getObjectDetailsByCatalog(vizierQueries.queries.getValue("SAO"), "94027"),
-                            vizierClient.getObjectDetailsByCatalog(vizierQueries.queries.getValue("HIP"), "21421"),
-                            vizierClient.getObjectDetailsByCatalog(vizierQueries.queries.getValue("TYC"), "1266  1416 1"),
-                            vizierClient.getObjectDetailsByCatalog(vizierQueries.queries.getValue("HD"), "29139"),
-                            vizierClient.getObjectDetailsByCatalog(vizierQueries.queries.getValue("HR"), "1457"),
-                            vizierClient.getObjectDetailsByCatalog(vizierQueries.queries.getValue("GC"), "5605")
+                            vizierClient.getObjectDetails(vizierQueries.queries.getValue("SAO"), extractRawId(ids, "SAO")),
+                            vizierClient.getObjectDetails(vizierQueries.queries.getValue("HIP"), extractRawId(ids, "HIP")),
+                            vizierClient.getObjectDetails(vizierQueries.queries.getValue("TYC"), extractRawId(ids, "TYC")),
+                            vizierClient.getObjectDetails(vizierQueries.queries.getValue("HD"), extractRawId(ids, "HD")),
+                            vizierClient.getObjectDetails(vizierQueries.queries.getValue("HR"), extractRawId(ids, "HR")),
+                            vizierClient.getObjectDetails(vizierQueries.queries.getValue("GC"), extractRawId(ids, "GC"))
                     )
                 }
 
         return selectedIds
 
         // 3. Get details for all filtered identifiers
-//        return vizierClient.getObjectDetailsByCatalog("I/239/hip_main", "21421")
+//        return vizierClient.getObjectDetails("I/239/hip_main", "21421")
     }
+
+    private fun extractRawId(ids: List<String>, searchedId: String) =
+            with(ids.first { it.contains(searchedId) }.substringAfter(" ")) {
+                if (searchedId == "TYC")
+                    split("-").let { "${it[0]}  ${it[1]} ${it[2]}" }
+                else
+                    this
+            }
+
 
     companion object {
         private val logger by logger()

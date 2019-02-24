@@ -25,7 +25,7 @@ class VizierClientImpl(
             .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_FORM_URLENCODED_VALUE)
             .build()
 
-    override fun getObjectDetailsByCatalog(query: String, identifier: String): Mono<*> =
+    override fun getObjectDetails(query: String, identifier: String): Mono<*> =
             client.post()
                     .accept(MediaType.APPLICATION_JSON)
                     .body(BodyInserters.fromFormData(formData(query, identifier)))
