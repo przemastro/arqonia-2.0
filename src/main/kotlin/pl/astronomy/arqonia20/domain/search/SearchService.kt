@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import pl.astronomy.arqonia20.domain.search.stars.SelectedCatalogsEnum.*
 import pl.astronomy.arqonia20.domain.search.stars.SimbadClient
+import pl.astronomy.arqonia20.domain.search.stars.StarsCollection
 import pl.astronomy.arqonia20.domain.search.stars.VizierClient
 import pl.astronomy.arqonia20.domain.search.stars.VizierQueriesConfig
 import pl.astronomy.arqonia20.logger
@@ -35,6 +36,9 @@ class SearchService(
                             vizierClient.getObjectDetails(vizierQueries.queries.getValue(HR.name), extractRawId(ids, HR.name)),
                             vizierClient.getObjectDetails(vizierQueries.queries.getValue(GC.name), extractRawId(ids, GC.name))
                     )
+                            .flatMap {
+                                Mono.fromCallable { StarsCollection(it.t1, it.t2, it.t3, it.t4, it.t5, it.t6) }
+                            }
                 }
     }
 
