@@ -38,13 +38,8 @@ vizier-queries:
     HR: SELECT TOP 100 * FROM "V/50/catalog" WHERE recno = '%s';
     GC: SELECT TOP 100 * FROM "I/113A/catalog" WHERE recno = '%s';
 
-#  query: SELECT TOP 100 * FROM "%s" WHERE recno = '%s';
-
-#  queryTYC: SELECT TOP 100 * FROM "%s" where "%s".TYC = '%s';
-
 selectedCatalogs:
   startingNames: SAO, HIP, TYC, HD, HR, GC
-  tableNames: I/131A/sao, I/239/hip_main, I/239/tyc_main, III/135A/catalog, V/50/catalog, I/113A/catalog
 
 
 #management:

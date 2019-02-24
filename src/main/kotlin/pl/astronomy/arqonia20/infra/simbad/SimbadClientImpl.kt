@@ -9,7 +9,7 @@ import org.springframework.util.LinkedMultiValueMap
 import org.springframework.util.MultiValueMap
 import org.springframework.web.reactive.function.BodyInserters
 import org.springframework.web.reactive.function.client.WebClient
-import pl.astronomy.arqonia20.domain.search.SimbadClient
+import pl.astronomy.arqonia20.domain.search.stars.SimbadClient
 import pl.astronomy.arqonia20.exceptions.AllIdentifiersNotFoundException
 import pl.astronomy.arqonia20.exceptions.SimbadClientException
 import pl.astronomy.arqonia20.logger
