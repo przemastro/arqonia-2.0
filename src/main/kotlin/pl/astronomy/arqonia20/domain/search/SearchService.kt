@@ -1,6 +1,5 @@
 package pl.astronomy.arqonia20.domain.search
 
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import pl.astronomy.arqonia20.domain.search.stars.SelectedCatalogsEnum.*
 import pl.astronomy.arqonia20.domain.search.stars.SimbadClient
@@ -15,7 +14,6 @@ import pl.astronomy.arqonia20.domain.search.ObjectType.*
 class SearchService(
         private val simbadClient: SimbadClient,
         private val vizierClient: VizierClient,
-        @Value("\${selectedCatalogs.startingNames}") private val selectedCatalogs: List<String>,
         private val vizierQueries: VizierQueriesConfig
 ) {
     fun searchByType(objectName: String, objectType: String): Mono<*> {
@@ -33,7 +31,7 @@ class SearchService(
                         Mono.fromCallable {
                             ids.data
                                     .flatten()
-                                    .filter { selectedCatalogs.contains(it.substringBefore(" ")) }
+                                    .filter { vizierQueries.queries.keys.contains(it.substringBefore(" ")) }
                         }
                     }
                     .flatMap { ids ->
