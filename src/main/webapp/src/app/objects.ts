@@ -1,4 +1,4 @@
-export class Object {
+export class ObjectInfo {
   objectName: string;
   objectType: string;
 }
