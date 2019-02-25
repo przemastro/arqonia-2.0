@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgxWidgetGridComponent, WidgetPositionChange } from 'ngx-widget-grid';
-import { DataService } from "../data.service";
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {NgxWidgetGridComponent, WidgetPositionChange} from 'ngx-widget-grid';
+import {DataService} from "../data.service";
+import {AppComponent} from "../app.component";
 declare let d3: any;
 
 @Component({
@@ -14,14 +15,9 @@ export class DiagramsComponent implements OnInit {
 message:string;
 objectType:string;
 
-constructor(private data: DataService) { }
+constructor(private dataService: DataService,
+            private appComponent: AppComponent) { }
 
-comet: boolean = false;
-planetoid: boolean = false;
-star: boolean = false;
-starElements:any = [];
-planetoidElements:any = [];
-cometElements:any = [];
 headStarElements:any = [];
 headCometElements:any = [];
 headPlanetoidElements:any = [];
@@ -67,11 +63,10 @@ data4;
 
 
 ngOnInit() {
-  this.data.currentObjectFlag.subscribe(star => this.star = star)
-  this.data.currentObjectType.subscribe(objectType => this.objectType = objectType)
-  this.data.currentObjectHeader.subscribe(headStarElements => this.headStarElements = headStarElements)
-  this.data.currentObjectData.subscribe(starElements => this.starElements = starElements)
 
+this.headCometElements = ['Catalog', 'ObjectName', 'Number', 'H', 'Epoch', 'M', 'omega', 'L', 'I', 'e', 'n', 'a'];
+this.headPlanetoidElements = ['Catalog', 'ObjectName', 'OrbitType', 'Date', 'e', 'omega', 'L', 'I', 'EpochDate', 'Mag'];
+this.headStarElements = ['Catalog', 'ObjectName', 'RA', 'DE', 'Umag', 'Vmag', 'Bmag', 'BV', 'UB', 'RI', 'VI', 'SpectralType'];  
 
 var myColors = ["#337ab7"];
 
