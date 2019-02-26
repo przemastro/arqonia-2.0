@@ -19,9 +19,9 @@ class SearchService(
     fun searchByType(objectName: String, objectType: String): Mono<*> {
         return when(objectType) {
             STAR.name -> getStarsData(objectName)
-            PLANETOID.name -> Mono.just(StarsCollection(emptyMap(), emptyMap(), emptyMap(), emptyMap(), emptyMap(), emptyMap()))
-            COMET.name -> Mono.just(StarsCollection(emptyMap(), emptyMap(), emptyMap(), emptyMap(), emptyMap(), emptyMap()))
-            else -> Mono.just(StarsCollection(emptyMap(), emptyMap(), emptyMap(), emptyMap(), emptyMap(), emptyMap()))
+            PLANETOID.name -> getStarsData(objectName)
+            COMET.name -> getStarsData(objectName)
+            else -> getStarsData(objectName)
         }
     }
 
@@ -44,7 +44,16 @@ class SearchService(
                                 vizierClient.getObjectDetails(vizierQueries.queries.getValue(GC.name), extractRawId(ids, GC.name))
                         )
                                 .flatMap {
-                                    Mono.fromCallable { StarsCollection(it.t1, it.t2, it.t3, it.t4, it.t5, it.t6) }
+                                    Mono.fromCallable {
+                                        StarsCollection(
+                                                StarsCollection.toStarDetails(it.t1),
+                                                StarsCollection.toStarDetails(it.t2),
+                                                StarsCollection.toStarDetails(it.t3),
+                                                StarsCollection.toStarDetails(it.t4),
+                                                StarsCollection.toStarDetails(it.t5),
+                                                StarsCollection.toStarDetails(it.t6)
+                                        )
+                                    }
                                 }
                     }
 

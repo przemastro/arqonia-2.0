@@ -58,7 +58,7 @@ class VizierClientImpl(
 
     private fun convertToMap(objectType: StarObject): Map<String, String> {
         val keys = objectType.meta
-        val values = objectType.data.flatten()
+        val values = objectType.data.flatten().map { it.trim() }
 
         return keys.zip(values).toMap()
     }
