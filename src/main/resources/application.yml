@@ -30,12 +30,32 @@ vizierClient:
 
 vizier-queries:
   queries:
-    SAO: SELECT TOP 100 * FROM "I/131A/sao" WHERE recno = '%s';
-    HIP: SELECT TOP 100 * FROM "I/239/hip_main" WHERE recno = '%s';
-    TYC: SELECT TOP 100 * FROM "I/239/tyc_main" where "I/239/tyc_main".TYC = '%s';
-    HD: SELECT TOP 100 * FROM "III/135A/catalog" WHERE recno = '%s';
-    HR: SELECT TOP 100 * FROM "V/50/catalog" WHERE recno = '%s';
-    GC: SELECT TOP 100 * FROM "I/113A/catalog" WHERE recno = '%s';
+    SAO:
+      SELECT TOP 100 recno AS object_name, vmag AS "V", sptype AS spectral_type
+      FROM "I/131A/sao"
+      WHERE recno = '%s';
+    HIP:
+      SELECT TOP 100 recno AS object_name, vmag AS "V", "B-V" + vmag as "B", "B-V" AS "B-V",
+        "V-I" AS "V-I", sptype AS spectral_type
+      FROM "I/239/hip_main"
+      WHERE recno = '%s';
+    TYC:
+      SELECT TOP 100 tyc AS object_name, vmag AS "V", "B-V" + vmag as "B", "B-V" AS "B-V"
+      FROM "I/239/tyc_main"
+      WHERE "I/239/tyc_main".TYC = '%s';
+    HD:
+      SELECT TOP 100 recno AS object_name, spt AS spectral_type
+      FROM "III/135A/catalog"
+      WHERE recno = '%s';
+    HR:
+      SELECT TOP 100 recno AS object_name, "U-B" + "B-V" + vmag AS "U", vmag AS "V",
+        "B-V" + vmag AS "B", "B-V" AS "B-V", "U-B" AS "U-B", "R-I" AS "R-I", sptype AS spectral_type
+      FROM "V/50/catalog"
+      WHERE recno = '%s';
+    GC:
+      SELECT TOP 100 recno AS object_name, vmag AS "V", sptype AS spectral_type
+      FROM "I/113A/catalog"
+      WHERE recno = '%s';
 
 #management:
 #  endpoints:
