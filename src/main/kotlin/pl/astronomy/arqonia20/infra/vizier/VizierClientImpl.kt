@@ -18,7 +18,8 @@ import reactor.core.publisher.Mono
 @Component
 class VizierClientImpl(
         vizierWebClient: WebClient,
-        @Value("\${vizierClient.url}") private val url: String
+        @Value("\${vizierClient.url}") private val url: String,
+        @Value("\${vizierClient.retryCount}") private val retryCount: Int
 ) : VizierClient {
     private val client = vizierWebClient.mutate()
             .baseUrl(url)
@@ -39,6 +40,7 @@ class VizierClientImpl(
                             throw ObjectNotFoundException(HttpStatus.NOT_FOUND, query, identifier)
                         }
                     }
+                    .retry(retryCount.toLong())
                     .flatMap { Mono.fromCallable { convertToMap(it) } }
 
     private fun formData(query: String, identifier: String): MultiValueMap<String, String> {

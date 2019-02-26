@@ -25,8 +25,9 @@ simbadClient:
 
 vizierClient:
   url: http://tapvizier.u-strasbg.fr/TAPVizieR/tap/view
-  connectionTimeout: 300
-  socketTimeout: 300
+  connectionTimeout: 1000
+  socketTimeout: 500
+  retryCount: 3
 
 vizier-queries:
   queries:
