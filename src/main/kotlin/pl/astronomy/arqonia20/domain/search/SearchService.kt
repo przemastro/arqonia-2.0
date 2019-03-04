@@ -2,13 +2,10 @@ package pl.astronomy.arqonia20.domain.search
 
 import org.springframework.stereotype.Service
 import pl.astronomy.arqonia20.domain.search.stars.SelectedCatalogsEnum.*
-import pl.astronomy.arqonia20.domain.search.stars.SimbadClient
-import pl.astronomy.arqonia20.domain.search.stars.StarsCollection
-import pl.astronomy.arqonia20.domain.search.stars.VizierClient
-import pl.astronomy.arqonia20.domain.search.stars.VizierQueriesConfig
 import pl.astronomy.arqonia20.logger
 import reactor.core.publisher.Mono
 import pl.astronomy.arqonia20.domain.search.ObjectType.*
+import pl.astronomy.arqonia20.domain.search.stars.*
 
 @Service
 class SearchService(
@@ -45,13 +42,13 @@ class SearchService(
                         )
                                 .flatMap {
                                     Mono.fromCallable {
-                                        StarsCollection(
-                                                StarsCollection.toStarDetails(it.t1),
-                                                StarsCollection.toStarDetails(it.t2),
-                                                StarsCollection.toStarDetails(it.t3),
-                                                StarsCollection.toStarDetails(it.t4),
-                                                StarsCollection.toStarDetails(it.t5),
-                                                StarsCollection.toStarDetails(it.t6)
+                                        listOf(
+                                                StarDetails.fromMap(SAO.name, it.t1),
+                                                StarDetails.fromMap(HIP.name, it.t2),
+                                                StarDetails.fromMap(TYC.name, it.t3),
+                                                StarDetails.fromMap(HD.name, it.t4),
+                                                StarDetails.fromMap(HR.name, it.t5),
+                                                StarDetails.fromMap(GC.name, it.t6)
                                         )
                                     }
                                 }

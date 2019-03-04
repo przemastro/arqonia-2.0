@@ -39,11 +39,12 @@ vizier-queries:
       WHERE recno = '%s';
     HIP:
       SELECT TOP 100 recno AS object_name, vmag AS "V", "B-V" + vmag as "B", "B-V" AS "B-V",
-        "V-I" AS "V-I", sptype AS spectral_type
+        "V-I" AS "V-I", sptype AS spectral_type, rahms AS "RA", dedms AS "DE"
       FROM "I/239/hip_main"
       WHERE recno = '%s';
     TYC:
-      SELECT TOP 100 tyc AS object_name, vmag AS "V", "B-V" + vmag as "B", "B-V" AS "B-V"
+      SELECT TOP 100 tyc AS object_name, vmag AS "V", "B-V" + vmag as "B", "B-V" AS "B-V",
+        rahms AS "RA", dedms AS "DE"
       FROM "I/239/tyc_main"
       WHERE "I/239/tyc_main".TYC = '%s';
     HD:
