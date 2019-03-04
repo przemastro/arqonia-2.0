@@ -8,6 +8,7 @@ data class StarObject(
         val meta: List<String>,
         val warnings: List<String>
 )
+
 data class StarDetails(
         val catalogName: String,
         val objectName: String,
@@ -18,6 +19,8 @@ data class StarDetails(
         val distinctionUB: String,
         val distinctionRI: String,
         val distinctionVI: String,
+        val rahms: String,
+        val dedms: String,
         val spectralType: String
 ) {
     companion object {
@@ -32,6 +35,8 @@ data class StarDetails(
                     map["U-B"] ?: "",
                     map["R-I"] ?: "",
                     map["V-I"] ?: "",
+                    map["RA"] ?: "",
+                    map["DE"] ?: "",
                     map["spectral_type"] ?: ""
             )
         }
