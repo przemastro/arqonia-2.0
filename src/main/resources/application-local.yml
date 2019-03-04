@@ -1,6 +1,8 @@
 spring:
   data:
     mongodb:
-      database: arqonia2
+      host: localhost
       port: 27017
-      uri: mongodb://localhost
+      database: arqonia2
+      username: arqoniaMongoUser
+      password: arqoniaSuperPass12
