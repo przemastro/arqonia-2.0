@@ -8,18 +8,22 @@ data class StarObject(
         val meta: List<String>,
         val warnings: List<String>
 )
-
-data class StarsCollection(
-        val SAO: StarDetails,
-        val HIP: StarDetails,
-        val TYC: StarDetails,
-        val HD: StarDetails,
-        val HR: StarDetails,
-        val GC: StarDetails
+data class StarDetails(
+        val catalogName: String,
+        val objectName: String,
+        val u: String,
+        val v: String,
+        val b: String,
+        val distinctionBV: String,
+        val distinctionUB: String,
+        val distinctionRI: String,
+        val distinctionVI: String,
+        val spectralType: String
 ) {
     companion object {
-        fun toStarDetails(map: Map<String, String>): StarDetails {
+        fun fromMap(catalogName: String, map: Map<String, String>): StarDetails {
             return StarDetails(
+                    catalogName,
                     map["object_name"] ?: "",
                     map["U"] ?: "",
                     map["V"] ?: "",
@@ -33,18 +37,6 @@ data class StarsCollection(
         }
     }
 }
-
-data class StarDetails(
-        val objectName: String,
-        val u: String,
-        val v: String,
-        val b: String,
-        val distinctionBV: String,
-        val distinctionUB: String,
-        val distinctionRI: String,
-        val distinctionVI: String,
-        val spectralType: String
-)
 
 enum class SelectedCatalogsEnum {
     SAO, HIP, TYC, HD, HR, GC

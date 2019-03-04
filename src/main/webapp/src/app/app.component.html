@@ -51,6 +51,16 @@
         </button>
       </div>
     </div>
+
+    <!-- THIS IS ONLY FOR TEST OF NEW SUBJECT-WORKFLOW ! -->
+    <ol>
+      <li *ngFor="let searchRecord of dataService.searchData | async">
+        {{searchRecord.catalogName}} | {{searchRecord.objectName}} | {{searchRecord.spectralType}}
+      <br>
+      </li>
+    </ol>
+    <!-- THIS IS ONLY FOR TEST OF NEW SUBJECT-WORKFLOW ! -->
+
   </div>
   <div class="middle">
     <div class="middle-left">
