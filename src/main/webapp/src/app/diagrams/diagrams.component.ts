@@ -64,10 +64,6 @@ data4;
 
 ngOnInit() {
 
-this.headCometElements = ['Catalog', 'ObjectName', 'Number', 'H', 'Epoch', 'M', 'omega', 'L', 'I', 'e', 'n', 'a'];
-this.headPlanetoidElements = ['Catalog', 'ObjectName', 'OrbitType', 'Date', 'e', 'omega', 'L', 'I', 'EpochDate', 'Mag'];
-this.headStarElements = ['Catalog', 'ObjectName', 'RA', 'DE', 'Umag', 'Vmag', 'Bmag', 'BV', 'UB', 'RI', 'VI', 'SpectralType'];  
-
 var myColors = ["#337ab7"];
 
 this.options4 = {
