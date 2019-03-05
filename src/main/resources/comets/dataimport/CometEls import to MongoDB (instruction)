@@ -28,10 +28,14 @@ File (part 2):
 
 2. Import data with exact 'mongoimport' command and appropriate options:
 
+// WITHOUT ACCESS CONTROL
 CSV (part 1):
 >> mongoimport -d arqonia2 -c comets --type csv --file CometEls-part-1.csv --headerline
 
 CSV (part 2):
 >> mongoimport -d arqonia2 -c comets --type csv --file CometEls-part-2.csv --headerline
 
+// WITH ACCESS CONTROL
+>> mongoimport -d arqonia2 -u arqoniaMongoUser -p arqoniaSuperPass12 -c comets --type csv --file CometEls-part-1.csv --headerline
 
+>> mongoimport -d arqonia2 -u arqoniaMongoUser -p arqoniaSuperPass12 -c comets --type csv --file CometEls-part-2.csv --headerline

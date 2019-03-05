@@ -1,4 +1,4 @@
-    comet_number_and_orbit_type year month day perihelion_distance_pd eccentricity_e orbital_period_and_perihelion_w longitude_l inclination_i epoch_date magnitude_mag slope_parameter name_part1 name_part2 name_part3 reference
+    cometNumberAndOrbitType year month day perihelionDistancePD eccentricityE orbitalPeriodAndPerihelionW longitudeL inclinationI epochDate magnitudeMag slopeParameter namePart1 namePart2 namePart3 reference
     CJ95O010  1997 03 29.4726  0.927845  0.994910  130.7572  283.2662   89.0337  20190228  -2.0  4.0  C/1995 O1 (Hale-Bopp)                                    MPC106342
     PJ96R020  2019 02 11.4510  2.590277  0.313484  333.2859   40.0510    2.6009  20190228  11.5  4.0  P/1996 R2 (Lagerkvist)                                   NK_1615
     PJ97B010  2022 03 28.5993  2.050619  0.760287  183.4168  328.9282   12.3464  20190228  15.0  2.0  P/1997 B1 (Kobayashi)                                    MPC_30063

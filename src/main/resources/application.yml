@@ -8,6 +8,8 @@ spring:
       password: arqoniaSuperPass12
   profiles:
     active: local
+  main:
+    allow-bean-definition-overriding: true
 
 server:
   ssl:

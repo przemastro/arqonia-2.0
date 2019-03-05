@@ -1,8 +1,7 @@
 package pl.astronomy.arqonia20.domain.comet
 
-import org.springframework.data.mongodb.repository.ReactiveMongoRepository
-import pl.astronomy.arqonia20.domain.search.ObjectType
+import reactor.core.publisher.Mono
 
-// TODO This is only placeholder before exact database object! 'ReactiveMongoRepository<ObjectType, String>'
-// First ObjectType type should be some object, exactly some 'Comet' Object!
-interface CometRepository: ReactiveMongoRepository<ObjectType, String>
+interface CometRepository {
+    fun findByNames(namePart: String): Mono<Comet>
+}
