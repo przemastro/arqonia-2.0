@@ -1,4 +1,4 @@
-package pl.astronomy.arqonia20.domain.search.stars
+package pl.astronomy.arqonia20.domain.star
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.stereotype.Component

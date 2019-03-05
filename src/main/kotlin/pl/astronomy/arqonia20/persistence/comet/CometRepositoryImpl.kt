@@ -13,15 +13,12 @@ class CometRepositoryImpl(
 
     override fun findByNames(namePart: String) =
             dbCometRepository
-                    .findByNamePart1(namePart)
-//                    .findByNamePart1OrNamePart2OrNamePart3(namePart)
+                    .findByNamePart1ContainsOrNamePart2ContainsOrNamePart3Contains(namePart, namePart, namePart)
                     .map { it.toComet() }
-
-
 }
 
 @Repository
 interface DbCometRepository: ReactiveMongoRepository<DbComet, String> {
-//    fun findByNamePart1OrNamePart2OrNamePart3(namePart: String): Mono<DbComet>
-    fun findByNamePart1(namePart1: String): Mono<DbComet>
+    fun findByNamePart1ContainsOrNamePart2ContainsOrNamePart3Contains(
+            namePart1: String, namePart2: String, namePart3: String): Mono<DbComet>
 }

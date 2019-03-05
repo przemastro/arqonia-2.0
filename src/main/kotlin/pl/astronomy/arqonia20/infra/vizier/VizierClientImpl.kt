@@ -9,8 +9,8 @@ import org.springframework.util.LinkedMultiValueMap
 import org.springframework.util.MultiValueMap
 import org.springframework.web.reactive.function.BodyInserters
 import org.springframework.web.reactive.function.client.WebClient
-import pl.astronomy.arqonia20.domain.search.stars.StarObject
-import pl.astronomy.arqonia20.domain.search.stars.VizierClient
+import pl.astronomy.arqonia20.domain.star.StarObject
+import pl.astronomy.arqonia20.domain.star.VizierClient
 import pl.astronomy.arqonia20.exceptions.ObjectNotFoundException
 import pl.astronomy.arqonia20.exceptions.VizierClientException
 import reactor.core.publisher.Mono

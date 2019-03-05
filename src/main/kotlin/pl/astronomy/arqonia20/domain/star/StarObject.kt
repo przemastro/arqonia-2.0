@@ -1,4 +1,4 @@
-package pl.astronomy.arqonia20.domain.search.stars
+package pl.astronomy.arqonia20.domain.star
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
@@ -46,7 +46,7 @@ data class StarDetails(
                     StarValue(map["B"] ?: "", "B"),
                     StarValue(map["B-V"] ?: "", "B-V"),
                     StarValue(map["U-B"] ?: "", "U-B"),
-                    StarValue(map["R-I"] ?: "","R-I"),
+                    StarValue(map["R-I"] ?: "", "R-I"),
                     StarValue(map["V-I"] ?: "", "V-I"),
                     StarValue(map["RA"] ?: "", "RA"),
                     StarValue(map["DE"] ?: "", "DE"),

@@ -1,4 +1,4 @@
-package pl.astronomy.arqonia20.domain.search.stars
+package pl.astronomy.arqonia20.domain.star
 
 import pl.astronomy.arqonia20.infra.simbad.AllIdentifiers
 import reactor.core.publisher.Mono

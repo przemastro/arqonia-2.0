@@ -2,7 +2,6 @@ package pl.astronomy.arqonia20.api.search
 
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
-import pl.astronomy.arqonia20.domain.comet.CometService
 import pl.astronomy.arqonia20.domain.search.ObjectType
 import pl.astronomy.arqonia20.domain.search.ObjectType.STAR
 import pl.astronomy.arqonia20.domain.search.SearchService
@@ -12,8 +11,7 @@ import reactor.core.publisher.Mono
 @RestController
 @RequestMapping("/search")
 class SearchEndpoint(
-        private val searchService: SearchService,
-        private val cometService: CometService
+        private val searchService: SearchService
 ) {
 
     @PostMapping
@@ -24,14 +22,12 @@ class SearchEndpoint(
             @RequestParam(required = false, defaultValue = "star") objectType: String): Mono<*> {
         logger.info("Searching object type '$objectType', with name '$objectName'...")
 
-        return cometService.findComet(objectName)
-
-//        return searchService
-//                .searchByType(objectName,
-//                        ObjectType
-//                                .values()
-//                                .map { it.toString() }
-//                                .firstOrNull { it == objectType.toUpperCase() } ?: STAR.name)
+        return searchService
+                .searchByType(objectName,
+                        ObjectType
+                                .values()
+                                .map { it.toString() }
+                                .firstOrNull { it == objectType.toUpperCase() } ?: STAR.name)
     }
 
     companion object {
