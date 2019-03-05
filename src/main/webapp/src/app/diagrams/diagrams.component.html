@@ -51,24 +51,39 @@
                   </tr>
                 </table>
               </div>
-              <div *ngIf="appComponent.objectType=='star'"><b>Category: Star</b>  
+              <div *ngIf="appComponent.objectType=='star'">
+                <b>Category: Star</b>
+                <div *ngFor="let searchRecord of dataService.searchData | async">
+                  <b *ngIf="searchRecord.catalogName.value=='TYC'">
+                    Ra: {{searchRecord.rahms.value}} | Dec: {{searchRecord.dedms.value}}
+                  </b>
+                </div>  
                 <table class="table table-striped table-sm">
-                  <td>
-                    <tr *ngFor="let head of headStarElements">{{head}}</tr>
-                  </td>
+                    <td *ngFor="let searchRecord of dataService.searchData | async let i = index">
+                      <p *ngIf ="i == 0" style="font-size: 14px;font-family: Montserrat,sans-serif;">
+                        <tr>{{searchRecord.catalogName.label}}</tr>
+                        <tr>{{searchRecord.objectName.label}}</tr>
+                        <tr>{{searchRecord.u.label}}</tr>
+                        <tr>{{searchRecord.v.label}}</tr>
+                        <tr>{{searchRecord.b.label}}</tr>
+                        <tr>{{searchRecord.distinctionBV.label}}</tr>
+                        <tr>{{searchRecord.distinctionUB.label}}</tr>
+                        <tr>{{searchRecord.distinctionRI.label}}</tr>
+                        <tr>{{searchRecord.distinctionVI.label}}</tr>
+                        <tr>{{searchRecord.spectralType.label}}</tr>
+                      </p>
+                    </td>
                   <td *ngFor="let searchRecord of dataService.searchData | async">
-                    <tr>{{searchRecord.catalog}}</tr>
-                    <tr>{{searchRecord.objectName}}</tr>
-                    <tr>{{searchRecord.ra}}</tr>
-                    <tr>{{searchRecord.de}}</tr>
-                    <tr>{{searchRecord.umag}}</tr>
-                    <tr>{{searchRecord.vmag}}</tr>
-                    <tr>{{searchRecord.bmag}}</tr>
-                    <tr>{{searchRecord.bv}}</tr>
-                    <tr>{{searchRecord.ub}}</tr>
-                    <tr>{{searchRecord.ri}}</tr>
-                    <tr>{{searchRecord.vi}}</tr>
-                    <tr>{{searchRecord.spectralType}}</tr>
+                    <tr style="height: 20px">{{searchRecord.catalogName.value}}</tr>
+                    <tr style="height: 20px">{{searchRecord.objectName.value}}</tr>
+                    <tr style="height: 20px">{{searchRecord.u.value}}</tr>
+                    <tr style="height: 20px">{{searchRecord.v.value}}</tr>
+                    <tr style="height: 20px">{{searchRecord.b.value}}</tr>
+                    <tr style="height: 20px">{{searchRecord.distinctionBV.value}}</tr>
+                    <tr style="height: 20px">{{searchRecord.distinctionUB.value}}</tr>
+                    <tr style="height: 20px">{{searchRecord.distinctionRI.value}}</tr>
+                    <tr style="height: 20px">{{searchRecord.distinctionVI.value}}</tr>
+                    <tr style="height: 20px">{{searchRecord.spectralType.value}}</tr>
                   </td>
                 </table>
               </div>
