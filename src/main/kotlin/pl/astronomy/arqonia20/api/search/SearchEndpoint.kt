@@ -6,6 +6,7 @@ import pl.astronomy.arqonia20.domain.comet.CometService
 import pl.astronomy.arqonia20.domain.search.ObjectType
 import pl.astronomy.arqonia20.domain.search.ObjectType.STAR
 import pl.astronomy.arqonia20.domain.search.SearchService
+import pl.astronomy.arqonia20.domain.star.StarService
 import pl.astronomy.arqonia20.logger
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
@@ -15,7 +16,8 @@ import reactor.core.publisher.Mono
 @RequestMapping
 class SearchEndpoint(
         private val searchService: SearchService,
-        private val cometService: CometService
+        private val cometService: CometService,
+        private val starService: StarService
 ) {
 
     @PostMapping("/search")
@@ -42,7 +44,9 @@ class SearchEndpoint(
             @RequestParam(required = false, defaultValue = "star") objectType: String): Flux<*> {
         logger.info("Searching object type '$objectType', with name '$objectName'...")
 
-        return cometService.getCometData(objectName)
+//        return cometService.getCometData(objectName)
+
+        return starService.getStarsDataV2(objectName)
     }
 
     companion object {
