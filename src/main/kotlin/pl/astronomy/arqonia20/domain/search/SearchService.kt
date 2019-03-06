@@ -16,7 +16,7 @@ class SearchService(
         return when(objectType) {
             STAR.name -> starService.getStarsData(objectName)
             PLANETOID.name -> starService.getStarsData(objectName)
-            COMET.name -> cometService.getCometData(objectName)
+//            COMET.name -> cometService.getCometData(objectName)
             else -> starService.getStarsData(objectName)
         }
     }

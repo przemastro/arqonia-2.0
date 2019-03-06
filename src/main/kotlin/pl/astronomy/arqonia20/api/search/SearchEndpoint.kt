@@ -2,19 +2,23 @@ package pl.astronomy.arqonia20.api.search
 
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
+import pl.astronomy.arqonia20.domain.comet.CometService
 import pl.astronomy.arqonia20.domain.search.ObjectType
 import pl.astronomy.arqonia20.domain.search.ObjectType.STAR
 import pl.astronomy.arqonia20.domain.search.SearchService
 import pl.astronomy.arqonia20.logger
+import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 @RestController
-@RequestMapping("/search")
+//@RequestMapping("/search")
+@RequestMapping
 class SearchEndpoint(
-        private val searchService: SearchService
+        private val searchService: SearchService,
+        private val cometService: CometService
 ) {
 
-    @PostMapping
+    @PostMapping("/search")
     @CrossOrigin(origins = ["https://localhost:8443"])
     @ResponseStatus(HttpStatus.OK)
     fun search(
@@ -28,6 +32,17 @@ class SearchEndpoint(
                                 .values()
                                 .map { it.toString() }
                                 .firstOrNull { it == objectType.toUpperCase() } ?: STAR.name)
+    }
+
+    @PostMapping("/searchV2")
+    @CrossOrigin(origins = ["https://localhost:8443"])
+    @ResponseStatus(HttpStatus.OK)
+    fun searchV2(
+            @RequestParam(required = true) objectName: String,
+            @RequestParam(required = false, defaultValue = "star") objectType: String): Flux<*> {
+        logger.info("Searching object type '$objectType', with name '$objectName'...")
+
+        return cometService.getCometData(objectName)
     }
 
     companion object {

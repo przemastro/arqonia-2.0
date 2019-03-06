@@ -4,7 +4,7 @@ import org.springframework.data.mongodb.repository.ReactiveMongoRepository
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
 import pl.astronomy.arqonia20.domain.comet.CometRepository
-import reactor.core.publisher.Mono
+import reactor.core.publisher.Flux
 
 @Component
 class CometRepositoryImpl(
@@ -13,12 +13,12 @@ class CometRepositoryImpl(
 
     override fun findByNames(namePart: String) =
             dbCometRepository
-                    .findByNamePart1ContainsOrNamePart2ContainsOrNamePart3Contains(namePart, namePart, namePart)
+                    .findByNamePart1ContainsOrNamePart2ContainsOrNamePart3ContainsIgnoreCase(namePart, namePart, namePart)
                     .map { it.toComet() }
 }
 
 @Repository
 interface DbCometRepository: ReactiveMongoRepository<DbComet, String> {
-    fun findByNamePart1ContainsOrNamePart2ContainsOrNamePart3Contains(
-            namePart1: String, namePart2: String, namePart3: String): Mono<DbComet>
+    fun findByNamePart1ContainsOrNamePart2ContainsOrNamePart3ContainsIgnoreCase(
+            namePart1: String, namePart2: String, namePart3: String): Flux<DbComet>
 }
