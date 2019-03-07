@@ -1,20 +1,25 @@
 package pl.astronomy.arqonia20.domain.comet
 
 data class Comet(
-        val cometNumberAndOrbitType: String,
-        val year: Int,
-        val month: Int,
-        val day: Double,
-        val perihelionDistancePD: Double,
-        val eccentricityE: Double,
-        val orbitalPeriodAndPerihelionW: Double,
-        val longitudeL: Double,
-        val inclinationI: Double,
-        val epochDate: Int,
-        val magnitudeMag: Double,
-        val slopeParameter: Double,
-        val namePart1: String,
-        val namePart2: String?,
-        val namePart3: String?,
-        val reference: String
+        val cometNumberAndOrbitType: CometValue<String>,
+        val year: CometValue<Int>,
+        val month: CometValue<Int>,
+        val day: CometValue<Double>,
+        val perihelionDistancePD: CometValue<Double>,
+        val eccentricityE: CometValue<Double>,
+        val orbitalPeriodAndPerihelionW: CometValue<Double>,
+        val longitudeL: CometValue<Double>,
+        val inclinationI: CometValue<Double>,
+        val epochDate: CometValue<Int>,
+        val magnitudeMag: CometValue<Double>,
+        val slopeParameter: CometValue<Double>,
+        val namePart1: CometValue<String>,
+        val namePart2: CometValue<String>?,
+        val namePart3: CometValue<String>?,
+        val reference: CometValue<String>
+)
+
+data class CometValue<T>(
+        val value: T,
+        val label: String
 )

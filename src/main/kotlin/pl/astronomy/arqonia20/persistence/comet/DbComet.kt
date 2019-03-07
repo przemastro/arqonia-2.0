@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.PersistenceConstructor
 import org.springframework.data.mongodb.core.mapping.Document
 import pl.astronomy.arqonia20.domain.comet.Comet
+import pl.astronomy.arqonia20.domain.comet.CometValue
 
 @Document(collection = "comets")
 data class DbComet @PersistenceConstructor constructor(
@@ -26,21 +27,21 @@ data class DbComet @PersistenceConstructor constructor(
         val reference: String
 ) {
     fun toComet() = Comet(
-            cometNumberAndOrbitType,
-            year,
-            month,
-            day,
-            perihelionDistancePD,
-            eccentricityE,
-            orbitalPeriodAndPerihelionW,
-            longitudeL,
-            inclinationI,
-            epochDate,
-            magnitudeMag,
-            slopeParameter,
-            namePart1,
-            namePart2,
-            namePart3,
-            reference
+            CometValue(cometNumberAndOrbitType, "Orbit Type"),
+            CometValue(year, "Date"),
+            CometValue(month, "Date"),
+            CometValue(day, "Date"),
+            CometValue(perihelionDistancePD, "PD"),
+            CometValue(eccentricityE, "e"),
+            CometValue(orbitalPeriodAndPerihelionW, "\u03c9"), // "\u03c9"
+            CometValue(longitudeL, "L"),
+            CometValue(inclinationI, "I"),
+            CometValue(epochDate, "Epoch Date"),
+            CometValue(magnitudeMag, "Mag"),
+            CometValue(slopeParameter, "Slope parameter"),
+            CometValue(namePart1, "Object Name"),
+            namePart2?.let { CometValue(namePart2,"Object Name") },
+            namePart3?.let { CometValue(namePart3, "Object Name") },
+            CometValue(reference, "Catalog")
     )
 }
