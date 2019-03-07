@@ -24,24 +24,28 @@ class StarService(
                     }
                     .flatMapMany {ids ->
                         Flux.zip(
-                                vizierClient.getObjectDetails(vizierQueries.queries.getValue(SAO.name), extractRawId(ids, SAO.name)),
-                                vizierClient.getObjectDetails(vizierQueries.queries.getValue(HIP.name), extractRawId(ids, HIP.name)),
-                                vizierClient.getObjectDetails(vizierQueries.queries.getValue(TYC.name), extractRawId(ids, TYC.name)),
-                                vizierClient.getObjectDetails(vizierQueries.queries.getValue(HD.name), extractRawId(ids, HD.name)),
-                                vizierClient.getObjectDetails(vizierQueries.queries.getValue(HR.name), extractRawId(ids, HR.name)),
-                                vizierClient.getObjectDetails(vizierQueries.queries.getValue(GC.name), extractRawId(ids, GC.name))
+                                vizierClient.getObjectDetails(paramsForCatalog(SAO, ids)),
+                                vizierClient.getObjectDetails(paramsForCatalog(HIP, ids)),
+                                vizierClient.getObjectDetails(paramsForCatalog(TYC, ids)),
+                                vizierClient.getObjectDetails(paramsForCatalog(HD, ids)),
+                                vizierClient.getObjectDetails(paramsForCatalog(HR, ids)),
+                                vizierClient.getObjectDetails(paramsForCatalog(GC, ids))
                         )
-                                .map {
+                                .map { ids ->
                                     listOf(
-                                            StarDetails.fromMap(SAO.name, it.t1),
-                                            StarDetails.fromMap(HIP.name, it.t2),
-                                            StarDetails.fromMap(TYC.name, it.t3),
-                                            StarDetails.fromMap(HD.name, it.t4),
-                                            StarDetails.fromMap(HR.name, it.t5),
-                                            StarDetails.fromMap(GC.name, it.t6)
+                                            StarDetails.fromMap(SAO, ids.t1),
+                                            StarDetails.fromMap(HIP, ids.t2),
+                                            StarDetails.fromMap(TYC, ids.t3),
+                                            StarDetails.fromMap(HD, ids.t4),
+                                            StarDetails.fromMap(HR, ids.t5),
+                                            StarDetails.fromMap(GC, ids.t6)
                                     )
                                 }
+                                .flatMapIterable { it }
                     }
+
+    private val paramsForCatalog = { catalog: SelectedCatalogsEnum, ids: List<String> ->
+                Pair(vizierQueries.queries.getValue(catalog.name), extractRawId(ids, catalog.name)) }
 
     private fun extractRawId(ids: List<String>, searchedId: String) =
             with(ids.first { it.contains(searchedId) }.substringAfter(" ")) {

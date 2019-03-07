@@ -21,15 +21,16 @@ class VizierClientImpl(
         @Value("\${vizierClient.url}") private val url: String,
         @Value("\${vizierClient.retryCount}") private val retryCount: Int
 ) : VizierClient {
+
     private val client = vizierWebClient.mutate()
             .baseUrl(url)
             .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_FORM_URLENCODED_VALUE)
             .build()
 
-    override fun getObjectDetails(query: String, identifier: String): Mono<Map<String, String>> =
+    override fun getObjectDetails(params: Pair<String, String>) =
             client.post()
                     .accept(MediaType.APPLICATION_JSON)
-                    .body(BodyInserters.fromFormData(formData(query, identifier)))
+                    .body(BodyInserters.fromFormData(formData(params.first, params.second)))
                     .retrieve()
                     .onStatus(HttpStatus::isError) {
                         Mono.error(VizierClientException(it.statusCode()))
@@ -37,7 +38,7 @@ class VizierClientImpl(
                     .bodyToMono(StarObject::class.java)
                     .doOnSuccess { identifiers ->
                         if (identifiers.data.isEmpty()) {
-                            throw ObjectNotFoundException(HttpStatus.NOT_FOUND, query, identifier)
+                            throw ObjectNotFoundException(HttpStatus.NOT_FOUND, params.first, params.second)
                         }
                     }
                     .retry(retryCount.toLong())

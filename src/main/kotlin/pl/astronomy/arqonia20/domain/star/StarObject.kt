@@ -10,19 +10,6 @@ data class StarObject(
 )
 
 data class StarDetails(
-//        val catalogName: String,
-//        val objectName: String,
-//        val u: String,
-//        val v: String,
-//        val b: String,
-//        val distinctionBV: String,
-//        val distinctionUB: String,
-//        val distinctionRI: String,
-//        val distinctionVI: String,
-//        val rahms: String,
-//        val dedms: String,
-//        val spectralType: String
-
         val catalogName: StarValue,
         val objectName: StarValue,
         val u: StarValue,
@@ -37,9 +24,9 @@ data class StarDetails(
         val spectralType: StarValue
 ) {
     companion object {
-        fun fromMap(catalogName: String, map: Map<String, String>): StarDetails {
+        fun fromMap(catalogName: SelectedCatalogsEnum, map: Map<String, String>): StarDetails {
             return StarDetails(
-                    StarValue(catalogName, "Catalog"),
+                    StarValue(catalogName.name, "Catalog"),
                     StarValue(map["object_name"] ?: "", "Object Name"),
                     StarValue(map["U"] ?: "", "U"),
                     StarValue(map["V"] ?: "", "V"),

@@ -43,21 +43,4 @@ data class DbComet @PersistenceConstructor constructor(
             namePart3,
             reference
     )
-
-//    fun toUser() = User(
-//            username,
-//            email,
-//            password,
-//            roles.map { UserRole(UserRoleType.valueOf(it)) }
-//    )
-//
-//    companion object {
-//        fun fromUser(user: User) = DbUser(
-//                null,
-//                user.username,
-//                user.email,
-//                user.password,
-//                user.roles.map { it.name.name }
-//        )
-//    }
 }
