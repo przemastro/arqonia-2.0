@@ -3,6 +3,9 @@ version: '3.1'
 services:
   mongo:
     image: mongo:3.6
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: abekalarz
+      MONGO_INITDB_ROOT_PASSWORD: arqoniaSuperPass12
     volumes:
       - ../database_store/mongo:/data/db
     ports:
@@ -29,6 +32,7 @@ services:
       - spring-boot-network
     volumes:
       - ./mongo-import:/mongo-import
+      - ./mongo-import/mongo-setup:/mongo-import/mongo-setup
     command:
       chmod +x /mongo-import/import.sh
     command:
@@ -37,15 +41,15 @@ services:
     depends_on:
       - mongo
 
-  arqonia_build_and_run:
-    image: arqonia_build_and_run
-    build: .
-    ports:
-      - 8443:8443
-    networks:
-      - spring-boot-network
-    depends_on:
-      - mongo
+#  arqonia_build_and_run:
+#    image: arqonia_build_and_run
+#    build: .
+#    ports:
+#      - 8443:8443
+#    networks:
+#      - spring-boot-network
+#    depends_on:
+#      - mongo
 
 networks:
   spring-boot-network:
