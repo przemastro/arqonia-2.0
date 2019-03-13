@@ -1,9 +1,18 @@
+#spring:
+#  data:
+#    mongodb:
+#      database: arqonia2
+#      port: 27017
+#      uri: mongodb://mongo
+
 spring:
   data:
     mongodb:
-      database: arqonia2
+      host: mongo
       port: 27017
-      uri: mongodb://mongo
+      database: arqonia2
+      username: arqoniaMongoUser
+      password: arqoniaSuperPass12
 
 arqonia:
   admin:

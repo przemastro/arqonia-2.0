@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.4'
 
 services:
   mongo:
@@ -6,18 +6,15 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: abekalarz
       MONGO_INITDB_ROOT_PASSWORD: arqoniaSuperPass12
+      MONGO_INITDB_DATABASE: arqonia2
     volumes:
       - ../database_store/mongo:/data/db
+      - ./mongo-import/mongo-setup/create_user.js:/docker-entrypoint-initdb.d/create_user.js
     ports:
       - 27017:27017
     networks: 
       - spring-boot-network
-    deploy:
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 30s
+    restart: on-failure
     healthcheck:
       test: ["CMD", "pgrep", "mongod"]
       interval: 5s
@@ -32,7 +29,6 @@ services:
       - spring-boot-network
     volumes:
       - ./mongo-import:/mongo-import
-      - ./mongo-import/mongo-setup:/mongo-import/mongo-setup
     command:
       chmod +x /mongo-import/import.sh
     command:
@@ -41,15 +37,23 @@ services:
     depends_on:
       - mongo
 
-#  arqonia_build_and_run:
-#    image: arqonia_build_and_run
-#    build: .
-#    ports:
-#      - 8443:8443
-#    networks:
-#      - spring-boot-network
-#    depends_on:
-#      - mongo
+  arqonia_build_and_run:
+    image: arqonia_build_and_run
+    build: .
+    ports:
+      - 8443:8443
+    networks:
+      - spring-boot-network
+    depends_on:
+      - mongo
+      - mongo_import
+    restart: on-failure
+#    healthcheck:
+#      test: ["CMD", "curl", "-f", "https://localhost:8443/actuator/health"]
+#      interval: 10s
+#      timeout: 10s
+#      retries: 5
+#      start_period: 30s
 
 networks:
   spring-boot-network:
