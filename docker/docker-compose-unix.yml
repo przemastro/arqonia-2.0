@@ -1,15 +1,16 @@
-version: '3.4'
+version: '3.1'
 
 services:
   mongo:
     image: mongo:3.6
     environment:
       MONGO_INITDB_ROOT_USERNAME: abekalarz
-      MONGO_INITDB_ROOT_PASSWORD: arqoniaSuperPass12
+      MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/db_password
       MONGO_INITDB_DATABASE: arqonia2
+      MONGO_ARQONIA_USERNAME: arqoniaMongoUser
     volumes:
-      - ../database_store/mongo:/data/db
-      - ./mongo-import/mongo-setup/create_user.js:/docker-entrypoint-initdb.d/create_user.js
+      - ../database_store/mongo:/data/dbdocker
+      - ./mongo-import/mongo-setup/create_user.sh:/docker-entrypoint-initdb.d/create_user.sh
     ports:
       - 27017:27017
     networks: 
@@ -20,6 +21,8 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    secrets:
+      - db_password
 
   mongo_import:
     image: mongo:3.6
@@ -48,16 +51,14 @@ services:
       - mongo
       - mongo_import
     restart: on-failure
-#    healthcheck:
-#      test: ["CMD", "curl", "-f", "https://localhost:8443/actuator/health"]
-#      interval: 10s
-#      timeout: 10s
-#      retries: 5
-#      start_period: 30s
 
 networks:
   spring-boot-network:
     driver: bridge
+
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
 
 #    When for example we have 'ports':
 #    ports:
