@@ -58,7 +58,8 @@ networks:
 
 secrets:
   db_password:
-    file: ./secrets/db_password.txt
+    file: ../src/main/resources/passwords/docker/secrets/db_password.txt
+#    file: ./secrets/db_password.txt
 
 #    When for example we have 'ports':
 #    ports:

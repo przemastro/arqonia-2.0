@@ -5,7 +5,8 @@ spring:
       port: 27017
       database: arqonia2
       username: arqoniaMongoUser
-      password: arqoniaSuperPass12
+      password: "{cipher}7fccbb5653090fede3d930f842a33667d9303a9b20eed6f17d4d40465e773ccf389aa6c1d40f5f51b2ef19f1ca5d6744"
+#      password: arqoniaSuperPass12
   profiles:
     active: local
   main:
