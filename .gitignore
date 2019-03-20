@@ -31,5 +31,7 @@
 
 ### Project specific files ###
 /docker/jar/
+/docker/mongo-password/
+/docker/spring-encrypt-key/
 /docker/mongo-import/dump/
 /database_store/

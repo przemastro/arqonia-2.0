@@ -244,3 +244,10 @@ task runAngularAndBackend(type: Exec) {
 
 	finalizedBy "bootRun"
 }
+
+bootRun {
+	def encryptKeyFile = "$projectDir/src/main/resources/passwords/spring/encryption/key/encrypt_key.txt"
+	def encryptKeyValue =  new File(encryptKeyFile).text.trim()
+	
+	systemProperty "encrypt.key", "$encryptKeyValue"
+}

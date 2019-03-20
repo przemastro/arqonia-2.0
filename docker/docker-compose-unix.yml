@@ -9,7 +9,7 @@ services:
       MONGO_INITDB_DATABASE: arqonia2
       MONGO_ARQONIA_USERNAME: arqoniaMongoUser
     volumes:
-      - ../database_store/mongo:/data/dbdocker
+      - ../database_store/mongo:/data/db
       - ./mongo-import/mongo-setup/create_user.sh:/docker-entrypoint-initdb.d/create_user.sh
     ports:
       - 27017:27017
@@ -32,6 +32,7 @@ services:
       - spring-boot-network
     volumes:
       - ./mongo-import:/mongo-import
+      - ./mongo-password:/mongo-password
     command:
       chmod +x /mongo-import/import.sh
     command:
@@ -59,7 +60,6 @@ networks:
 secrets:
   db_password:
     file: ../src/main/resources/passwords/docker/secrets/db_password.txt
-#    file: ./secrets/db_password.txt
 
 #    When for example we have 'ports':
 #    ports:
