@@ -294,6 +294,7 @@ label:active:after {
   box-shadow: 0 0 0 .2rem transparent !important;
   background-color:rgba(28,51,83,.52) !important;
   margin-bottom:5px;
+  color: white;
 }
 
 .btn btn-menu{
@@ -344,6 +345,7 @@ label:active:after {
     width: 200px;
     height: 30px;
     background-color:rgba(28,51,83,.52);
+    color: white;
 }
 .input-group-append{
     width:400px;
