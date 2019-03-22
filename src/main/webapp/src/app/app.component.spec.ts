@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
 import { OAuthModule } from "angular-oauth2-oidc";
-import { SecurityService } from "./security.service";
+import { SecurityService } from "./_services/security.service";
 
 describe('AppComponent', () => {
   beforeEach(async(() => {

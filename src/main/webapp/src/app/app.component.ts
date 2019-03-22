@@ -2,47 +2,47 @@ import {Component, OnInit} from '@angular/core';
 import {LoginModalComponent} from './login-modal/login-modal.component';
 import {SignupModalComponent} from './signup-modal/signup-modal.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {SecurityService} from "./security.service";
-import {DataService} from "./data.service";
-declare var $:any;
+import {SecurityService} from "./_services/security.service";
+import {DataService} from "./_services/data.service";
+import {ObjectType} from "./_domain-objects/objects";
 
 @Component({
-selector: 'app-root',
-templateUrl: './app.component.html',
-styleUrls: ['./app.component.css'],
-providers: [SecurityService,DataService]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  providers: [SecurityService, DataService]
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
-public objectType:string = '';
+  public objectType: string = '';
 
-
-constructor(
+  constructor(
     private modalService: NgbModal,
     private dataService: DataService,
     private securityService: SecurityService
-    ) {}
+  ) {
+  }
 
-  /** search */
   ngOnInit() {
   }
 
   sendObject(objectName: string) {
     objectName = objectName.trim();
-    let objectType:string = this.objectType
-    console.log(objectName, objectType);
+    let objectType: ObjectType = ObjectType.STAR;
+
+    if (this.objectType === ObjectType.STAR) {
+      objectType = ObjectType.STAR
+    } else if (this.objectType === ObjectType.COMET) {
+      objectType = ObjectType.COMET
+    } else if (this.objectType === ObjectType.PLANETOID) {
+      objectType = ObjectType.PLANETOID
+    }
+
     this.dataService.searchObject({objectName, objectType});
   }
 
-  selectObjectType (event: any) {
+  selectObjectType(event: any) {
     this.objectType = event.target.value;
-  }
-
-/** */
-
-  login() {
-    console.log("OAuth login status...");
-    console.log(this.securityService.obtainAccessToken());
   }
 
   logout() {
@@ -52,23 +52,6 @@ constructor(
 
   checkIfIsLoggedIn() {
     return this.securityService.isLoggedIn();
-  }
-
-  checkTokenStatus() {
-    console.log("OAuth token value...");
-
-    if (this.checkIfIsLoggedIn()) {
-      console.log(this.securityService.logAccessToken());
-    } else {
-      console.log("Token was not obtained!");
-    }
-  }
-
-  getForEntity(resourceUrl) {
-    this.securityService.getResource(resourceUrl)
-      .subscribe((response) => {
-        console.log(response.body)
-      });
   }
 
   /** open Modals by calling modalService */
@@ -82,8 +65,4 @@ constructor(
     modalRef.componentInstance.title = 'SignUp';
   }
 
-}
-
-export class Search {
-  constructor( public name: string) {}
 }

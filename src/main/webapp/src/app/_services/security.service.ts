@@ -5,8 +5,8 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {OAuthService} from 'angular-oauth2-oidc';
-import {User} from "./user";
-import {Environment} from './environment';
+import {User} from "../_domain-objects/user";
+import {Environment} from '../environment';
 
 @Injectable()
 export class SecurityService {

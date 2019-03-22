@@ -4,7 +4,7 @@ import { GenericModalComponent } from '../generic-modal/generic-modal.component'
 import { LoginModalComponent } from './login-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { SecurityService } from "../security.service";
+import { SecurityService } from "../_services/security.service";
 import { OAuthService, UrlHelperService, OAuthLogger } from 'angular-oauth2-oidc';
 import { DebugElement } from '@angular/core'
 

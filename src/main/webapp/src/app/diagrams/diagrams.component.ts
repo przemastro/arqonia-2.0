@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgxWidgetGridComponent, WidgetPositionChange} from 'ngx-widget-grid';
-import {DataService} from "../data.service";
+import {DataService} from "../_services/data.service";
 import {AppComponent} from "../app.component";
 
 declare let d3: any;

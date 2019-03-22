@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
-import {User} from '../user';
-import {SecurityService} from "../security.service";
+import {User} from '../_domain-objects/user';
+import {SecurityService} from "../_services/security.service";
 
 @Component({
   selector: 'app-login-modal',
