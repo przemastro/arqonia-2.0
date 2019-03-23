@@ -1,14 +1,18 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {NgxWidgetGridComponent, WidgetPositionChange} from 'ngx-widget-grid';
+import {NgxWidgetGridComponent, Rectangle, WidgetPositionChange} from 'ngx-widget-grid';
 import {DataService} from "../_services/data.service";
 import {AppComponent} from "../app.component";
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+// @ts-ignore
+import {WidgetsSetup} from "./config/widgets.setup";
 
 declare let d3: any;
 
 @Component({
   selector: 'app-diagrams',
   templateUrl: './diagrams.component.html',
-  styleUrls: ['./diagrams.component.css']
+  styleUrls: ['./diagrams.component.css'],
+  providers: [WidgetsSetup]
 })
 export class DiagramsComponent implements OnInit {
 
@@ -17,8 +21,11 @@ export class DiagramsComponent implements OnInit {
   objectType: string;
 
   constructor(private dataService: DataService,
-              private appComponent: AppComponent) {
+              private appComponent: AppComponent,
+              private widgetsSetup: WidgetsSetup) {
   }
+
+  public initSetup = this.widgetsSetup;
 
   headStarElements: any = [];
   headCometElements: any = [];
@@ -30,17 +37,11 @@ export class DiagramsComponent implements OnInit {
   public rows = 6;
   public cols = 6;
 
-  /** Now define all initial widgets. Initial position and size*/
-  public widgets: any[] = [{top: 1, left: 1, height: 3, width: 3}];
-  public widgets2: any[] = [{top: 4, left: 1, height: 3, width: 2}];
-  public widgets3: any[] = [{top: 4, left: 3, height: 3, width: 2}];
-  public widgets4: any[] = [{top: 1, left: 4, height: 3, width: 3}];
-  public widgets5: any[] = [{top: 4, left: 6, height: 3, width: 2}];
-
   /** We need some basic information what to display */
   public showGrid = false;
   public highlightNextPosition = false;
   private _editable = true;
+
   public set editable(editable: boolean) {
     this._editable = editable;
     this.showGrid = editable;
@@ -65,8 +66,7 @@ export class DiagramsComponent implements OnInit {
 
 
   ngOnInit() {
-
-    var myColors = ["#337ab7"];
+    let myColors = ["#337ab7"];
 
     this.options4 = {
       "chart": {
@@ -87,7 +87,7 @@ export class DiagramsComponent implements OnInit {
           "unzoomEventType": "dblclick.zoom"
         }
       }
-    }
+    };
     this.data4 = [{
       values: [
         {
@@ -186,7 +186,7 @@ export class DiagramsComponent implements OnInit {
   addWidget() {
     const nextPosition = this.grid.getNextPosition();
     if (nextPosition) {
-      this.widgets.push({...nextPosition});
+      this.initSetup.widgets.push({...nextPosition});
     } else {
       console.warn('No Space Available!! ');
     }
@@ -195,7 +195,7 @@ export class DiagramsComponent implements OnInit {
   /** Remove widget */
   askDeleteWidget(index) {
     console.log('deleting', index);
-    this.widgets.splice(index, 1);
+    this.initSetup.widgets.splice(index, 1);
   }
 
   deleteWidget() {
