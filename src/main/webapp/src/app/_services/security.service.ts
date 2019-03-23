@@ -21,7 +21,7 @@ export class SecurityService {
             scope: 'read write foo bar',
             oidc: false
         });
-        this.oauthService.setStorage(sessionStorage);
+        this.oauthService.setStorage(localStorage);
         this.oauthService.tryLogin({});      
     }
 
