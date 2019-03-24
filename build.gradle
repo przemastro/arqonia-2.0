@@ -1,7 +1,7 @@
 buildscript {
 	ext {
 		kotlinVersion = '1.3.20'
-		springBootVersion = '2.1.1.RELEASE'
+		springBootVersion = '2.1.3.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -52,15 +52,17 @@ dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-actuator')
 //	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
 	implementation('org.springframework.boot:spring-boot-starter-data-mongodb')
-//	implementation('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
+	implementation('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
 	implementation('org.springframework.boot:spring-boot-starter-security')
 	implementation('org.springframework.boot:spring-boot-starter-web')
-//	implementation('org.springframework.boot:spring-boot-starter-webflux')
+	implementation('org.springframework.boot:spring-boot-starter-webflux')
+	implementation group: 'org.springframework.cloud', name: 'spring-cloud-cli', version: '2.0.0.RELEASE'
 	implementation('com.fasterxml.jackson.module:jackson-module-kotlin')
 	implementation('org.springframework.cloud:spring-cloud-starter-oauth2')
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.5.5'
+//	implementation group: 'io.projectreactor.ipc', name: 'reactor-netty', version: '0.7.12.RELEASE'
 
 	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.7'
 	implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.6'
@@ -241,4 +243,11 @@ task runAngularAndBackend(type: Exec) {
 	}
 
 	finalizedBy "bootRun"
+}
+
+bootRun {
+	def encryptKeyFile = "$projectDir/src/main/resources/passwords/spring/encryption/key/encrypt_key.txt"
+	def encryptKeyValue =  new File(encryptKeyFile).text.trim()
+	
+	systemProperty "encrypt.key", "$encryptKeyValue"
 }

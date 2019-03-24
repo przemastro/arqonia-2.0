@@ -1,31 +1,15 @@
 spring:
   data:
     mongodb:
-      database: arqonia2
+      host: localhost
       port: 27017
-      uri: mongodb://localhost
+      database: arqonia2
+      username: arqoniaMongoUser
+      password: "{cipher}7fccbb5653090fede3d930f842a33667d9303a9b20eed6f17d4d40465e773ccf389aa6c1d40f5f51b2ef19f1ca5d6744"
   profiles:
     active: local
-
-#server:
-#  ssl:
-#    enabled: true # set to FALSE, if want to disable HTTPS and switch back to HTTP
-#    key-store-type: JKS
-#    key-store: classpath:keystore/https.prod/arqonia_https.jks
-#    key-store-password: pass123
-#    key-alias: arqonia_https
-#    trust-store: classpath:keystore/https.prod/arqonia_https.jks
-#    trust-store-password: pass123
-
-#server:
-#  ssl:
-#    enabled: true # set to FALSE, if want to disable HTTPS and switch back to HTTP
-#    key-store-type: JKS
-#    key-store: classpath:keystore/https.try/arqonia_https.jks
-#    key-store-password: pass123
-#    key-alias: arqonia_https
-#  port: 8443
-
+  main:
+    allow-bean-definition-overriding: true
 
 server:
   ssl:
@@ -36,6 +20,48 @@ server:
     key-password: secret
     key-alias: localhost
   port: 8443
+
+simbadClient:
+  url: http://simbad.u-strasbg.fr/simbad/sim-tap/sync
+  connectionTimeout: 300
+  socketTimeout: 300
+  query: SELECT id2.id FROM ident AS id1 JOIN ident AS id2 USING(oidref) WHERE id1.id = '%s';
+
+vizierClient:
+  url: http://tapvizier.u-strasbg.fr/TAPVizieR/tap/view
+  connectionTimeout: 1000
+  socketTimeout: 500
+  retryCount: 3
+
+vizier-queries:
+  queries:
+    SAO:
+      SELECT TOP 100 recno AS object_name, vmag AS "V", sptype AS spectral_type
+      FROM "I/131A/sao"
+      WHERE recno = '%s';
+    HIP:
+      SELECT TOP 100 recno AS object_name, vmag AS "V", "B-V" + vmag as "B", "B-V" AS "B-V",
+        "V-I" AS "V-I", sptype AS spectral_type, rahms AS "RA", dedms AS "DE"
+      FROM "I/239/hip_main"
+      WHERE recno = '%s';
+    TYC:
+      SELECT TOP 100 tyc AS object_name, vmag AS "V", "B-V" + vmag as "B", "B-V" AS "B-V",
+        rahms AS "RA", dedms AS "DE"
+      FROM "I/239/tyc_main"
+      WHERE "I/239/tyc_main".TYC = '%s';
+    HD:
+      SELECT TOP 100 recno AS object_name, spt AS spectral_type
+      FROM "III/135A/catalog"
+      WHERE recno = '%s';
+    HR:
+      SELECT TOP 100 recno AS object_name, "U-B" + "B-V" + vmag AS "U", vmag AS "V",
+        "B-V" + vmag AS "B", "B-V" AS "B-V", "U-B" AS "U-B", "R-I" AS "R-I", sptype AS spectral_type
+      FROM "V/50/catalog"
+      WHERE recno = '%s';
+    GC:
+      SELECT TOP 100 recno AS object_name, vmag AS "V", sptype AS spectral_type
+      FROM "I/113A/catalog"
+      WHERE recno = '%s';
 
 #management:
 #  endpoints:

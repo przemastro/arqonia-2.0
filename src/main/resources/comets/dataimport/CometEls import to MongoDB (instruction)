@@ -1,0 +1,41 @@
+===================================================
+Preconditions !!!
+CometEls.txt file needs some data simplifications before it can be used with below steps!
+Key needed modifications are:
+- data division into 2 parts: 'ECS Format' (first part of file) and 'Ephemerides and Orbital Elements Format' (second part of file)
+(In below scripts their names are: 'CometEls-part-1.txt' and 'CometEls-part-2.txt')
+- removing unnecessary spaces
+- replacing some null dates with other text, e.g. 'N/A'
+Preconditions !!!
+===================================================
+
+Points to convert Comets.txt to .CSV file and next import to MongoDB via 'mongoimport':
+=========
+1. Below pipe-commands will:
+- remove leading spaces from source file
+- next remove other repeated spaces and replace with only one space
+- replace all single spaces with comma and finally convert .TXT file to .CSV file: 
+
+NOTE: 
+Comets data is imported with 2 files, because they have 2 slightly different formats.
+One is in 'ECS Format' format and the next one is in 'Ephemerides and Orbital Elements Format'.
+
+File (part 1):
+>> sed 's/^[ \t]*\(.*$\)/\1/' CometEls-part-1.txt | tr -s " " | tr " " "," > CometEls-part-1.csv
+
+File (part 2):
+>> sed 's/^[ \t]*\(.*$\)/\1/' CometEls-part-2.txt | tr -s " " | tr " " "," > CometEls-part-2.csv
+
+2. Import data with exact 'mongoimport' command and appropriate options:
+
+// WITHOUT ACCESS CONTROL
+CSV (part 1):
+>> mongoimport -d arqonia2 -c comets --type csv --file CometEls-part-1.csv --headerline
+
+CSV (part 2):
+>> mongoimport -d arqonia2 -c comets --type csv --file CometEls-part-2.csv --headerline
+
+// WITH ACCESS CONTROL
+>> mongoimport -d arqonia2 -u arqoniaMongoUser -p arqoniaSuperPass12 -c comets --type csv --file CometEls-part-1.csv --headerline
+
+>> mongoimport -d arqonia2 -u arqoniaMongoUser -p arqoniaSuperPass12 -c comets --type csv --file CometEls-part-2.csv --headerline

@@ -1,0 +1,8 @@
+1. To dump existing MongoDB database use below command on host computer
+(that mean: computer, where Mongo database is running):
+
+>> mongodump --db arqonia2 -u normal_username -p password
+
+2. To restore dumped database use below command (important: you have to use admin user!):
+
+>>  mongorestore  -u admin_username -p password

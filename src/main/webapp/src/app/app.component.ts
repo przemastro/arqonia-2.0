@@ -1,45 +1,41 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { GenericModalComponent } from './generic-modal/generic-modal.component';
-import { LoginModalComponent } from './login-modal/login-modal.component';
-import { SignupModalComponent } from './signup-modal/signup-modal.component';
-import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import {Component, OnInit} from '@angular/core';
+import {LoginModalComponent} from './login-modal/login-modal.component';
+import {SignupModalComponent} from './signup-modal/signup-modal.component';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {SecurityService} from "./security.service";
-import { DataService } from "./data.service";
+import {DataService} from "./data.service";
 declare var $:any;
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [SecurityService,DataService]
+selector: 'app-root',
+templateUrl: './app.component.html',
+styleUrls: ['./app.component.css'],
+providers: [SecurityService,DataService]
 })
 export class AppComponent implements OnInit{
 
-message:string;
-flag:boolean;
-headStarElements:any = [];
-starElements:any = [];
+public objectType:string = '';
+
 
 constructor(
     private modalService: NgbModal,
-    private data: DataService,
+    private dataService: DataService,
     private securityService: SecurityService
     ) {}
 
-
   /** search */
   ngOnInit() {
-    this.data.currentObjectFlag.subscribe(flag => this.flag = flag);
-    this.data.currentObjectType.subscribe(headStarElements => this.headStarElements = headStarElements)
-    this.data.currentObjectData.subscribe(starElements => this.starElements = starElements)
   }
 
-  sendObject(object: string, objectType: string) {
-    object = object.trim();
-    objectType = objectType.trim();
-    this.data.changeHeader(objectType);
-    this.data.changeObjectFlag(objectType);
-    this.data.changeData(objectType);
+  sendObject(objectName: string) {
+    objectName = objectName.trim();
+    let objectType:string = this.objectType
+    console.log(objectName, objectType);
+    this.dataService.searchObject({objectName, objectType});
+  }
+
+  selectObjectType (event: any) {
+    this.objectType = event.target.value;
   }
 
 /** */

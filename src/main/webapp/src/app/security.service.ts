@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import { OAuthService } from 'angular-oauth2-oidc';
+import {OAuthService} from 'angular-oauth2-oidc';
 import {User} from "./user";
+import {Environment} from './environment';
 
 @Injectable()
 export class SecurityService {
@@ -14,8 +15,8 @@ export class SecurityService {
     private http: HttpClient,
     private _router: Router, private _http: HttpClient, private oauthService: OAuthService){
         this.oauthService.configure({
-            loginUrl: 'https://localhost:8443/oauth/authorize',
-            redirectUri: 'https://localhost:8443/',
+            loginUrl: Environment.baseUrl+'/oauth/authorize',
+            redirectUri: Environment.baseUri,
             clientId: 'sampleClientId',
             scope: 'read write foo bar',
             oidc: false
@@ -24,7 +25,7 @@ export class SecurityService {
         this.oauthService.tryLogin({});      
     }
 
-  private apiUrl = 'https://localhost:8443';  // URL to web api
+  private apiUrl = Environment.baseUrl;  // URL to web api
 
   loginUser(user: User): Observable<User> {
     console.log('Login User');

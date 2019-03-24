@@ -2,6 +2,7 @@ package pl.astronomy.arqonia20.persistence.security.oauthclients
 
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Component
+import org.springframework.stereotype.Repository
 import pl.astronomy.arqonia20.config.security.OauthClientDetailsNotFoundException
 import pl.astronomy.arqonia20.config.security.oauthclients.OauthClientDetails
 import pl.astronomy.arqonia20.config.security.oauthclients.OauthClientDetailsRepository
@@ -23,6 +24,7 @@ class OauthClientDetailsRepositoryImpl(
     }
 }
 
+@Repository
 interface DbOauthClientDetailsRepository: MongoRepository<DbOauthClientDetails, String> {
     fun save(clientDetails: DbOauthClientDetails)
 }

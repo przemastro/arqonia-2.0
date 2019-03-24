@@ -1,3 +1,5 @@
 #!/bin/bash
 
-mongorestore --host mongo --db arqonia2 /mongo-import/dump/arqonia2
+password=`cat /mongo-password/db_password.txt | xargs`
+
+mongorestore --host mongo -u abekalarz -p ${password} /mongo-import/dump

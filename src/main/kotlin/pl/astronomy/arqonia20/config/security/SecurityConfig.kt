@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.context.annotation.Profile
 import org.springframework.core.Ordered
 import org.springframework.core.annotation.Order
 import org.springframework.core.env.Environment
@@ -28,16 +27,15 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler
 import pl.astronomy.arqonia20.config.security.customlogin.CustomAccessDeniedHandler
-import pl.astronomy.arqonia20.config.security.customlogin.MySavedRequestAwareAuthenticationSuccessHandler
+import pl.astronomy.arqonia20.config.security.customlogin.CustomAuthenticationSuccessHandler
 import pl.astronomy.arqonia20.config.security.customlogin.RestAuthenticationEntryPoint
 import pl.astronomy.arqonia20.domain.user.UserRepository
 
 @Configuration
 @EnableWebSecurity
-//@Profile("!integration")
 class SecurityConfig(
         private val restAuthenticationEntryPoint: RestAuthenticationEntryPoint,
-        private val mySuccessHandler: MySavedRequestAwareAuthenticationSuccessHandler,
+        private val successHandler: CustomAuthenticationSuccessHandler,
         private val accessDeniedHandler: CustomAccessDeniedHandler,
         private val clientDetailsService: ClientDetailsService,
         private val arqoniaUserDetailsService: ArqoniaUserDetailsService,
@@ -46,7 +44,7 @@ class SecurityConfig(
         private val environment: Environment
 ) : WebSecurityConfigurerAdapter() {
 
-    private val myFailureHandler = SimpleUrlAuthenticationFailureHandler()
+    private val failureHandler = SimpleUrlAuthenticationFailureHandler()
 
     @Autowired
     @Throws(Exception::class)
@@ -66,13 +64,14 @@ class SecurityConfig(
 //                .antMatchers("/signup").permitAll()
                 .antMatchers("/*").permitAll() // TODO Probably detailed list of urls is needed...
                 .antMatchers("/assets/images/*").permitAll()
+                .antMatchers("/actuator/health").permitAll()
 //                .antMatchers("/oauth/token/revokeById/**").permitAll()
 //                .antMatchers("/tokens/**").permitAll()
                 .anyRequest().authenticated()
 //                .and().formLogin().permitAll()
                 .and().csrf().disable()
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler).authenticationEntryPoint(restAuthenticationEntryPoint)
-                .and().formLogin().successHandler(mySuccessHandler).failureHandler(myFailureHandler)
+                .and().formLogin().successHandler(successHandler).failureHandler(failureHandler)
 
     }
 
