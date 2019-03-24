@@ -4,9 +4,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
 
-import {User} from './user';
+import {User} from '../_domain-objects/user';
 import {MessageService} from './message.service';
-import {Environment} from './environment';
+import {Environment} from '../environment';
 
 const httpOptions = {
   headers: new HttpHeaders({

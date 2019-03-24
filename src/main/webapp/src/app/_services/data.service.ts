@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {AsyncSubject, BehaviorSubject, ReplaySubject} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-import {Environment} from './environment';
-import {ObjectInfo} from "./objects";
+import {Environment} from '../environment';
+import {ObjectInfo} from "../_domain-objects/objects";
 import {List} from 'immutable';
 import 'rxjs/add/operator/share'
 import 'rxjs/add/operator/publishLast'
