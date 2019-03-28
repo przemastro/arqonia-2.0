@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
   }
 
-  sendObject(objectName: string) {
+  initSearching(objectName: string) {
     objectName = objectName.trim();
     let objectType: ObjectType = ObjectType.STAR;
 
