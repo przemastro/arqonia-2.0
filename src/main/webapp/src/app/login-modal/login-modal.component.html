@@ -7,7 +7,6 @@
 
         <div *ngIf="login.invalid && (login.dirty || login.touched)"
              class="alert alert-danger">
-
           <div *ngIf="login.errors.required">
             Username is required.
           </div>
@@ -15,16 +14,14 @@
             Username must be at least 3 characters long.
           </div>
         </div>
-
-
       </div>
+
       <div class="form-group">
         <input type="password" class="form-control" id="passwd" formControlName="passwd" placeholder="PASSWORD"
                #password required>
 
         <div *ngIf="passwd.invalid && (passwd.dirty || passwd.touched)"
              class="alert alert-danger">
-
           <div *ngIf="passwd.errors.required">
             Password is required.
           </div>
@@ -32,18 +29,12 @@
             Password must be at least 4 characters long.
           </div>
         </div>
-
       </div>
+
       <div class="form-group" style="margin-left:20px">
         <a href="">Don't remember Password?</a>
       </div>
       <!--<div id="errorDiv" class="error-message">{{errorMessage}}</div>-->
-      <!--<div *ngIf="login.invalid && (login.dirty || login.touched)" class="error-message">-->
-        <!--wrong login-->
-      <!--</div>-->
-      <!--<div *ngIf="passwd.invalid && (passwd.dirty || passwd.touched)" class="error-message">-->
-        <!--wrong password-->
-      <!--</div>-->
     </form>
   </div>
 </app-generic-modal>
