@@ -1,25 +1,70 @@
 <app-generic-modal title="SignUp">
   <div class="container">
-    <form>
+    <form [formGroup]="signupForm">
       <div class="form-group">
-        <input type="text" class="form-control" id="name" placeholder="USERNAME" #username required>
+        <input type="text" class="form-control" id="name" formControlName="name" placeholder="USERNAME" #username
+               required>
+      </div>
+
+      <div *ngIf="name.invalid && (name.dirty || name.touched)"
+           class="error-message error-message-field">
+        <div *ngIf="name.errors.required">
+          Password is required.
+        </div>
+        <div *ngIf="name.errors.minlength">
+          Password must be at least 4 characters long.
+        </div>
       </div>
 
       <div class="form-group">
-        <input type="text" class="form-control" id="email" placeholder="EMAIL" #email required>
+        <input type="text" class="form-control" id="emailInput" formControlName="emailInput" placeholder="EMAIL" #email required>
+      </div>
+
+      <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)"
+           class="error-message error-message-field">
+        <div *ngIf="emailInput.errors.required">
+          Password is required.
+        </div>
+        <div *ngIf="emailInput.errors.minlength">
+          Password must be at least 4 characters long.
+        </div>
       </div>
 
       <div class="form-group">
-        <input type="password" class="form-control" placeholder="PASSWORD" #password id="password">
+        <input type="password" class="form-control" id="passwd" formControlName="passwd" placeholder="PASSWORD"
+               #password>
+      </div>
+
+      <div *ngIf="passwd.invalid && (passwd.dirty || passwd.touched)"
+           class="error-message error-message-field">
+        <div *ngIf="passwd.errors.required">
+          Password is required.
+        </div>
+        <div *ngIf="passwd.errors.minlength">
+          Password must be at least 4 characters long.
+        </div>
       </div>
 
       <div class="form-group">
-        <input type="password" class="form-control" placeholder="CONFIRM PASSWORD" #confirmPassword id="confirmPassword">
+        <input type="password" class="form-control" id="confirmPasswordInput" formControlName="confirmPasswordInput"
+               placeholder="CONFIRM PASSWORD" #confirmPassword>
       </div>
+
+      <div *ngIf="confirmPasswordInput.invalid && (confirmPasswordInput.dirty || confirmPasswordInput.touched)"
+           class="error-message error-message-field">
+        <div *ngIf="confirmPasswordInput.errors.required">
+          Password is required.
+        </div>
+        <div *ngIf="confirmPasswordInput.errors.minlength">
+          Password must be at least 4 characters long.
+        </div>
+      </div>
+
       <div id="errorDiv" class="error-message">{{errorMessage}}</div>
     </form>
   </div>
 </app-generic-modal>
 <div class="modal-footer">
-  <button type="submit" class="btn btn-default" (click)="startRegisteringNewUser(username.value, email.value, password.value, confirmPassword.value);">{{title}}</button>
+  <button type="submit" class="btn btn-default"
+          (click)="startRegisteringNewUser(username.value, email.value, password.value, confirmPassword.value);">{{title}}</button>
 </div>

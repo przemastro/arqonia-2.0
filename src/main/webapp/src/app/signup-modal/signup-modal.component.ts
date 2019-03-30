@@ -3,6 +3,7 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 import {User} from '../_domain-objects/user';
 import {UserService} from '../_services/user.service';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-signup-modal',
@@ -10,13 +11,46 @@ import {UserService} from '../_services/user.service';
   styleUrls: ['./signup-modal.component.css']
 })
 export class SignupModalComponent implements OnInit {
-  errorMessage: string = '';
-
   constructor(private userService: UserService,
               private activeModal: NgbActiveModal) {
   }
 
-  ngOnInit() {
+  errorMessage: string = '';
+
+  signupForm: FormGroup;
+
+  ngOnInit(): void {
+    this.signupForm = new FormGroup({
+      'name': new FormControl(null, [
+        Validators.required,
+        Validators.minLength(3)
+      ]),
+      'emailInput': new FormControl(null, [
+        Validators.required,
+        Validators.minLength(8)
+      ]),
+      'passwd': new FormControl(null, [
+        Validators.required,
+        Validators.minLength(8)
+      ]),
+      'confirmPasswordInput': new FormControl(null, [
+        Validators.required,
+        Validators.minLength(8)
+      ])
+    })
+  }
+
+  get name() {
+    return this.signupForm.get('name');
+  }
+  get emailInput() {
+    return this.signupForm.get('emailInput');
+  }
+  get passwd() {
+    return this.signupForm.get('passwd');
+  }
+  get confirmPasswordInput() {
+    return this.signupForm.get('confirmPasswordInput');
   }
 
   // TODO Add 'roles' parameter (currently if 'roles' is not available, backend will add default value with 'role = USER type'

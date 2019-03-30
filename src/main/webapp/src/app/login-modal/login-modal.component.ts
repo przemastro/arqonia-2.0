@@ -37,7 +37,6 @@ export class LoginModalComponent implements OnInit {
   get login() {
     return this.loginForm.get('login');
   }
-
   get passwd() {
     return this.loginForm.get('passwd');
   }
