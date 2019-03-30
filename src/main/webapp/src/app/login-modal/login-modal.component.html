@@ -6,7 +6,7 @@
                required>
 
         <div *ngIf="login.invalid && (login.dirty || login.touched)"
-             class="alert alert-danger">
+             class="error-message error-message-field">
           <div *ngIf="login.errors.required">
             Username is required.
           </div>
@@ -21,7 +21,7 @@
                #password required>
 
         <div *ngIf="passwd.invalid && (passwd.dirty || passwd.touched)"
-             class="alert alert-danger">
+             class="error-message error-message-field">
           <div *ngIf="passwd.errors.required">
             Password is required.
           </div>
@@ -34,7 +34,7 @@
       <div class="form-group" style="margin-left:20px">
         <a href="">Don't remember Password?</a>
       </div>
-      <!--<div id="errorDiv" class="error-message">{{errorMessage}}</div>-->
+      <div id="errorDiv" class="error-message">{{errorMessage}}</div>
     </form>
   </div>
 </app-generic-modal>

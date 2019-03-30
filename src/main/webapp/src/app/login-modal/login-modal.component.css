@@ -35,6 +35,10 @@
   margin-left: 10px;
 }
 
+.error-message-field {
+  position: relative;
+}
+
 .alert {
   padding: 8px;
 }
