@@ -27,7 +27,7 @@ export class SignupModalComponent implements OnInit {
       ]),
       'emailInput': new FormControl(null, [
         Validators.required,
-        Validators.minLength(8)
+        Validators.email
       ]),
       'passwd': new FormControl(null, [
         Validators.required,
