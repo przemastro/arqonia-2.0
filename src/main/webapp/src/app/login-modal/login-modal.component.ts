@@ -24,12 +24,10 @@ export class LoginModalComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       'login': new FormControl(null, [
-        Validators.required,
-        Validators.minLength(3)
+        Validators.required
       ]),
       'passwd': new FormControl(null, [
-        Validators.required,
-        Validators.minLength(8)
+        Validators.required
       ])
     })
   }

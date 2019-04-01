@@ -10,9 +10,6 @@
           <div *ngIf="login.errors.required">
             Username is required.
           </div>
-          <div *ngIf="login.errors.minlength">
-            Username must be at least 3 characters long.
-          </div>
         </div>
       </div>
 
@@ -24,9 +21,6 @@
              class="error-message error-message-field">
           <div *ngIf="passwd.errors.required">
             Password is required.
-          </div>
-          <div *ngIf="passwd.errors.minlength">
-            Password must be at least 4 characters long.
           </div>
         </div>
       </div>

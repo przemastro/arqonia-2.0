@@ -63,8 +63,7 @@ export class SignupModalComponent implements OnInit {
     this.showErrorMessage();
 
     // TODO Below (at least) several errors to implement:
-    // - reaction, when some empty fields was send to backend
-    // - reaction, when user didn't correct all error related to fields
+    // - reaction, when some empty fields was send to backend (appropriate message for Bad Request 400 or mapping)
 
     if (password === confirmPassword) {
       this.userService.addUser({username, password, email} as User)

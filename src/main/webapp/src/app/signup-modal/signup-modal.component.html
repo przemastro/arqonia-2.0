@@ -1,6 +1,6 @@
 <app-generic-modal title="SignUp">
   <div class="container">
-    <form [formGroup]="signupForm">
+    <form [formGroup]="signupForm" #ngSignupForm="ngForm">
       <div class="form-group">
         <input type="text" class="form-control" id="name" formControlName="name" placeholder="USERNAME" #username
                required>
@@ -66,6 +66,6 @@
   </div>
 </app-generic-modal>
 <div class="modal-footer">
-  <button type="submit" class="btn btn-default"
+  <button type="submit" class="btn btn-default" [disabled]="!signupForm.valid"
           (click)="startRegisteringNewUser(username.value, email.value, password.value, confirmPassword.value);">{{title}}</button>
 </div>
