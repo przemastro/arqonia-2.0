@@ -63,8 +63,8 @@ export class SignupModalComponent implements OnInit {
     this.showErrorMessage();
 
     // TODO Below (at least) several errors to implement:
-    // - reaction, when user try to register existing 'username'
-    // - reaction, when user didn't provide username / password (confirmed pass) / email
+    // - reaction, when some empty fields was send to backend
+    // - reaction, when user didn't correct all error related to fields
 
     if (password === confirmPassword) {
       this.userService.addUser({username, password, email} as User)
@@ -72,10 +72,17 @@ export class SignupModalComponent implements OnInit {
             console.log('Registering new user: ' + user);
           },
           (error) => {
-            this.errorMessage = error.status !== 201 ? 'Registering process failed. Pleas try again.' : '';
+            switch (error.status){
+              case 409 : {
+                this.errorMessage = "User with name: '" + username + "' already exists.";
+                break;
+              }
+              default : {
+                this.errorMessage = 'Registering process failed. Pleas try again.';
+                break;
+              }
+            }
             this.hideErrorMessage();
-
-            console.warn('Error occurred: ' + error.message + ', with status code: ' + error.status);
           },
           () => {
             this.activeModal.close();
