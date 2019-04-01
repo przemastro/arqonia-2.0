@@ -65,6 +65,8 @@ export class SignupModalComponent implements OnInit {
     // TODO Below (at least) several errors to implement:
     // - reaction, when some empty fields was send to backend (appropriate message for Bad Request 400 or mapping)
 
+    // TODO Reaction of 'login' / 'signup' / 'search' button on enter key ??
+
     if (password === confirmPassword) {
       this.userService.addUser({username, password, email} as User)
         .subscribe((user) => {

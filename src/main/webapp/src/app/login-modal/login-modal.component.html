@@ -3,7 +3,7 @@
     <form [formGroup]="loginForm">
       <div class="form-group">
         <input type="text" class="form-control" id="login" formControlName="login" placeholder="USERNAME" #username
-               required>
+               required autofocus (keyup.enter)="keyupEnterSubmit.click()">
 
         <div *ngIf="login.invalid && (login.dirty || login.touched)"
              class="error-message error-message-field">
@@ -15,7 +15,7 @@
 
       <div class="form-group">
         <input type="password" class="form-control" id="passwd" formControlName="passwd" placeholder="PASSWORD"
-               #password required>
+               #password required (keyup.enter)="keyupEnterSubmit.click()">
 
         <div *ngIf="passwd.invalid && (passwd.dirty || passwd.touched)"
              class="error-message error-message-field">
@@ -34,6 +34,9 @@
 </app-generic-modal>
 <div class="modal-footer" style="margin-top:50px;">
   <button type="submit" class="btn btn-default" [disabled]="!loginForm.valid"
-          (click)="startProcessLogin(username.value, password.value);">{{title}}</button>
+          (click)="startProcessLogin(username.value, password.value);"
+          #keyupEnterSubmit>
+    {{title}}
+  </button>
 </div>
 
