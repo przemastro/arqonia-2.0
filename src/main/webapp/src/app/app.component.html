@@ -15,25 +15,22 @@
       <div class="form-group">
         <div class="form">
           <div class="input-group-append">
+            <form class="form-inline" [formGroup]="searchForm">
+              <select class="one_full select-top-search" (change)="selectObjectType($event)" formControlName="selectSearchTop" required
+                      id="objectType">
+                <option value="star">Star</option>
+                <option value="planetoid">Planetoid</option>
+                <option value="comet">Comet</option>
+              </select>
 
-            <select class="one_full" (change)="selectObjectType($event)" [(ngModel)]="interfacengmodel"
-                    style="border-top-left-radius:30px;border-bottom-left-radius:30px;width:90px;height:30px;
-                           background-color:rgb(33, 134, 177);text-align-last:center; -webkit-appearance: none;
-    -moz-appearance: none;
-    text-indent: 1px;
-    text-overflow: '';border-color:rgb(33, 134, 177);border-width:1px;border-right-width:0px;font-family:Montserrat,sans-serif;
-    font-weight: normal;" id="objectType">
-              <option value="star">Star</option>
-              <option value="planetoid">Planetoid</option>
-              <option value="comet">Comet</option>
-            </select>
-
-            <input type="text" class="form-control" id="search-top" placeholder="Search..."
-                   required #object autofocus (keyup.enter)="keyupEnterSubmit.click()">
-            <button (click)="initSearching(object.value)" routerLink="/diagrams" class="btn-search" type="submit"
-                    #keyupEnterSubmit [disabled]="object.value.length === 0">
-              <i class="glyphicon glyphicon-search"></i>
-            </button>
+              <input type="text" class="form-control" id="searchTop" formControlName="searchTop" placeholder="Search..."
+                     required #object autofocus (keyup.enter)="keyupEnterSubmit.click()"
+                     (change)="keyupEnterSubmit.disabled=false">
+              <button type="submit" class="btn-search" routerLink="/diagrams" (click)="initSearching(object.value)"
+                      [disabled]="!searchForm.valid" #keyupEnterSubmit>
+                <i class="glyphicon glyphicon-search"></i>
+              </button>
+            </form>
           </div>
         </div>
       </div>
