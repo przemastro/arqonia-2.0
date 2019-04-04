@@ -6,7 +6,7 @@
     <div class="dashboard-container">
 
 
-      <ngx-widget-grid *ngIf="true" [rows]="rows" [columns]="cols" [highlightNextPosition]="highlightNextPosition"
+      <ngx-widget-grid *ngIf="(dataService.searchData | async).length" [rows]="rows" [columns]="cols" [highlightNextPosition]="highlightNextPosition"
                        #grid [showGrid]="showGrid" (gridFull)="onGridFull($event)"
                        (widgetPositionChange)="onWidgetChange($event)"
                        style="height:93%;width:97%;margin-top:-15px">
@@ -139,8 +139,9 @@
         </ngx-widget>
       </ngx-widget-grid>
 
-
-
+      <div *ngIf="!( (dataService.searchData | async).length )">
+        Searched data not found. Please try again with different phrase.
+      </div>
 
     </div>
   </div>
