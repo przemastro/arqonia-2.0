@@ -4,7 +4,9 @@
   </button>
   <div class="inner-container">
     <div class="dashboard-container">
-      <ngx-widget-grid [rows]="rows" [columns]="cols" [highlightNextPosition]="highlightNextPosition"
+
+
+      <ngx-widget-grid *ngIf="true" [rows]="rows" [columns]="cols" [highlightNextPosition]="highlightNextPosition"
                        #grid [showGrid]="showGrid" (gridFull)="onGridFull($event)"
                        (widgetPositionChange)="onWidgetChange($event)"
                        style="height:93%;width:97%;margin-top:-15px">
@@ -136,6 +138,10 @@
           </div>
         </ngx-widget>
       </ngx-widget-grid>
+
+
+
+
     </div>
   </div>
 </div>

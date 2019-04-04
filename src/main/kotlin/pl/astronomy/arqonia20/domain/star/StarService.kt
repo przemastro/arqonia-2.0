@@ -19,7 +19,9 @@ class StarService(
                         Mono.fromCallable {
                             ids.data
                                     .flatten()
-                                    .filter { vizierQueries.queries.keys.contains(it.substringBefore(" ")) }
+                                    .filter {
+                                        vizierQueries.queries.keys.contains(it.substringBefore(" "))
+                                    }
                         }
                     }
                     .flatMapMany {ids ->
@@ -48,7 +50,10 @@ class StarService(
                 Pair(vizierQueries.queries.getValue(catalog.name), extractRawId(ids, catalog.name)) }
 
     private fun extractRawId(ids: List<String>, searchedId: String) =
-            with(ids.first { it.contains(searchedId) }.substringAfter(" ")) {
+            with(ids
+                    .first { it.contains(searchedId) }
+                    .substringAfter(" ")
+            ) {
                 if (searchedId == TYC.name)
                     split("-").let { "${it[0]}  ${it[1]} ${it[2]}" }
                 else
