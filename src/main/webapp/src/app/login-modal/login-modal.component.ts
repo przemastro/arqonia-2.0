@@ -3,6 +3,7 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 import {User} from '../_domain-objects/user';
 import {SecurityService} from "../_services/security.service";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-login-modal',
@@ -11,14 +12,31 @@ import {SecurityService} from "../_services/security.service";
   providers: [SecurityService]
 })
 export class LoginModalComponent implements OnInit {
-  isLoggedIn: boolean = false;
-  errorMessage: string = '';
-
   constructor(private activeModal: NgbActiveModal,
               private securityService: SecurityService) {
   }
 
-  ngOnInit() {
+  isLoggedIn: boolean = false;
+  errorMessage: string = '';
+
+  loginForm: FormGroup;
+
+  ngOnInit(): void {
+    this.loginForm = new FormGroup({
+      'login': new FormControl(null, [
+        Validators.required
+      ]),
+      'passwd': new FormControl(null, [
+        Validators.required
+      ])
+    })
+  }
+
+  get login() {
+    return this.loginForm.get('login');
+  }
+  get passwd() {
+    return this.loginForm.get('passwd');
   }
 
   startProcessLogin(username: string, password: string): void {
@@ -27,7 +45,6 @@ export class LoginModalComponent implements OnInit {
     this.errorMessage = '';
     this.showErrorMessage();
 
-    /** call Service loginUser and use values of username and password as array User. loginUser is of type User*/
     this.securityService.loginUser({username, password} as User)
       .subscribe(() => {
           this.isLoggedIn = true;

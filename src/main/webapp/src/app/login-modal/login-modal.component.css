@@ -1,34 +1,48 @@
-.container{
-    width:300px;
-}
-.form-group{
-    width:300px;
-    margin:0 auto;
-    color:#fff;
-    font-family:Montserrat,sans-serif;
-    font-weight: normal;
-    margin-bottom:0px;
-    margin-top:10px;
-}
-.form-control{
-   	border-radius:30px;
-    border:1px solid rgba(33,134,177);
-    width: 240px;
-    height:35px;
-    text-align:left;
-    font-size:10px;
-    color: rgba(33,134,177);
-    background-color:rgba(28,51,83);
+.container {
+  width: 300px;
 }
 
-.error-message{
-  word-wrap:break-word;
-  position:absolute;
-  opacity:1;
-  transition:opacity 1000ms;
-  color:#dc3545;
-  font-size:11pt;
-  margin-top:10px;
-  margin-right:10px;
-  margin-left:10px;
+.form-group {
+  width: 300px;
+  margin: 0 auto;
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-weight: normal;
+  margin-bottom: 0px;
+  margin-top: 10px;
+}
+
+.form-control {
+  border-radius: 30px;
+  border: 1px solid rgba(33, 134, 177, 100);
+  width: 240px;
+  height: 35px;
+  text-align: left;
+  font-size: 10px;
+  color: rgba(33, 134, 177);
+  background-color: rgba(17, 39, 66, 100);
+}
+
+.error-message {
+  word-wrap: break-word;
+  position: absolute;
+  opacity: 1;
+  transition: opacity 1000ms;
+  color: #dc3545;
+  font-size: 11pt;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.error-message-field {
+  position: relative;
+}
+
+.alert {
+  padding: 8px;
+}
+
+.alert-danger {
+  width: 240px;
 }

@@ -5,6 +5,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {SecurityService} from "./_services/security.service";
 import {DataService} from "./_services/data.service";
 import {ObjectType} from "./_domain-objects/objects";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ import {ObjectType} from "./_domain-objects/objects";
 })
 export class AppComponent implements OnInit {
 
-  public objectType: string = '';
+  static readonly DEFAULT_OBJECT_TYPE = ObjectType.STAR;
 
   constructor(
     private modalService: NgbModal,
@@ -23,12 +24,25 @@ export class AppComponent implements OnInit {
   ) {
   }
 
-  ngOnInit() {
+  public objectType: string = AppComponent.DEFAULT_OBJECT_TYPE;
+
+  searchForm: FormGroup;
+
+  ngOnInit() { // selectSearchTop
+    this.searchForm = new FormGroup({
+      searchTop: new FormControl(null, [
+        Validators.required
+      ]),
+      selectSearchTop: new FormControl()
+    });
+
+    this.searchForm.get('selectSearchTop').setValue(AppComponent.DEFAULT_OBJECT_TYPE)
+
   }
 
-  sendObject(objectName: string) {
+  initSearching(objectName: string) {
     objectName = objectName.trim();
-    let objectType: ObjectType = ObjectType.STAR;
+    let objectType: ObjectType = AppComponent.DEFAULT_OBJECT_TYPE;
 
     if (this.objectType === ObjectType.STAR) {
       objectType = ObjectType.STAR

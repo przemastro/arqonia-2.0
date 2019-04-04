@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,7 +23,7 @@ import { NewObservationModalComponent } from './new-observation-modal/new-observ
 import { EditObservationModalComponent } from './edit-observation-modal/edit-observation-modal.component';
 import { RemoveObservationModalComponent } from './remove-observation-modal/remove-observation-modal.component';
 import { TimeSeriesModalComponent } from './time-series-modal/time-series-modal.component';
-import {OAuthModule} from "angular-oauth2-oidc";
+import { OAuthModule } from "angular-oauth2-oidc";
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -60,6 +60,7 @@ import 'nvd3';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgbModule.forRoot(),
     OAuthModule.forRoot()
