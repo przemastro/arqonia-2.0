@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
   public objectType: string = AppComponent.DEFAULT_OBJECT_TYPE;
 
   searchForm: FormGroup;
+  searchedObject: string;
 
   ngOnInit() { // selectSearchTop
     this.searchForm = new FormGroup({
@@ -37,7 +38,11 @@ export class AppComponent implements OnInit {
     });
 
     this.searchForm.get('selectSearchTop').setValue(AppComponent.DEFAULT_OBJECT_TYPE)
+  }
 
+  setSearchedObject(searchedObject: string) {
+    this.searchedObject = searchedObject;
+    console.log("adamo searched = " + this.searchedObject)
   }
 
   initSearching(objectName: string) {

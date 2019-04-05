@@ -30,7 +30,6 @@ export class DataService {
     return this._searchData.asObservable();
   }
 
-  // TODO Add error handling e.g. for 404-Not-Found and so on...
   // TODO Investigate, why Enter on search doubles requests for data!?
   searchObject(object: ObjectInfo): Observable<any> {
     let data = this.getDataFromBackend(object);
@@ -38,16 +37,12 @@ export class DataService {
     //emit latest response
     data.subscribe(response => {
         this._searchData.next(response);
-
-        console.log('adamo success response = ' + response);
+      },
+      (error) => {
+        console.warn("Searching object: '" + JSON.stringify(object) + "' failed. " +
+          "Error details: '" + JSON.stringify(error) + "'");
       }
-      // (error) => {
-      //   // this._searchData.next(error);
-      //
-      //   console.warn('adamo failed response = ' + JSON.stringify(error));
-      //
-      // }
-      );
+    );
 
     return data;
   }

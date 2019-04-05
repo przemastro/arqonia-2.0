@@ -14,8 +14,8 @@ data class Comet(
         val magnitudeMag: CometValue<Double>,
         val slopeParameter: CometValue<Double>,
         val namePart1: CometValue<String>,
-        val namePart2: CometValue<String>?,
-        val namePart3: CometValue<String>?,
+        val namePart2: CometValue<String>,
+        val namePart3: CometValue<String>,
         val reference: CometValue<String>
 )
 

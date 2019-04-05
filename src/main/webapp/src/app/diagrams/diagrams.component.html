@@ -5,7 +5,6 @@
   <div class="inner-container">
     <div class="dashboard-container">
 
-
       <ngx-widget-grid *ngIf="(dataService.searchData | async).length" [rows]="rows" [columns]="cols" [highlightNextPosition]="highlightNextPosition"
                        #grid [showGrid]="showGrid" (gridFull)="onGridFull($event)"
                        (widgetPositionChange)="onWidgetChange($event)"
@@ -31,8 +30,8 @@
                       <tr>{{searchRecord.magnitudeMag.label}}</tr>
                       <tr>{{searchRecord.slopeParameter.label}}</tr>
                       <tr>{{searchRecord.namePart1.label}}</tr>
-                      <!--<tr>{{searchRecord.namePart2.label}}</tr>
-                      <tr>{{searchRecord.namePart3.label}}</tr> -->
+                      <tr>{{searchRecord.namePart2.label}}</tr>
+                      <tr>{{searchRecord.namePart3.label}}</tr>
                     </p>
                   </td>
                   <!--async pipe allows to use directly dataService-->
@@ -49,8 +48,8 @@
                     <tr style="height: 20px">{{searchRecord.magnitudeMag.value}}</tr>
                     <tr style="height: 20px">{{searchRecord.slopeParameter.value}}</tr>
                     <tr style="height: 20px">{{searchRecord.namePart1.value}}</tr>
-                    <!--<tr style="height: 20px">{{searchRecord.namePart2.value}}</tr>
-                    <tr style="height: 20px">{{searchRecord.namePart3.value}}</tr> -->
+                    <tr style="height: 20px">{{searchRecord.namePart2.value}}</tr>
+                    <tr style="height: 20px">{{searchRecord.namePart3.value}}</tr>
                   </td>
                 </table>
               </div>
@@ -113,34 +112,39 @@
             </div>
           </div>
         </ngx-widget>
-        <ngx-widget *ngFor="let widget of initSetup.widgets2;let $index = index;" [position]="widget" [movable]="editable"
-                    [resizable]="editable">
-          <div style="height:100%;width:100%; display:flex;">
-            <nvd3 style="fill:white;margin: 5 auto;" [options]="initSetup.options2" [data]="initSetup.data2"></nvd3>
-          </div>
-        </ngx-widget>
-        <ngx-widget *ngFor="let widget of initSetup.widgets3;let $index = index;" [position]="widget" [movable]="editable"
-                    [resizable]="editable">
-          <div style="height:100%;width:100%; display:flex;">
-            <nvd3 style="fill:white;" [options]="initSetup.options3" [data]="initSetup.data3"></nvd3>
-          </div>
-        </ngx-widget>
-        <ngx-widget *ngFor="let widget of initSetup.widgets4;let $index = index;" [position]="widget" [movable]="editable"
-                    [resizable]="editable">
-          <div style="height:100%;width:100%; display:flex;">
-            <nvd3 style="fill:white;" [options]="initSetup.options3" [data]="initSetup.data3"></nvd3>
-          </div>
-        </ngx-widget>
-        <ngx-widget *ngFor="let widget of initSetup.widgets5;let $index = index;" [position]="widget" [movable]="editable"
-                    [resizable]="editable">
-          <div style="height:100%;width:100%; display:flex;">
-            <nvd3 style="fill:white;" [options]="initSetup.options5" [data]="initSetup.data5"></nvd3>
-          </div>
-        </ngx-widget>
+        <!--<ngx-widget *ngFor="let widget of initSetup.widgets2;let $index = index;" [position]="widget" [movable]="editable"-->
+                    <!--[resizable]="editable">-->
+          <!--<div style="height:100%;width:100%; display:flex;">-->
+            <!--<nvd3 style="fill:white;margin: auto;" [options]="initSetup.options2" [data]="initSetup.data2"></nvd3>-->
+          <!--</div>-->
+        <!--</ngx-widget>-->
+        <!--<ngx-widget *ngFor="let widget of initSetup.widgets3;let $index = index;" [position]="widget" [movable]="editable"-->
+                    <!--[resizable]="editable">-->
+          <!--<div style="height:100%;width:100%; display:flex;">-->
+            <!--<nvd3 style="fill:white;" [options]="initSetup.options3" [data]="initSetup.data3"></nvd3>-->
+          <!--</div>-->
+        <!--</ngx-widget>-->
+        <!--<ngx-widget *ngFor="let widget of initSetup.widgets4;let $index = index;" [position]="widget" [movable]="editable"-->
+                    <!--[resizable]="editable">-->
+          <!--<div style="height:100%;width:100%; display:flex;">-->
+            <!--<nvd3 style="fill:white;" [options]="initSetup.options3" [data]="initSetup.data3"></nvd3>-->
+          <!--</div>-->
+        <!--</ngx-widget>-->
+        <!--<ngx-widget *ngFor="let widget of initSetup.widgets5;let $index = index;" [position]="widget" [movable]="editable"-->
+                    <!--[resizable]="editable">-->
+          <!--<div style="height:100%;width:100%; display:flex;">-->
+            <!--<nvd3 style="fill:white;" [options]="initSetup.options5" [data]="initSetup.data5"></nvd3>-->
+          <!--</div>-->
+        <!--</ngx-widget>-->
       </ngx-widget-grid>
 
       <div *ngIf="!( (dataService.searchData | async).length )">
-        Searched data not found. Please try again with different phrase.
+        <h3 class="text-center">
+          We did not find any results for object "{{appComponent.searchedObject}}".
+        </h3>
+        <p class="text-center" style="font-size: 20px;">
+          Please verify your search criteria and try again.
+        </p>
       </div>
 
     </div>

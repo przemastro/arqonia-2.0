@@ -25,7 +25,7 @@
 
               <input type="text" class="form-control" id="searchTop" formControlName="searchTop" placeholder="Search..."
                      required #object autofocus (keyup.enter)="keyupEnterSubmit.click()"
-                     (change)="keyupEnterSubmit.disabled=false">
+                     (change)="setSearchedObject($event.target.value)">
               <button type="submit" class="btn-search" routerLink="/diagrams" (click)="initSearching(object.value)"
                       [disabled]="!searchForm.valid" #keyupEnterSubmit>
                 <i class="glyphicon glyphicon-search"></i>
