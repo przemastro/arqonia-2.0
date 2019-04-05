@@ -40,13 +40,10 @@ export class AppComponent implements OnInit {
     this.searchForm.get('selectSearchTop').setValue(AppComponent.DEFAULT_OBJECT_TYPE)
   }
 
-  setSearchedObject(searchedObject: string) {
-    this.searchedObject = searchedObject;
-    console.log("adamo searched = " + this.searchedObject)
-  }
-
   initSearching(objectName: string) {
     objectName = objectName.trim();
+    this.searchedObject = objectName;
+
     let objectType: ObjectType = AppComponent.DEFAULT_OBJECT_TYPE;
 
     if (this.objectType === ObjectType.STAR) {
