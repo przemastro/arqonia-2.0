@@ -1,7 +1,7 @@
 <app-generic-modal title="SignUp">
   <div class="container">
     <form [formGroup]="signupForm"
-          (submit)="startRegisteringNewUser(username.value, email.value, password.value, confirmPassword.value);">
+          (submit)="startRegisteringNewUser(username.value, email.value, password.value, confirmPassword.value)">
       <div class="form-group">
         <input type="text" class="form-control" id="name" formControlName="name" placeholder="USERNAME" #username
                required autofocus>
