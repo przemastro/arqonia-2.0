@@ -2,14 +2,28 @@
   <button routerLink="/" type="button" class="close" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
+
+  <ngx-spinner
+    bdOpacity=0.9
+    bdColor="#333"
+    size="medium"
+    color="#fff"
+    type="ball-circus"
+    fullScreen="false"
+  >
+    <p style="color: white"> Loading... </p>
+  </ngx-spinner>
+
   <div class="inner-container">
     <div class="dashboard-container">
 
-      <ngx-widget-grid *ngIf="(dataService.searchData | async).length" [rows]="rows" [columns]="cols" [highlightNextPosition]="highlightNextPosition"
+      <ngx-widget-grid *ngIf="(dataService.searchData | async).length" [rows]="rows" [columns]="cols"
+                       [highlightNextPosition]="highlightNextPosition"
                        #grid [showGrid]="showGrid" (gridFull)="onGridFull($event)"
                        (widgetPositionChange)="onWidgetChange($event)"
                        style="height:93%;width:97%;margin-top:-15px">
-        <ngx-widget *ngFor="let widget of initSetup.widgets;let $index = index;" [position]="widget" [movable]="editable"
+        <ngx-widget *ngFor="let widget of initSetup.widgets;let $index = index;" [position]="widget"
+                    [movable]="editable"
                     [resizable]="editable">
           <div style="height:100%;width:100%; display:flex;">
             <div class="search-result">
@@ -113,28 +127,28 @@
           </div>
         </ngx-widget>
         <!--<ngx-widget *ngFor="let widget of initSetup.widgets2;let $index = index;" [position]="widget" [movable]="editable"-->
-                    <!--[resizable]="editable">-->
-          <!--<div style="height:100%;width:100%; display:flex;">-->
-            <!--<nvd3 style="fill:white;margin: auto;" [options]="initSetup.options2" [data]="initSetup.data2"></nvd3>-->
-          <!--</div>-->
+        <!--[resizable]="editable">-->
+        <!--<div style="height:100%;width:100%; display:flex;">-->
+        <!--<nvd3 style="fill:white;margin: auto;" [options]="initSetup.options2" [data]="initSetup.data2"></nvd3>-->
+        <!--</div>-->
         <!--</ngx-widget>-->
         <!--<ngx-widget *ngFor="let widget of initSetup.widgets3;let $index = index;" [position]="widget" [movable]="editable"-->
-                    <!--[resizable]="editable">-->
-          <!--<div style="height:100%;width:100%; display:flex;">-->
-            <!--<nvd3 style="fill:white;" [options]="initSetup.options3" [data]="initSetup.data3"></nvd3>-->
-          <!--</div>-->
+        <!--[resizable]="editable">-->
+        <!--<div style="height:100%;width:100%; display:flex;">-->
+        <!--<nvd3 style="fill:white;" [options]="initSetup.options3" [data]="initSetup.data3"></nvd3>-->
+        <!--</div>-->
         <!--</ngx-widget>-->
         <!--<ngx-widget *ngFor="let widget of initSetup.widgets4;let $index = index;" [position]="widget" [movable]="editable"-->
-                    <!--[resizable]="editable">-->
-          <!--<div style="height:100%;width:100%; display:flex;">-->
-            <!--<nvd3 style="fill:white;" [options]="initSetup.options3" [data]="initSetup.data3"></nvd3>-->
-          <!--</div>-->
+        <!--[resizable]="editable">-->
+        <!--<div style="height:100%;width:100%; display:flex;">-->
+        <!--<nvd3 style="fill:white;" [options]="initSetup.options3" [data]="initSetup.data3"></nvd3>-->
+        <!--</div>-->
         <!--</ngx-widget>-->
         <!--<ngx-widget *ngFor="let widget of initSetup.widgets5;let $index = index;" [position]="widget" [movable]="editable"-->
-                    <!--[resizable]="editable">-->
-          <!--<div style="height:100%;width:100%; display:flex;">-->
-            <!--<nvd3 style="fill:white;" [options]="initSetup.options5" [data]="initSetup.data5"></nvd3>-->
-          <!--</div>-->
+        <!--[resizable]="editable">-->
+        <!--<div style="height:100%;width:100%; display:flex;">-->
+        <!--<nvd3 style="fill:white;" [options]="initSetup.options5" [data]="initSetup.data5"></nvd3>-->
+        <!--</div>-->
         <!--</ngx-widget>-->
       </ngx-widget-grid>
 

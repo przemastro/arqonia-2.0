@@ -4,6 +4,7 @@ import {DataService} from "../_services/data.service";
 import {AppComponent} from "../app.component";
 // @ts-ignore
 import {WidgetsSetup} from "./config/widgets.setup";
+import { NgxSpinnerService } from 'ngx-spinner';
 
 declare let d3: any;
 
@@ -21,7 +22,8 @@ export class DiagramsComponent implements OnInit {
 
   constructor(private dataService: DataService,
               private appComponent: AppComponent,
-              private widgetsSetup: WidgetsSetup) {
+              private widgetsSetup: WidgetsSetup,
+              private spinner: NgxSpinnerService) {
   }
 
   public initSetup = this.widgetsSetup;
@@ -51,6 +53,13 @@ export class DiagramsComponent implements OnInit {
   }
 
   ngOnInit() {
+    /** spinner starts on init */
+    this.spinner.show();
+
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 5000);
   }
 
   toggleHighlight(doHighlight: boolean) {

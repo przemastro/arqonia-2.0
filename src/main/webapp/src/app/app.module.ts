@@ -24,6 +24,7 @@ import {EditObservationModalComponent} from './edit-observation-modal/edit-obser
 import {RemoveObservationModalComponent} from './remove-observation-modal/remove-observation-modal.component';
 import {TimeSeriesModalComponent} from './time-series-modal/time-series-modal.component';
 import {OAuthModule} from "angular-oauth2-oidc";
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import {HttpClientModule} from '@angular/common/http';
 
@@ -63,7 +64,8 @@ import 'nvd3';
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule.forRoot(),
-    OAuthModule.forRoot()
+    OAuthModule.forRoot(),
+    NgxSpinnerModule
   ],
   providers: [NgbActiveModal],
   bootstrap: [AppComponent],
