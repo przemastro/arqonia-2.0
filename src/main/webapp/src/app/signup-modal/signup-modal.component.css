@@ -23,6 +23,11 @@
   background-color: rgba(17, 39, 66, 100);
 }
 
+.button-additional {
+  position: relative;
+  top: 60px;
+}
+
 .error-message {
   word-wrap: break-word;
   position: absolute;
