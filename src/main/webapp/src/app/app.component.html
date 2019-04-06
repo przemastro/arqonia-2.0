@@ -15,7 +15,7 @@
       <div class="form-group">
         <div class="form">
           <div class="input-group-append">
-            <form class="form-inline" [formGroup]="searchForm">
+            <form class="form-inline" [formGroup]="searchForm" (submit)="initSearching(object.value)">
               <select class="one_full select-top-search" (change)="selectObjectType($event)"
                       formControlName="selectSearchTop" required
                       id="objectType">
@@ -25,9 +25,8 @@
               </select>
 
               <input type="text" class="form-control" id="searchTop" formControlName="searchTop" placeholder="Search..."
-                     required #object autofocus (keyup.enter)="keyupEnterSubmit.click()">
-              <button type="submit" class="btn-search" routerLink="/diagrams" (click)="initSearching(object.value)"
-                      [disabled]="!searchForm.valid" #keyupEnterSubmit>
+                     required #object autofocus>
+              <button type="submit" class="btn-search" routerLink="/diagrams" [disabled]="!searchForm.valid">
                 <i class="glyphicon glyphicon-search"></i>
               </button>
             </form>
