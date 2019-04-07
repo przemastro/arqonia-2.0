@@ -1,3 +1,4 @@
+
 <div class="main-container">
   <div class="header">
     <div class="top-left-menu">
@@ -14,23 +15,23 @@
       </div>
       <div class="form-group">
         <div class="form">
-          <div class="input-group-append">
+          <div class="input-group-append" style="margin-top:-20px">
 
             <select class="one_full" (change)="selectObjectType($event)" style="border-top-left-radius:30px;border-bottom-left-radius:30px;width:90px;height:30px;
                            background-color:rgb(33, 134, 177);text-align-last:center; -webkit-appearance: none;
     -moz-appearance: none;
     text-indent: 1px;
     text-overflow: '';border-color:rgb(33, 134, 177);border-width:1px;border-right-width:0px;font-family:Montserrat,sans-serif;
-    font-weight: normal;" id="objectType">
+    font-weight: normal;z-index: 100" id="objectType">
               <option class="defualt-text">-- Select --</option>
               <option value="star">Star</option>
               <option value="planetoid">Planetoid</option>
               <option value="comet">Comet</option>
             </select>
 
-            <input type="text" class="form-control" id="search-top" placeholder="Search..."
+            <input type="text" style="z-index: 100" class="form-control" id="search-top" placeholder="Search..."
                    required #object>
-            <button (click)="sendObject(object.value)" routerLink="/diagrams" class="btn-search" type="submit">
+            <button (click)="sendObject(object.value)" style="z-index: 100" routerLink="/diagrams" class="btn-search" type="submit">
               <i class="glyphicon glyphicon-search"></i>
             </button>
           </div>
@@ -38,12 +39,12 @@
       </div>
     </div>
     <div class="top-right-menu">
-         <span *ngIf="!checkIfIsLoggedIn()"><a class="btn" style="width:80px;height:30px" href="javascript:void(0);" (click)="openLogin()">LOGIN</a></span>
-      <span *ngIf="checkIfIsLoggedIn()"><a class="btn" style="width:80px;height:30px" href="javascript:void(0);" (click)="logout()">LOGOUT</a></span>
-      <span><a class="btn" style="width:80px;height:30px" href="javascript:void(0);" (click)="openSignup()">SIGNUP</a></span>
+         <span *ngIf="!checkIfIsLoggedIn()"><a class="btn" style="position: relative;width:80px;height:30px;z-index: 100;margin-top:-28px" href="javascript:void(0);" (click)="openLogin()">LOGIN</a></span>
+      <span *ngIf="checkIfIsLoggedIn()"><a class="btn" style="position: relative;width:80px;height:30px;z-index: 100;margin-top:-28px" href="javascript:void(0);" (click)="logout()">LOGOUT</a></span>
+      <span><a class="btn" style="position: relative;width:80px;height:30px;z-index: 100;margin-top:-28px" href="javascript:void(0);" (click)="openSignup()">SIGNUP</a></span>
 
       <div class="buttons">
-        <button type="button" class =" zoom-out btn btn-default" style="width:35px;height:30px">
+        <button type="button" class =" zoom-out btn btn-default" style="width:35px;height:30px;">
           <span class="glyphicon glyphicon-minus" style="margin-top:-10px;margin-left:0px"></span>
         </button>
         <button type="button" class =" zoom-in btn btn-default" style="width:35px;height:30px;margin-top:8px">
@@ -81,14 +82,6 @@
         FILTERS
       </button>
       <div class="dropdown-menu" style="background-color:rgba(28,51,83);height:345px">
-        <div class="zoom">
-          <div>
-            <div class="section">
-              <span class="name">ZOOM</span>
-              <input type="range" min="1" max="100" value="50" class="slider" id="zoom">
-            </div>
-          </div>
-        </div>
         <div class="object-filters">
           <div>
             <div class="section" id="stars-div">
