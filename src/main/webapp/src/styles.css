@@ -186,39 +186,7 @@ a:hover{
     from {background-position:0 0;}
     to {background-position:-10000px 5000px;}
 }
-.stars, .twinkling {
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  width:100%;
-  height:100%;
-  display:block;
-}
-.stars {
-    background:#000 url("./assets/images/stars.png") repeat top center;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    z-index:-1;
-}
-.twinkling{
-    background:transparent url("./assets/images/twinkling.png") repeat top center;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    z-index:-1;
-    -moz-animation:move-twink-back 500s linear infinite;
-    -ms-animation:move-twink-back 500s linear infinite;
-    -o-animation:move-twink-back 500s linear infinite;
-    -webkit-animation:move-twink-back 500s linear infinite;
-    animation:move-twink-back 500s linear infinite;
-}
+
 
 /* middle section */
 .close span{
