@@ -24,14 +24,16 @@ import {EditObservationModalComponent} from './edit-observation-modal/edit-obser
 import {RemoveObservationModalComponent} from './remove-observation-modal/remove-observation-modal.component';
 import {TimeSeriesModalComponent} from './time-series-modal/time-series-modal.component';
 import {OAuthModule} from "angular-oauth2-oidc";
-import { NgxSpinnerModule } from 'ngx-spinner';
+import {NgxSpinnerModule, NgxSpinnerService} from 'ngx-spinner';
 
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import {NvD3Module} from 'ng2-nvd3';
 import {NgxWidgetGridModule} from 'ngx-widget-grid';
 import 'd3';
 import 'nvd3';
+import {SpinnerInterceptor} from "./_interceptors/loading.interceptor";
+import {LoadingService} from "./_services/loading.service";
 
 
 @NgModule({
@@ -67,7 +69,15 @@ import 'nvd3';
     OAuthModule.forRoot(),
     NgxSpinnerModule
   ],
-  providers: [NgbActiveModal],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SpinnerInterceptor,
+      multi: true
+    },
+    NgxSpinnerService,
+    NgbActiveModal
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
     LoginModalComponent,

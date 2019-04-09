@@ -45,7 +45,6 @@ export class AppComponent implements OnInit {
   initSearching(objectName: string) {
     objectName = objectName.trim();
     this.searchedObject = objectName;
-    this.spinner.show();
 
     let objectType: ObjectType = AppComponent.DEFAULT_OBJECT_TYPE;
 

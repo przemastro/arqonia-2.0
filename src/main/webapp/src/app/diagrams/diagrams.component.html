@@ -4,15 +4,13 @@
   </button>
 
   <ngx-spinner
-    name="searchSpinner"
-    bdOpacity=0.9
     bdColor="#000000"
     size="medium"
     color="#fff"
     type="ball-circus"
     fullScreen="false"
   >
-    <p style="color: white"> Loading... </p>
+    <p style="color: white"> Searching object... </p>
   </ngx-spinner>
 
   <div class="inner-container">
@@ -154,7 +152,7 @@
       </ngx-widget-grid>
 
       <div *ngIf="!( (dataService.searchData | async).length )">
-        <h3 class="text-center" (loadeddata)="turnOffSpinner()">
+        <h3 class="text-center">
           We did not find any results for object "{{appComponent.searchedObject}}".
         </h3>
         <p class="text-center" style="font-size: 15px;">

@@ -7,14 +7,15 @@ import {ObjectInfo} from "../_domain-objects/objects";
 import {List} from 'immutable';
 import 'rxjs/add/operator/share'
 import 'rxjs/add/operator/publishLast'
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Injectable()
 export class DataService {
 
   flag: boolean;
 
-  constructor(
-    private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private spinner: NgxSpinnerService) {
   }
 
   object: any = [];
