@@ -6,6 +6,7 @@ import {SecurityService} from "./_services/security.service";
 import {DataService} from "./_services/data.service";
 import {ObjectType} from "./_domain-objects/objects";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ export class AppComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private dataService: DataService,
-    private securityService: SecurityService
+    private securityService: SecurityService,
+    private spinner: NgxSpinnerService
   ) {
   }
 
@@ -43,6 +45,7 @@ export class AppComponent implements OnInit {
   initSearching(objectName: string) {
     objectName = objectName.trim();
     this.searchedObject = objectName;
+    this.spinner.show();
 
     let objectType: ObjectType = AppComponent.DEFAULT_OBJECT_TYPE;
 

@@ -62,6 +62,10 @@ export class DiagramsComponent implements OnInit {
     }, 5000);
   }
 
+  turnOffSpinner() {
+    this.spinner.hide();
+  }
+
   toggleHighlight(doHighlight: boolean) {
     this.highlightNextPosition = !!doHighlight;
   }
