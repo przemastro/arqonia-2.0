@@ -15,12 +15,13 @@
       <div class="form-group">
         <div class="form">
           <div class="input-group-append">
-            <form class="form-inline" [formGroup]="searchForm" (submit)="initSearching(object.value)">
-              <select class="one_full select-top-search" (change)="selectObjectType($event)"
-                      formControlName="selectSearchTop" required
+            <form class="form-inline" [formGroup]="searchForm"
+                  (submit)="initSearching(object.value, selectSearchTop.value)">
+              <select class="one_full select-top-search"
+                      formControlName="selectSearchTop" required #selectSearchTop
                       id="objectType">
                 <option value="star">Star</option>
-                <option value="planetoid">Planetoid</option>
+                <!--<option value="planetoid">Planetoid</option>-->
                 <option value="comet">Comet</option>
               </select>
 

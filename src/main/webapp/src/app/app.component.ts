@@ -1,12 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {LoginModalComponent} from './login-modal/login-modal.component';
 import {SignupModalComponent} from './signup-modal/signup-modal.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {SecurityService} from "./_services/security.service";
 import {DataService} from "./_services/data.service";
-import {ObjectType} from "./_domain-objects/objects";
+import {ObjectInfo, ObjectType} from "./_domain-objects/objects";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-root',
@@ -16,17 +15,15 @@ import {NgxSpinnerService} from "ngx-spinner";
 })
 export class AppComponent implements OnInit {
 
-  static readonly DEFAULT_OBJECT_TYPE = ObjectType.STAR;
+  DEFAULT_OBJECT_TYPE: ObjectType = ObjectType.STAR;
 
   constructor(
     private modalService: NgbModal,
     private dataService: DataService,
-    private securityService: SecurityService,
-    private spinner: NgxSpinnerService
-  ) {
+    private securityService: SecurityService) {
   }
 
-  public objectType: string = AppComponent.DEFAULT_OBJECT_TYPE;
+  public objectType: string = this.DEFAULT_OBJECT_TYPE;
 
   searchForm: FormGroup;
   searchedObject: string;
@@ -39,28 +36,16 @@ export class AppComponent implements OnInit {
       selectSearchTop: new FormControl()
     });
 
-    this.searchForm.get('selectSearchTop').setValue(AppComponent.DEFAULT_OBJECT_TYPE)
+    this.searchForm.get('selectSearchTop').setValue(this.DEFAULT_OBJECT_TYPE)
   }
 
-  initSearching(objectName: string) {
+  initSearching(objectName: string, innerObjectType: string) {
     objectName = objectName.trim();
+
     this.searchedObject = objectName;
+    this.objectType = innerObjectType;
 
-    let objectType: ObjectType = AppComponent.DEFAULT_OBJECT_TYPE;
-
-    if (this.objectType === ObjectType.STAR) {
-      objectType = ObjectType.STAR
-    } else if (this.objectType === ObjectType.COMET) {
-      objectType = ObjectType.COMET
-    } else if (this.objectType === ObjectType.PLANETOID) {
-      objectType = ObjectType.PLANETOID
-    }
-
-    this.dataService.searchObject({objectName, objectType});
-  }
-
-  selectObjectType(event: any) {
-    this.objectType = event.target.value;
+    this.dataService.searchObject(new ObjectInfo(objectName, innerObjectType as ObjectType));
   }
 
   logout() {

@@ -66,26 +66,26 @@
                   </td>
                 </table>
               </div>
-              <div *ngIf="appComponent.objectType=='planetoid'">
-                <b>Category: Planetoid</b>
-                <table class="table table-striped table-sm">
-                  <td>
-                    <tr *ngFor="let head of headPlanetoidElements">{{head}}</tr>
-                  </td>
-                  <tr *ngFor="let searchRecord of dataService.searchData | async">
-                    <td>{{searchRecord.Catalog}}</td>
-                    <td>{{searchRecord.ObjectName}}</td>
-                    <td>{{searchRecord.ObjectType}}</td>
-                    <td>{{searchRecord.Date}}</td>
-                    <td>{{searchRecord.e}}</td>
-                    <td>{{searchRecord.omega}}</td>
-                    <td>{{searchRecord.L}}</td>
-                    <td>{{searchRecord.I}}</td>
-                    <td>{{searchRecord.EpochDate}}</td>
-                    <td>{{searchRecord.Mag}}</td>
-                  </tr>
-                </table>
-              </div>
+              <!--<div *ngIf="objectType=='planetoid'">-->
+                <!--<b>Category: Planetoid</b>-->
+                <!--<table class="table table-striped table-sm">-->
+                  <!--<td>-->
+                    <!--<tr *ngFor="let head of headPlanetoidElements">{{head}}</tr>-->
+                  <!--</td>-->
+                  <!--<tr *ngFor="let searchRecord of dataService.searchData | async">-->
+                    <!--<td>{{searchRecord.Catalog}}</td>-->
+                    <!--<td>{{searchRecord.ObjectName}}</td>-->
+                    <!--<td>{{searchRecord.ObjectType}}</td>-->
+                    <!--<td>{{searchRecord.Date}}</td>-->
+                    <!--<td>{{searchRecord.e}}</td>-->
+                    <!--<td>{{searchRecord.omega}}</td>-->
+                    <!--<td>{{searchRecord.L}}</td>-->
+                    <!--<td>{{searchRecord.I}}</td>-->
+                    <!--<td>{{searchRecord.EpochDate}}</td>-->
+                    <!--<td>{{searchRecord.Mag}}</td>-->
+                  <!--</tr>-->
+                <!--</table>-->
+              <!--</div>-->
               <div *ngIf="appComponent.objectType=='star'">
                 <b>Category: Star</b>
                 <div *ngFor="let searchRecord of dataService.searchData | async">

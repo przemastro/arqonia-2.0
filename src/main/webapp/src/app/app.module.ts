@@ -32,9 +32,7 @@ import {NvD3Module} from 'ng2-nvd3';
 import {NgxWidgetGridModule} from 'ngx-widget-grid';
 import 'd3';
 import 'nvd3';
-import {SpinnerInterceptor} from "./_interceptors/loading.interceptor";
-import {LoadingService} from "./_services/loading.service";
-
+import {SpinnerInterceptor} from "./_interceptors/spinner.interceptor";
 
 @NgModule({
   declarations: [
