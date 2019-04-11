@@ -15,19 +15,19 @@
       <div class="form-group">
         <div class="form">
           <div class="input-group-append">
-            <form class="form-inline" [formGroup]="searchForm">
-              <select class="one_full select-top-search" (change)="selectObjectType($event)" formControlName="selectSearchTop" required
+            <form class="form-inline" [formGroup]="searchForm"
+                  (submit)="initSearching(object.value, selectSearchTop.value)">
+              <select class="one_full select-top-search"
+                      formControlName="selectSearchTop" required #selectSearchTop
                       id="objectType">
                 <option value="star">Star</option>
-                <option value="planetoid">Planetoid</option>
+                <!--<option value="planetoid">Planetoid</option>-->
                 <option value="comet">Comet</option>
               </select>
 
               <input type="text" class="form-control" id="searchTop" formControlName="searchTop" placeholder="Search..."
-                     required #object autofocus (keyup.enter)="keyupEnterSubmit.click()"
-                     (change)="keyupEnterSubmit.disabled=false">
-              <button type="submit" class="btn-search" routerLink="/diagrams" (click)="initSearching(object.value)"
-                      [disabled]="!searchForm.valid" #keyupEnterSubmit>
+                     required #object autofocus>
+              <button type="submit" class="btn-search" routerLink="/diagrams" [disabled]="!searchForm.valid">
                 <i class="glyphicon glyphicon-search"></i>
               </button>
             </form>

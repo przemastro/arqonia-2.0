@@ -13,42 +13,56 @@ class StarService(
         private val vizierQueries: VizierQueriesConfig
 ) {
 
-    fun getStarsData(objectName: String) =
-            simbadClient.getAllIdentifiers(objectName)
-                    .flatMap { ids ->
+    fun getStarsData(objectName: String): Flux<StarDetails> {
+        return  simbadClient.getAllIdentifiers(objectName)
+                .flatMap { ids ->
+                    if (ids.data.isEmpty()) {
+                        Mono.empty()
+                    } else {
                         Mono.fromCallable {
                             ids.data
                                     .flatten()
-                                    .filter { vizierQueries.queries.keys.contains(it.substringBefore(" ")) }
+                                    .filter {
+                                        vizierQueries.queries.keys.contains(it.substringBefore(" "))
+                                    }
                         }
                     }
-                    .flatMapMany {ids ->
+                }
+                .flatMapMany {idsList ->
+                    if (idsList.isEmpty()) {
+                        Flux.empty()
+                    } else {
                         Flux.zip(
-                                vizierClient.getObjectDetails(paramsForCatalog(SAO, ids)),
-                                vizierClient.getObjectDetails(paramsForCatalog(HIP, ids)),
-                                vizierClient.getObjectDetails(paramsForCatalog(TYC, ids)),
-                                vizierClient.getObjectDetails(paramsForCatalog(HD, ids)),
-                                vizierClient.getObjectDetails(paramsForCatalog(HR, ids)),
-                                vizierClient.getObjectDetails(paramsForCatalog(GC, ids))
+                                vizierClient.getObjectDetails(paramsForCatalog(SAO, idsList)),
+                                vizierClient.getObjectDetails(paramsForCatalog(HIP, idsList)),
+                                vizierClient.getObjectDetails(paramsForCatalog(TYC, idsList)),
+                                vizierClient.getObjectDetails(paramsForCatalog(HD, idsList)),
+                                vizierClient.getObjectDetails(paramsForCatalog(HR, idsList)),
+                                vizierClient.getObjectDetails(paramsForCatalog(GC, idsList))
                         )
-                                .map { ids ->
+                                .map { idsTuple ->
                                     listOf(
-                                            StarDetails.fromMap(SAO, ids.t1),
-                                            StarDetails.fromMap(HIP, ids.t2),
-                                            StarDetails.fromMap(TYC, ids.t3),
-                                            StarDetails.fromMap(HD, ids.t4),
-                                            StarDetails.fromMap(HR, ids.t5),
-                                            StarDetails.fromMap(GC, ids.t6)
+                                            StarDetails.fromMap(SAO, idsTuple.t1),
+                                            StarDetails.fromMap(HIP, idsTuple.t2),
+                                            StarDetails.fromMap(TYC, idsTuple.t3),
+                                            StarDetails.fromMap(HD, idsTuple.t4),
+                                            StarDetails.fromMap(HR, idsTuple.t5),
+                                            StarDetails.fromMap(GC, idsTuple.t6)
                                     )
                                 }
                                 .flatMapIterable { it }
                     }
+                }
+    }
 
     private val paramsForCatalog = { catalog: SelectedCatalogsEnum, ids: List<String> ->
                 Pair(vizierQueries.queries.getValue(catalog.name), extractRawId(ids, catalog.name)) }
 
     private fun extractRawId(ids: List<String>, searchedId: String) =
-            with(ids.first { it.contains(searchedId) }.substringAfter(" ")) {
+            with(ids
+                    .first { it.contains(searchedId) }
+                    .substringAfter(" ")
+            ) {
                 if (searchedId == TYC.name)
                     split("-").let { "${it[0]}  ${it[1]} ${it[2]}" }
                 else

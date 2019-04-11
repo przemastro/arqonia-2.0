@@ -30,14 +30,14 @@ class RestResponseEntityExceptionHandler : ResponseEntityExceptionHandler() {
 }
 
 data class ExceptionResponse(
-        val timestamp: Long,
+        val timestamp: Instant,
         val message: String,
         val details: String,
         val httpCodeMessage: String) {
 
     companion object {
         fun fromWebRequest(request: WebRequest, errorMessage: String, status: HttpStatus) = ExceptionResponse(
-                Instant.now().toEpochMilli(),
+                Instant.now(),
                 errorMessage,
                 request.getDescription(false),
                 status.reasonPhrase

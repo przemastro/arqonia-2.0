@@ -1,23 +1,25 @@
 import {Injectable} from '@angular/core';
-import {AsyncSubject, BehaviorSubject, ReplaySubject} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {BehaviorSubject} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {Environment} from '../environment';
 import {ObjectInfo} from "../_domain-objects/objects";
 import {List} from 'immutable';
 import 'rxjs/add/operator/share'
 import 'rxjs/add/operator/publishLast'
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Injectable()
 export class DataService {
 
-flag:boolean;
+  flag: boolean;
 
-constructor(
-  private http: HttpClient){}
+  constructor(private http: HttpClient,
+              private spinner: NgxSpinnerService) {
+  }
 
-  object:any = [];
-  objectName:string = '';
+  object: any = [];
+  objectName: string = '';
 
   private apiUrl = Environment.baseUrl;
 
@@ -29,24 +31,30 @@ constructor(
     return this._searchData.asObservable();
   }
 
+  // TODO Investigate, why Enter on search doubles requests for data!?
   searchObject(object: ObjectInfo): Observable<any> {
     let data = this.getDataFromBackend(object);
 
     //emit latest response
     data.subscribe(response => {
-      this._searchData.next(response);
-    });
+        this._searchData.next(response);
+      },
+      (error) => {
+        console.warn("Searching object: '" + JSON.stringify(object) + "' failed. " +
+          "Error details: '" + JSON.stringify(error) + "'");
+      }
+    );
 
     return data;
   }
 
   private getDataFromBackend(object: ObjectInfo): Observable<any> {
     let formData = [object].map(object => "objectName=" + object.objectName + "&objectType=" + object.objectType).pop();
-  
+
     return this.http.post(`${this.apiUrl}/search`, formData, {
-        responseType: 'json',
-        headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
-      }).share();
+      responseType: 'json',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+    }).share();
   }
 }
 

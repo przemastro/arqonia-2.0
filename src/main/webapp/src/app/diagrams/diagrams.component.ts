@@ -1,5 +1,5 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {NgxWidgetGridComponent, Rectangle, WidgetPositionChange} from 'ngx-widget-grid';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {NgxWidgetGridComponent, WidgetPositionChange} from 'ngx-widget-grid';
 import {DataService} from "../_services/data.service";
 import {AppComponent} from "../app.component";
 // @ts-ignore
@@ -17,6 +17,7 @@ export class DiagramsComponent implements OnInit {
 
   /** Some initial data and frame for Search table */
   message: string;
+  @Input()
   objectType: string;
 
   constructor(private dataService: DataService,
@@ -50,8 +51,7 @@ export class DiagramsComponent implements OnInit {
     return this._editable;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   toggleHighlight(doHighlight: boolean) {
     this.highlightNextPosition = !!doHighlight;
@@ -109,4 +109,5 @@ export class DiagramsComponent implements OnInit {
   public onGridFull(e) {
     console.log(e);
   }
+
 }

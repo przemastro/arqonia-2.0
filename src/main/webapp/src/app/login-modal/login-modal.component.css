@@ -19,8 +19,13 @@
   height: 35px;
   text-align: left;
   font-size: 10px;
-  color: rgba(33, 134, 177);
+  color: #f0f1f3;
   background-color: rgba(17, 39, 66, 100);
+}
+
+.button-additional {
+  position: relative;
+  top: 80px;
 }
 
 .error-message {

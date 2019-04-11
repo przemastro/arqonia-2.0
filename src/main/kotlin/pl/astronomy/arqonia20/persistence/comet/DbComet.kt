@@ -39,9 +39,9 @@ data class DbComet @PersistenceConstructor constructor(
             CometValue(epochDate, "Epoch Date"),
             CometValue(magnitudeMag, "Mag"),
             CometValue(slopeParameter, "Slope parameter"),
-            CometValue(namePart1, "Object Name"),
-            namePart2?.let { CometValue(namePart2,"Object Name") },
-            namePart3?.let { CometValue(namePart3, "Object Name") },
+            CometValue(namePart1, "Object Name (1)"),
+            CometValue(namePart2 ?: "","Object Name (2)") ,
+            CometValue(namePart3 ?: "","Object Name (3)") ,
             CometValue(reference, "Catalog")
     )
 }

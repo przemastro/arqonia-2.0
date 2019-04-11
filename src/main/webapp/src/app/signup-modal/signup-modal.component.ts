@@ -73,7 +73,7 @@ export class SignupModalComponent implements OnInit {
             console.log('Registering new user: ' + user);
           },
           (error) => {
-            switch (error.status){
+            switch (error.status) {
               case 409 : {
                 this.errorMessage = "User with name: '" + username + "' already exists.";
                 break;

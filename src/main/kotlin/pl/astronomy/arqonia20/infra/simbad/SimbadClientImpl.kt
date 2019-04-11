@@ -10,7 +10,6 @@ import org.springframework.util.MultiValueMap
 import org.springframework.web.reactive.function.BodyInserters
 import org.springframework.web.reactive.function.client.WebClient
 import pl.astronomy.arqonia20.domain.star.SimbadClient
-import pl.astronomy.arqonia20.exceptions.AllIdentifiersNotFoundException
 import pl.astronomy.arqonia20.exceptions.SimbadClientException
 import pl.astronomy.arqonia20.logger
 import reactor.core.publisher.Mono
@@ -35,11 +34,6 @@ class SimbadClientImpl(
                         Mono.error(SimbadClientException(it.statusCode()))
                     }
                     .bodyToMono(AllIdentifiers::class.java)
-                    .doOnSuccess { identifiers ->
-                        if (identifiers.data.isEmpty()) {
-                            throw AllIdentifiersNotFoundException(HttpStatus.NOT_FOUND,  objectName)
-                        }
-                    }
 
     private fun formData(objectName: String): MultiValueMap<String, String> {
         val formData: MultiValueMap<String, String> = LinkedMultiValueMap<String, String>()
