@@ -39,7 +39,7 @@ function enableFarView (scale, withAnim) {
   isFarView = true;
 
   //Scale change animation
-  var scaleFrom = {zoom:-50};
+  var scaleFrom = {zoom:150};
   var scaleTo = {zoom:500};
   if(withAnim) {
 
@@ -48,7 +48,12 @@ function enableFarView (scale, withAnim) {
     ArqoniaMap.tween = new TWEEN.Tween(scaleFrom, {override:true}).to(scaleTo, 500)
       .start()
       .onUpdate(function () {
-        obj.Galaxy.milkyway[1].material.size = scaleFrom.zoom*4;
+        setTimeout(
+          function() 
+          {
+            obj.Galaxy.milkyway[1].material.size = scaleFrom.zoom*4;
+          }, 1000);
+        //obj.Galaxy.milkyway[1].material.size = scaleFrom.zoom*4;
       });
 
   } else {
@@ -79,7 +84,12 @@ function disableFarView(withAnim) {
     ArqoniaMap.tween = new TWEEN.Tween(scaleFrom, {override:true}).to(scaleTo, 500)
       .start()
       .onUpdate(function () {
-        obj.Galaxy.milkyway[1].material.size = scaleFrom.zoom;
+        setTimeout(
+          function() 
+          {
+            obj.Galaxy.milkyway[1].material.size = scaleFrom.zoom;
+          }, 1000);
+        //obj.Galaxy.milkyway[1].material.size = scaleFrom.zoom;
       });
 
   } else {

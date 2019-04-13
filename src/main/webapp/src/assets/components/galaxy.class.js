@@ -104,90 +104,58 @@ var Galaxy = {
 
   },
 
+
   'createCanvasAndLoadData' : function(img, obj) {
 
-    var particlesBig = new THREE.Geometry;
-
-    //Get pixels from milkyway image
-
+    
     var canvas = document.createElement( 'canvas' );
     canvas.width = img.width;
     canvas.height = img.height;
     var context = canvas.getContext( '2d' );
-
     context.drawImage(img,0,0);
+    this.loadDataFromFile(obj);
+  },
 
-    var imgd = context.getImageData(0, 0, img.width, img.height);
-    var pix = imgd.data;
-    console.log(pix.length);
-
-    //Build galaxy from image data
-
-    var min = 15;
-    var maxDensity = 35;
-    //adjust stars dispersion to image size
-    var scaleImg = 8.8;
-
-    var colorsBig = [];
-    var nbBig = 0;
-
-    for (var i = 0; i<pix.length; i += 20) {
-
-      if(Math.random() > 0.5) i += 8;
-
-      var avg = Math.round((pix[i]+pix[i+1]+pix[i+2])/3);
-      if(avg>min) {
-
-        var x = scaleImg*((i / 4) % img.width);
-        var z = scaleImg*(Math.floor((i / 4) / img.height));
-
-        var density = Math.floor((pix[i]-min)/10);
-        if(density>maxDensity) density = maxDensity;
-
-        var add = Math.ceil(density/maxDensity*2);
-        for (var y = -density; y < density; y = y+add) {
-
-          var particle = new THREE.Vector3(
-            x+((Math.random()-0.5) * 25),
-            (y*10)+((Math.random()-0.5) * 50),
-            z+((Math.random()-0.5) * 25)
-          );
-
-          //Particle color from pixel
-
-          var r = Math.round(pix[i]);
-          var g = Math.round(pix[i+1]);
-          var b = Math.round(pix[i+2]);
-
-          if(density>=2 && Math.abs(y)-1==0 &&  Math.random() * 1000 < 200) {
-            particlesBig.vertices.push(particle);
-            colorsBig[nbBig] = new THREE.Color("rgb("+r+", "+g+", "+b+")");
-            nbBig++;
-
-          } 
-        };
+  'loadDataFromFile' : function(obj) {
+    $.when( 
+      $.getJSON("assets/data/objects.json")
+    ).done(function(data){
+      console.log(data);
+      var colors = [];
+      j=0;  
+      var particles = new THREE.Geometry;
+      for (var key in data) {
+        console.log(key);
+        var particle = new THREE.Vector3(data[key].x,data[key].y,data[key].z);
+        particles.vertices.push(particle);
+        colors[j] = new THREE.Color(data[key].color);
+        j++;
       }
-    }
-
-    particlesBig.colors = colorsBig;
-
-    var particleMaterialBig = new THREE.PointsMaterial({
-      map: ArqoniaMap.textures.flare_yellow,
-      transparent: true,
-      vertexColors: THREE.VertexColors,
-      size: 16,
-      blending: THREE.AdditiveBlending,
-      depthTest: true,
-      depthWrite: false
+        particles.colors = colors;
+        console.log(particles);
+    
+        var particleMaterial = new THREE.PointsMaterial({
+          map: ArqoniaMap.textures.flare_yellow,
+          transparent: true,
+          vertexColors: THREE.VertexColors,
+          sizeAttenuation: true,
+          size: 50,
+          blending: THREE.AdditiveBlending,
+          depthTest: true,
+          depthWrite: false
+        });
+    
+        var points = new THREE.Points(particles, particleMaterial);
+        points.sortParticles = true;
+        particles.center();
+  
+        obj.milkyway[1] = points;
+        obj.milkyway[1].scale.set(20,20,20);
+    
+        obj.obj.add(points);     
+      
+      console.log(obj.milkyway[1]);
+      return obj.milkyway[1];
     });
-
-    var pointsBig = new THREE.Points(particlesBig, particleMaterialBig);
-    pointsBig.sortParticles = true;
-    particlesBig.center();
-
-    obj.milkyway[1] = pointsBig;
-    obj.milkyway[1].scale.set(20,20,20);
-
-    obj.obj.add(pointsBig);
   }
 }

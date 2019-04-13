@@ -1,0 +1,59 @@
+{
+      "Aldebaran" : {
+        "x":-900, "y":50, "z":1500, "color": "#9bb2fe", "magnitudo": 4.0, "distance": 26.0
+      },
+      "Vega" : {
+        "x":-1500, "y":40, "z":900, "color": "#98b4fe", "magnitudo": 4.6, "distance": 12.5
+      },
+      "Betelguese" : {
+        "x":1000, "y":30, "z":-1500, "color": "#9bb2fe", "magnitudo": 3.5, "distance": 34.2
+      },
+      "Alnitak" : {
+        "x":-1250, "y":-50, "z":950, "color": "#98b4fe", "magnitudo": 3.0, "distance": 12.2
+      },
+      "SYEqu" : {
+        "x":950, "y":20, "z":-850, "color": "#9bb2fe", "magnitudo": 8.0, "distance": 8.0
+      },
+      "Algol" : {
+        "x":908, "y":60, "z":-950, "color": "#98b4fe", "magnitudo": 8.1, "distance": 19.4
+      },
+      "Altair" : {
+        "x":-1000, "y":-20, "z":-750, "color": "#f5f3ff", "magnitudo": 7.4, "distance": 17.5
+      },
+      "Arkab" : {
+        "x":1000, "y":18, "z":1450, "color": "#9bb2fe", "magnitudo": 5.6, "distance": 33.3
+      },
+      "Botein" : {
+        "x":-750, "y":20, "z":1550, "color": "#d0dafe", "magnitudo": 6.7, "distance": 30.0
+      },
+      "Deneb" : {
+        "x":800, "y":-16, "z":-950, "color": "#d0dafe", "magnitudo": 1.0, "distance": 28.9
+      },
+      "Denebola" : {
+        "x":-1350, "y":12, "z":1350, "color": "#9bb2fe", "magnitudo": -1.0, "distance": 29.4
+      },
+      "Izar" : {
+        "x":500, "y":-10, "z":950, "color": "#a0bfff", "magnitudo": -1.8, "distance": 23.3
+      },
+      "Kochab" : {
+        "x":-850, "y":12, "z":-1050, "color": "#fef3ef", "magnitudo": 3.5, "distance": 34.2
+      },
+      "Mintaka" : {
+        "x":-750, "y":-10, "z":-1450, "color": "#a0bfff", "magnitudo": 6.5, "distance": 19.0
+      },
+      "Mizar" : {
+        "x":-1700, "y":-10, "z":-1300, "color": "#a0bfff", "magnitudo": 1.1, "distance": 18.3
+      },
+      "Polaris" : {
+        "x":-1000, "y":50, "z":1450, "color": "#d0dafe", "magnitudo": -2.0, "distance": 11.2
+      },
+      "Rigel" : {
+        "x":-1200, "y":12, "z":1250, "color": "#98b4fe", "magnitudo": 4.7, "distance": 8.3
+      },
+      "Spica" : {
+        "x":1050, "y":-50, "z":1350, "color": "#98b4fe", "magnitudo": 7.7, "distance": 3.0
+      },
+      "Sadr" : {
+        "x":1500, "y":-50, "z":850, "color": "#a0bfff", "magnitudo": 6.7, "distance": 5.7
+      }
+}

@@ -11,7 +11,7 @@ var ArqoniaMap = {
 
   'container'           : null,
   'basePath'            : './',
-  'json'                : null,
+  'jsonPath'            : 'assets/data',
   'tween'               : null,
   'fogDensity'          : null,
   'material'            : {},
@@ -112,7 +112,7 @@ var ArqoniaMap = {
     controls.panSpeed = 0.8;
     controls.maxDistance = 90000;
     controls.autoRotate = true;
-    controls.autoRotateSpeed = 0.1;
+    controls.autoRotateSpeed = 0.05;
     controls.enableZoom=1;controls.enablePan=1;controls.enableDamping=!0;controls.dampingFactor=.3;
 
     //add fog
