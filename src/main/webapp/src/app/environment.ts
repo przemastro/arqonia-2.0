@@ -1,4 +1,4 @@
 export const Environment = {
-  baseUrl: 'https://localhost:8443',
-  baseUri: 'https://localhost:8443/'
+  baseUrl: 'https://35.204.72.252:8443',
+  baseUri: 'https://35.204.72.252:8443/'
 };
