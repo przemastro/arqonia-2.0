@@ -15,7 +15,7 @@ class SearchEndpoint(
 ) {
 
     @PostMapping
-    @CrossOrigin(origins = ["https://localhost:8443"])
+    @CrossOrigin(origins = ["https://35.204.72.252:8443"])
     @ResponseStatus(HttpStatus.OK)
     fun search(
             @RequestParam(required = true) objectName: String,
