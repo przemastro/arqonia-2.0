@@ -138,7 +138,10 @@ task dockerBackendStop(type: Exec) {
 }
 
 task dockerBackendRun(type: Exec) {
+	dependsOn "angularInstall"
+	dependsOn "angularBuild"
 	dependsOn "build"
+
 	workingDir "$dockerDir"
 	inputs.dir "$dockerDir"
 
