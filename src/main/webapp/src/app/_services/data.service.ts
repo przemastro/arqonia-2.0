@@ -2,12 +2,12 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-import {Environment} from '../environment';
 import {ObjectInfo} from "../_domain-objects/objects";
 import {List} from 'immutable';
 import 'rxjs/add/operator/share'
 import 'rxjs/add/operator/publishLast'
 import {NgxSpinnerService} from "ngx-spinner";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class DataService {
@@ -21,7 +21,7 @@ export class DataService {
   object: any = [];
   objectName: string = '';
 
-  private apiUrl = Environment.baseUrl;
+  private apiUrl = environment.baseUrl;
 
   //declare BehaviorSubject _searchData with initial empty List
   private _searchData: BehaviorSubject<List<string>> = new BehaviorSubject(List([]));

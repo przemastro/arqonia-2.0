@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 import {User} from '../_domain-objects/user';
@@ -15,6 +15,9 @@ export class LoginModalComponent implements OnInit {
   constructor(private activeModal: NgbActiveModal,
               private securityService: SecurityService) {
   }
+
+  @Input()
+  public title;
 
   isLoggedIn: boolean = false;
   errorMessage: string = '';

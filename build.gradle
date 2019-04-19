@@ -121,6 +121,13 @@ task integrationTest(type: Test) {
 	classpath = sourceSets.integration.runtimeClasspath
 }
 
+HashMap<String, String> angularEnvTypes = new HashMap<>()
+angularEnvTypes.put("prod", "production")
+angularEnvTypes.put("dev", "dev")
+angularEnvTypes.put("local", "local")
+
+def env = ""
+
 def dockerDir = "$projectDir/docker"
 def dockerGroup = 'docker'
 
@@ -138,6 +145,8 @@ task dockerBackendStop(type: Exec) {
 }
 
 task dockerBackendRun(type: Exec) {
+	env = angularEnvTypes["prod"]
+
 	dependsOn "angularInstall"
 	dependsOn "angularBuild"
 	dependsOn "build"
@@ -164,6 +173,24 @@ sourceSets {
 			srcDirs = ["$webappDir/dist", "$projectDir/src/main/resources"]
 		}
 	}
+}
+
+task runAngularAndBackend(type: Exec) {
+	env = angularEnvTypes["local"]
+
+	workingDir "$webappDir"
+	inputs.dir "$webappDir"
+	group = "$angularGroup"
+	
+	dependsOn "angularBuild"
+
+//	if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
+//		commandLine "ng.cmd", "build"
+//	} else {
+//		commandLine "ng", "build"
+//	}
+
+	finalizedBy "bootRun"
 }
 
 task angularBuildAndRun(type: Exec) {
@@ -197,7 +224,7 @@ task angularBuild(type: Exec) {
     if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
         commandLine "ng.cmd", "build"
     } else {
-        commandLine "ng", "build"
+        commandLine "ng", "build", "--configuration=$env"
     }
 }
 
@@ -232,20 +259,6 @@ task angularE2ETests(type: Exec) {
     } else {
         commandLine "ng", "e2e"
     }
-}
-
-task runAngularAndBackend(type: Exec) {
-	workingDir "$webappDir"
-	inputs.dir "$webappDir"
-	group = "$angularGroup"
-
-	if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
-		commandLine "ng.cmd", "build"
-	} else {
-		commandLine "ng", "build"
-	}
-
-	finalizedBy "bootRun"
 }
 
 bootRun {

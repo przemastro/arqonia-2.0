@@ -20,7 +20,7 @@ export class DiagramsComponent implements OnInit {
   @Input()
   objectType: string;
 
-  constructor(private dataService: DataService,
+  constructor(public dataService: DataService,
               private appComponent: AppComponent,
               private widgetsSetup: WidgetsSetup) {
   }

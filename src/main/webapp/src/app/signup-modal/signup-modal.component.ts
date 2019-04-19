@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 import {User} from '../_domain-objects/user';
@@ -14,6 +14,9 @@ export class SignupModalComponent implements OnInit {
   constructor(private userService: UserService,
               private activeModal: NgbActiveModal) {
   }
+
+  @Input()
+  public title;
 
   errorMessage: string = '';
 
