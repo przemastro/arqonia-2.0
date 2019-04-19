@@ -222,7 +222,7 @@ task angularBuild(type: Exec) {
     group = "$angularGroup"
     // ng doesn't exist as a file in windows -> ng.cmd
     if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
-        commandLine "ng.cmd", "build"
+        commandLine "ng.cmd", "build", "--configuration=$env"
     } else {
         commandLine "ng", "build", "--configuration=$env"
     }
