@@ -121,13 +121,6 @@ task integrationTest(type: Test) {
 	classpath = sourceSets.integration.runtimeClasspath
 }
 
-HashMap<String, String> angularEnvTypes = new HashMap<>()
-angularEnvTypes.put("prod", "production")
-angularEnvTypes.put("dev", "dev")
-angularEnvTypes.put("local", "local")
-
-def env = ""
-
 def dockerDir = "$projectDir/docker"
 def dockerGroup = 'docker'
 
@@ -145,10 +138,8 @@ task dockerBackendStop(type: Exec) {
 }
 
 task dockerBackendRun(type: Exec) {
-	env = angularEnvTypes["prod"]
-
 	dependsOn "angularInstall"
-	dependsOn "angularBuild"
+	dependsOn "angularBuildProd"
 	dependsOn "build"
 
 	workingDir "$dockerDir"
@@ -176,41 +167,28 @@ sourceSets {
 }
 
 task runAngularAndBackend(type: Exec) {
-	env = angularEnvTypes["local"]
-
 	workingDir "$webappDir"
 	inputs.dir "$webappDir"
 	group = "$angularGroup"
 	
 	dependsOn "angularBuild"
 
-//	if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
-//		commandLine "ng.cmd", "build"
-//	} else {
-//		commandLine "ng", "build"
-//	}
-
 	finalizedBy "bootRun"
 }
 
-task angularBuildAndRun(type: Exec) {
+task angularBuildProd(type: Exec) {
+	// angularInstall should be run prior to this task
+	dependsOn "angularInstall"
 	workingDir "$webappDir"
 	inputs.dir "$webappDir"
+	// Add task to the standard build group
 	group = "$angularGroup"
-
-	dependsOn "angularBuild"
-	dependsOn "angularRun"
-}
-
-task angularRun(type: Exec) {
-    workingDir "$webappDir"
-    inputs.dir "$webappDir"
-    group = "$angularGroup"
-    if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
-        commandLine "ng.cmd", "serve"
-    } else {
-        commandLine "ng", "serve"
-    }
+	// ng doesn't exist as a file in windows -> ng.cmd
+	if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
+		commandLine "ng.cmd", "build", "--configuration=production"
+	} else {
+		commandLine "ng", "build", "--configuration=production"
+	}
 }
 
 task angularBuild(type: Exec) {
@@ -222,9 +200,9 @@ task angularBuild(type: Exec) {
     group = "$angularGroup"
     // ng doesn't exist as a file in windows -> ng.cmd
     if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
-        commandLine "ng.cmd", "build", "--configuration=$env"
+        commandLine "ng.cmd", "build", "--configuration=local"
     } else {
-        commandLine "ng", "build", "--configuration=$env"
+        commandLine "ng", "build", "--configuration=local"
     }
 }
 
@@ -236,28 +214,6 @@ task angularInstall(type: Exec) {
         commandLine "npm.cmd", "install"
     } else {
         commandLine "npm", "install"
-    }
-}
-
-task angularUnitTests(type: Exec) {
-    workingDir "$webappDir"
-    inputs.dir "$webappDir"
-    group = "$angularGroup"
-    if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
-        commandLine "ng.cmd", "test", "--code-coverage"
-    } else {
-        commandLine "ng", "test", "--code-coverage"
-    }
-}
-
-task angularE2ETests(type: Exec) {
-    workingDir "$webappDir"
-    inputs.dir "$webappDir"
-    group = "$angularGroup"
-    if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
-        commandLine "ng.cmd", "e2e"
-    } else {
-        commandLine "ng", "e2e"
     }
 }
 
