@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir mongo-password spring-encrypt-key jar mongo-import/dump
+
 cp -r ../src/main/resources/passwords/docker/secrets/* mongo-password/
 cp -r ../src/main/resources/passwords/spring/encryption/key/* spring-encrypt-key/
 cp -r ../build/libs/* jar/
