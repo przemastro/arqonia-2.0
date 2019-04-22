@@ -138,7 +138,6 @@ task dockerBackendStop(type: Exec) {
 }
 
 task dockerBackendRun(type: Exec) {
-	dependsOn "angularInstall"
 	dependsOn "angularBuildProd"
 	dependsOn "build"
 

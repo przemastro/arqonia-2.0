@@ -19,7 +19,8 @@ class SignupEndpoint(
 
     // TODO Add some mechanism to react when user want to role = ADMIN (some validation, restrictions or checking for additional approvals) !!
     @PostMapping
-    @CrossOrigin(origins = ["https://35.204.72.252:443", "https://localhost:443"])
+//    @CrossOrigin(origins = ["https://35.204.72.252:443", "https://localhost:443"])
+    @CrossOrigin
     @ResponseStatus(HttpStatus.CREATED)
     fun signup(@RequestBody @Valid user: User) {
         logger.info("Saving user credentials...")
