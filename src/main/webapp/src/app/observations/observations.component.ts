@@ -18,9 +18,9 @@ export class ObservationsComponent {
 constructor(private modalService: NgbModal) {}
 
 observations = [
-{ObjectName: 'Aldebaran', StartDate: '2016-12-12 00:00:00', EndDate: '2016-12-12 00:00:00',
-U: 'True', V: 'True', B: 'True', R: 'True', I: 'False', Owner: 'Jonh J. Rambo'}];
-headObservations = ['ObjectName', 'StartDate', 'EndDate', 'U', 'V', 'B', 'R', 'I', 'Owner'];
+{ObjectName: 'Aldebaran', Date: '2016-12-12 00:00:00',
+Observation: 'True', Owner: 'Jonh J. Rambo'}];
+headObservations = ['Object Name', 'Date', 'Time Series', 'Owner'];
 
 openNewObservation() {
     const modalRef = this.modalService.open(NewObservationModalComponent);

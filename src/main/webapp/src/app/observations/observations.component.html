@@ -4,23 +4,17 @@
   </button>
   <table class="table table-striped table-sm">
     <tr class="search-table">
-      <td><input st-search="" class="form-control" placeholder="search ..." type="text"/></td>
-      <td><input (click)="openNewObservation()" type="button" value="New Observation"/></td>
-      <td><input type="button" value="Generate Catalog"/></td>
+      <td><input st-search="" class="form-control" placeholder="search ..." type="text" style="width:150px;height:40px;"/></td>
+      <td><input (click)="openNewObservation()" class="btn" type="button" value="Add" style="width: 100px;height: 40px;"/></td>
     </tr>
     <tr>
       <th *ngFor="let head of headObservations">{{head}}</th>
       <th><input class="btn-long btn-default" align="right" type="button" value="Remove" (click)="removeObservation()"/></th>
     </tr>
     <tr *ngFor="let observation of observations">
-      <td><input align="left" class="url" value="{{observation.ObjectName}}" (click)="editObservation()"/></td>
-      <td>{{observation.StartDate}}</td>
-      <td>{{observation.EndDate}}</td>
-      <td><input class="read-only btn-default" type="button" value="{{observation.U}}" (click)="editTimeSeries()"/></td>
-      <td><input class="read-only btn-default" type="button" value="{{observation.V}}" (click)="editTimeSeries()"/></td>
-      <td><input class="read-only btn-default" type="button" value="{{observation.B}}" (click)="editTimeSeries()"/></td>
-      <td><input class="read-only btn-default" type="button" value="{{observation.R}}" (click)="editTimeSeries()"/></td>
-      <td><input class="read-only btn-default" type="button" value="{{observation.I}}" (click)="editTimeSeries()"/></td>
+      <td style="width: 50px;"><input align="left" class="url" value="{{observation.ObjectName}}" (click)="editObservation()"/></td>
+      <td>{{observation.Date}}</td>
+      <td><input class="read-only btn-default" type="button" value="{{observation.Observation}}" (click)="editTimeSeries()"/></td>
       <td>{{observation.Owner}}
         <div class="checkmark-circle">
           <div class="background"></div>

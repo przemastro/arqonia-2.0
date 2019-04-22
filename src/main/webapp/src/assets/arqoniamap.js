@@ -36,6 +36,7 @@ var ArqoniaMap = {
 
     $.when(
         $.getScript(ArqoniaMap.basePath + "assets/components/galaxy.class.js"),
+        $.getScript(ArqoniaMap.basePath + "assets/components/filters.class.js"),
         $.getScript(ArqoniaMap.basePath + "assets/components/animation.js"),
         $.getScript(ArqoniaMap.basePath + "assets/components/vendor/three-js/OrbitControls.js"),
         $.getScript(ArqoniaMap.basePath + "assets/components/vendor/tween-js/Tween.js")
@@ -48,9 +49,12 @@ var ArqoniaMap = {
 
   'launchMap' : function() {
     this.Galaxy = Galaxy;
+    this.Filters = Filters;
     ArqoniaMap.starsTextures();
     ArqoniaMap.initScene();
+    
     this.Galaxy.createGalaxy();
+    this.Filters.create("ArqoniaMap");
     scene.visible = true;
     animate();
   },
