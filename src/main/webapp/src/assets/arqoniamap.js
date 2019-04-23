@@ -48,12 +48,13 @@ var ArqoniaMap = {
   },
 
   'launchMap' : function() {
+    console.log("colors: " + this.colors);
     this.Galaxy = Galaxy;
     this.Filters = Filters;
     ArqoniaMap.starsTextures();
     ArqoniaMap.initScene();
     
-    this.Galaxy.createGalaxy();
+    this.Galaxy.createGalaxy(this.colors);
     this.Filters.create("ArqoniaMap");
     scene.visible = true;
     animate();

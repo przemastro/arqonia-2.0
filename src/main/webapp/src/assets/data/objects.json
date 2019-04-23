@@ -1,59 +1,59 @@
 {
       "Aldebaran" : {
-        "x":-900, "y":50, "z":1500, "color": "#9bb2fe", "magnitudo": 4.0, "distance": 26.0
+        "x":-900, "y":50, "z":1500, "color": "#9bb2fe", "absMagnitudo": 4.0, "appMagnitudo": 3.0, "distance": 26.0, "variable": true, "size": 19
       },
       "Vega" : {
-        "x":-1500, "y":40, "z":900, "color": "#98b4fe", "magnitudo": 4.6, "distance": 12.5
+        "x":-1500, "y":40, "z":900, "color": "#98b4fe", "absMagnitudo": 4.6, "appMagnitudo": 2.0, "distance": 12.5, "variable": false, "size": 18
       },
       "Betelguese" : {
-        "x":1000, "y":30, "z":-1500, "color": "#9bb2fe", "magnitudo": 3.5, "distance": 34.2
+        "x":1000, "y":30, "z":-1500, "color": "#9bb2fe", "absMagnitudo": 3.5, "appMagnitudo": 5.0, "distance": 34.2, "variable": false, "size": 10
       },
       "Alnitak" : {
-        "x":-1250, "y":-50, "z":950, "color": "#98b4fe", "magnitudo": 3.0, "distance": 12.2
+        "x":-1250, "y":-50, "z":950, "color": "#98b4fe", "absMagnitudo": 3.0, "appMagnitudo": 7.0, "distance": 12.2, "variable": false, "size": 18
       },
       "SYEqu" : {
-        "x":950, "y":20, "z":-850, "color": "#9bb2fe", "magnitudo": 8.0, "distance": 8.0
+        "x":950, "y":20, "z":-850, "color": "#9bb2fe", "absMagnitudo": 8.0, "appMagnitudo": 4.0, "distance": 8.0, "variable": true, "size": 11
       },
       "Algol" : {
-        "x":908, "y":60, "z":-950, "color": "#98b4fe", "magnitudo": 8.1, "distance": 19.4
+        "x":908, "y":60, "z":-950, "color": "#98b4fe", "absMagnitudo": 8.1, "appMagnitudo": 8.8, "distance": 19.4, "variable": true, "size": 24
       },
       "Altair" : {
-        "x":-1000, "y":-20, "z":-750, "color": "#f5f3ff", "magnitudo": 7.4, "distance": 17.5
+        "x":-1000, "y":-20, "z":-750, "color": "#f5f3ff", "absMagnitudo": 7.4, "appMagnitudo": 4.6, "distance": 17.5, "variable": false, "size": 10
       },
       "Arkab" : {
-        "x":1000, "y":18, "z":1450, "color": "#9bb2fe", "magnitudo": 5.6, "distance": 33.3
+        "x":1000, "y":18, "z":1450, "color": "#9bb2fe", "absMagnitudo": 5.6, "appMagnitudo": 4.4, "distance": 33.3, "variable": true, "size": 10
       },
       "Botein" : {
-        "x":-750, "y":20, "z":1550, "color": "#d0dafe", "magnitudo": 6.7, "distance": 30.0
+        "x":-750, "y":20, "z":1550, "color": "#d0dafe", "absMagnitudo": 6.7, "appMagnitudo": 5.5, "distance": 30.0, "variable": true, "size": 19
       },
       "Deneb" : {
-        "x":800, "y":-16, "z":-950, "color": "#d0dafe", "magnitudo": 1.0, "distance": 28.9
+        "x":800, "y":-16, "z":-950, "color": "#d0dafe", "absMagnitudo": 1.0, "appMagnitudo": 5.4, "distance": 28.9, "variable": true, "size": 18
       },
       "Denebola" : {
-        "x":-1350, "y":12, "z":1350, "color": "#9bb2fe", "magnitudo": -1.0, "distance": 29.4
+        "x":-1350, "y":12, "z":1350, "color": "#9bb2fe", "absMagnitudo": -1.0, "appMagnitudo": 11.0, "distance": 29.4, "variable": true, "size": 10
       },
       "Izar" : {
-        "x":500, "y":-10, "z":950, "color": "#a0bfff", "magnitudo": -1.8, "distance": 23.3
+        "x":500, "y":-10, "z":950, "color": "#a0bfff", "absMagnitudo": -1.8, "appMagnitudo": 9.0, "distance": 23.3, "variable": false, "size": 16
       },
       "Kochab" : {
-        "x":-850, "y":12, "z":-1050, "color": "#fef3ef", "magnitudo": 3.5, "distance": 34.2
+        "x":-850, "y":12, "z":-1050, "color": "#fef3ef", "absMagnitudo": 3.5, "appMagnitudo": 4.0, "distance": 34.2, "variable": false, "size": 40
       },
       "Mintaka" : {
-        "x":-750, "y":-10, "z":-1450, "color": "#a0bfff", "magnitudo": 6.5, "distance": 19.0
+        "x":-750, "y":-10, "z":-1450, "color": "#a0bfff", "absMagnitudo": 6.5, "appMagnitudo": 2.0, "distance": 19.0, "variable": true, "size": 10
       },
       "Mizar" : {
-        "x":-1700, "y":-10, "z":-1300, "color": "#a0bfff", "magnitudo": 1.1, "distance": 18.3
+        "x":-1700, "y":-10, "z":-1300, "color": "#a0bfff", "absMagnitudo": 1.1, "appMagnitudo": 1.0, "distance": 18.3, "variable": true, "size": 23
       },
       "Polaris" : {
-        "x":-1000, "y":50, "z":1450, "color": "#d0dafe", "magnitudo": -2.0, "distance": 11.2
+        "x":-1000, "y":50, "z":1450, "color": "#d0dafe", "absMagnitudo": -2.0, "appMagnitudo": 4.0, "distance": 11.2, "variable": false, "size": 15
       },
       "Rigel" : {
-        "x":-1200, "y":12, "z":1250, "color": "#98b4fe", "magnitudo": 4.7, "distance": 8.3
+        "x":-1200, "y":12, "z":1250, "color": "#98b4fe", "absMagnitudo": 4.7, "appMagnitudo": 4.0, "distance": 8.3, "variable": true, "size": 30
       },
       "Spica" : {
-        "x":1050, "y":-50, "z":1350, "color": "#98b4fe", "magnitudo": 7.7, "distance": 3.0
+        "x":1050, "y":-50, "z":1350, "color": "#98b4fe", "absMagnitudo": 7.7, "appMagnitudo": 6.7, "distance": 3.0, "variable": false, "size": 10
       },
       "Sadr" : {
-        "x":1500, "y":-50, "z":850, "color": "#a0bfff", "magnitudo": 6.7, "distance": 5.7
+        "x":1500, "y":-50, "z":850, "color": "#a0bfff", "absMagnitudo": 6.7, "appMagnitudo": 7.0, "distance": 5.7, "variable": true, "size": 20
       }
 }

@@ -10,12 +10,13 @@ var Galaxy = {
   'y' : 0,
   'z' : 0,
 
-  'createGalaxy' : function () {
+  'createGalaxy' : function (colors) {
 
     var objValue = new Object;
     objValue.coords = {'x':this.y,'y':this.y,'z':this.z};
     objValue.cat = [];
 
+    console.log("colors: " + colors);
     this.obj = Galaxy.createSphere(objValue);
 
     //Firstly use loaded stars textures with known properties (defined material)
@@ -26,7 +27,7 @@ var Galaxy = {
     this.obj.add(sprite); /// this centers the glow at the mesh
 
     //add stars to the Galaxy and add to these stars textures by means of sprites
-    this.addStars();
+    this.addStars(colors);
 
     //add mesh using 2D image
     this.add2DImage();
@@ -59,13 +60,13 @@ var Galaxy = {
   },
 
   //Create Canvas, add objects and set camera position
-  'addStars' : function () {
+  'addStars' : function (colors) {
 
     var img = new Image();
     var obj = this;
-
+    console.log("colors: " + colors);
     img.onload = function () {
-       obj.createCanvasAndLoadData(img, obj);
+       obj.createCanvasAndLoadData(img, obj, colors);
        camera.position.set(-1000, 10000, 50000);
     };
 
@@ -105,7 +106,7 @@ var Galaxy = {
   },
 
 
-  'createCanvasAndLoadData' : function(img, obj) {
+  'createCanvasAndLoadData' : function(img, obj, colors) {
 
     
     var canvas = document.createElement( 'canvas' );
@@ -113,22 +114,30 @@ var Galaxy = {
     canvas.height = img.height;
     var context = canvas.getContext( '2d' );
     context.drawImage(img,0,0);
-    this.loadDataFromFile(obj);
+    this.loadDataFromFile(obj, colors);
   },
 
-  'loadDataFromFile' : function(obj) {
-    $.when( 
+  'loadDataFromFile' : function(obj, colors) {
+    var colorsFlag = colors
+    $.when(
       $.getJSON("assets/data/objects.json")
     ).done(function(data){
       console.log(data);
+      console.log("colors: " + colorsFlag);
       var colors = [];
       j=0;  
-      var particles = new THREE.Geometry;
+      var particles =  new THREE.Geometry;
       for (var key in data) {
         console.log(key);
         var particle = new THREE.Vector3(data[key].x,data[key].y,data[key].z);
         particles.vertices.push(particle);
-        colors[j] = new THREE.Color(data[key].color);
+        if(colors==true){
+          colors[j] = new THREE.Color(data[key].color);
+        }
+        else {
+          colors[j] = new THREE.Color(" #FFFFFC");
+        }
+        
         j++;
       }
         particles.colors = colors;

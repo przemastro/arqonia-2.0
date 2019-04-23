@@ -194,8 +194,8 @@ a:hover{
 }
 @-webkit-keyframes slideInLeft {
   from {
-    -webkit-transform: translate3d(-100%, 0, 0);
-    transform: translate3d(-100%, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
     visibility: visible;
   }
 
@@ -206,8 +206,8 @@ a:hover{
 }
 @keyframes slideInLeft {
   from {
-    -webkit-transform: translate3d(-100%, 0, 0);
-    transform: translate3d(-100%, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
     visibility: visible;
   }
 
@@ -221,8 +221,7 @@ a:hover{
   animation-name: slideInLeft;
   margin:0 auto;
   z-index:10;
-  min-width:40%;
-  max-width:40%;
+  max-width:600px;
   min-height:565px;
   max-height:80%;
   border-radius:2px;
@@ -230,6 +229,7 @@ a:hover{
   display: block;
     margin-left: 10px;
     margin-right: auto;
+    margin-top: -25px;
 }
 .animated {
   -webkit-animation-duration: 1s;
