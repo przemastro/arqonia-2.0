@@ -15,8 +15,8 @@ class SearchEndpoint(
 ) {
 
     @PostMapping
-//    @CrossOrigin(origins = ["https://35.204.72.252:443", "https://localhost:443"])
-    @CrossOrigin
+    @CrossOrigin(origins = ["https://arqonia.pl", "https://localhost"])
+//    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     fun search(
             @RequestParam(required = true) objectName: String,
@@ -30,19 +30,6 @@ class SearchEndpoint(
                                 .map { it.toString() }
                                 .firstOrNull { it == objectType.toUpperCase() } ?: STAR.name)
     }
-
-//    @PostMapping("/searchV2")
-//    @CrossOrigin(origins = ["https://localhost:8443"])
-//    @ResponseStatus(HttpStatus.OK)
-//    fun searchV2(
-//            @RequestParam(required = true) objectName: String,
-//            @RequestParam(required = false, defaultValue = "star") objectType: String): Flux<*> {
-//        logger.info("Searching object type '$objectType', with name '$objectName'...")
-//
-////        return cometService.getCometData(objectName)
-//
-//        return starService.getStarsData(objectName)
-//    }
 
     companion object {
         private val logger by logger()

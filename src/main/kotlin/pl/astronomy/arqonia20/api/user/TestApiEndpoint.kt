@@ -12,8 +12,8 @@ import pl.astronomy.arqonia20.logger
 class TestApiEndpoint {
 
     @GetMapping("/hello")
-//    @CrossOrigin(origins = ["https://35.204.72.252:443", "https://localhost:443"])
-    @CrossOrigin
+    @CrossOrigin(origins = ["https://arqonia.pl", "https://localhost"])
+//    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     fun hello(): User {
         logger.info("Trying to get 'Hello World' message...")
@@ -29,14 +29,3 @@ class TestApiEndpoint {
         private val logger by logger()
     }
 }
-/*
-*
-data class User(
-        val username: String,
-        val email: String,
-        val password: String,
-        val roles: List<UserRole> = listOf()
-)
-
-data class UserRole(val name: UserRoleType)
-* */
