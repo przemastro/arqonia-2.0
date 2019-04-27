@@ -10,6 +10,12 @@ spring:
     active: local
   main:
     allow-bean-definition-overriding: true
+  resources:
+    cache:
+      cachecontrol:
+        max-age: 14400
+        cache-private: true
+        must-revalidate: true
 
 server:
   ssl:
