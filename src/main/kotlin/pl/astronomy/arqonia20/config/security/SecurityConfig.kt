@@ -21,7 +21,6 @@ import org.springframework.security.oauth2.provider.approval.TokenApprovalStore
 import org.springframework.security.oauth2.provider.approval.TokenStoreUserApprovalHandler
 import org.springframework.security.oauth2.provider.request.DefaultOAuth2RequestFactory
 import org.springframework.security.oauth2.provider.token.TokenStore
-import pl.astronomy.arqonia20.config.security.userdetails.ArqoniaUserDetailsService
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory
@@ -29,7 +28,7 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationFa
 import pl.astronomy.arqonia20.config.security.customlogin.CustomAccessDeniedHandler
 import pl.astronomy.arqonia20.config.security.customlogin.CustomAuthenticationSuccessHandler
 import pl.astronomy.arqonia20.config.security.customlogin.RestAuthenticationEntryPoint
-import pl.astronomy.arqonia20.domain.user.UserRepository
+import pl.astronomy.arqonia20.config.security.userdetails.ArqoniaUserDetailsService
 
 @Configuration
 @EnableWebSecurity
@@ -39,8 +38,6 @@ class SecurityConfig(
         private val accessDeniedHandler: CustomAccessDeniedHandler,
         private val clientDetailsService: ClientDetailsService,
         private val arqoniaUserDetailsService: ArqoniaUserDetailsService,
-        private val userRepository: UserRepository,
-        @Value("\${arqonia.admin.username}") private val adminUsername: String,
         @Value("\${arqonia.admin.password}") private val adminPassword: String,
         private val environment: Environment
 ) : WebSecurityConfigurerAdapter() {
@@ -91,14 +88,13 @@ class SecurityConfig(
     @Bean
     protected fun jwtTokenEnhancer(): JwtAccessTokenConverter {
         val keyStoreKeyFactory = if (environment.activeProfiles.contains("integration")) {
-            KeyStoreKeyFactory(
-                    ClassPathResource("keystore/jwt/arqonia_jwt_key.jks"),
-                    "arqoniaSuperPass12".toCharArray())
+            KeyStoreKeyFactory( // TODO Re-generate JKS key to sth simple.
+                    ClassPathResource("keystore/jwt/integration/arqonia_jwt_key.jks"),
+                    "arqoniaSuperPass12".toCharArray()) // TODO Simple password for integration tests (e.g.: "password")
         } else {
             KeyStoreKeyFactory(
-                    ClassPathResource("keystore/jwt/arqonia_jwt_key.jks"),
+                    ClassPathResource("keystore/jwt/prod/arqonia_jwt_key.jks"),
                     adminPassword.toCharArray())
-//                    userRepository.findByUsername(adminUsername).password.toCharArray())
         }
 
         val converter = JwtAccessTokenConverter()

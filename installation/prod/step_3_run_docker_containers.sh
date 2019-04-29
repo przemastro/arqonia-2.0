@@ -2,6 +2,7 @@
 
 cd ../../docker
 
+rm -rf jar/
 mkdir mongo-password spring-encrypt-key jar mongo-import/dump
 
 cp -r ../src/main/resources/passwords/docker/secrets/* mongo-password/
