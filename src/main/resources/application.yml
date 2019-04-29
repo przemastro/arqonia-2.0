@@ -80,6 +80,11 @@ vizier-queries:
       FROM "I/113A/catalog"
       WHERE recno = '%s';
 
+arqonia:
+  admin:
+    username: abekalarz
+    password: "{cipher}7fccbb5653090fede3d930f842a33667d9303a9b20eed6f17d4d40465e773ccf389aa6c1d40f5f51b2ef19f1ca5d6744"
+
 #management:
 #  endpoints:
 #    web:
@@ -91,8 +96,4 @@ vizier-queries:
 #  level:
 #     pl.astronomy.arqonia20: DEBUG
 #     ROOT: DEBUG
-
-arqonia:
-  admin:
-    username: abekalarz
 

@@ -41,6 +41,7 @@ class SecurityConfig(
         private val arqoniaUserDetailsService: ArqoniaUserDetailsService,
         private val userRepository: UserRepository,
         @Value("\${arqonia.admin.username}") private val adminUsername: String,
+        @Value("\${arqonia.admin.password}") private val adminPassword: String,
         private val environment: Environment
 ) : WebSecurityConfigurerAdapter() {
 
@@ -96,7 +97,8 @@ class SecurityConfig(
         } else {
             KeyStoreKeyFactory(
                     ClassPathResource("keystore/jwt/arqonia_jwt_key.jks"),
-                    userRepository.findByUsername(adminUsername).password.toCharArray())
+                    adminPassword.toCharArray())
+//                    userRepository.findByUsername(adminUsername).password.toCharArray())
         }
 
         val converter = JwtAccessTokenConverter()
