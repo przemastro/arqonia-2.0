@@ -24,3 +24,27 @@
   border-top-right-radius: 5px;
   height:300px;
 }
+
+.btn:not(:hover) {
+  border-radius:2px;
+  color:white;  
+  outline:none;
+}
+
+.btn:hover {
+  border-radius:2px;
+  color:white;
+  outline:none;
+}
+
+.btn-primary:not(:hover) {
+  border-radius:2px;
+  color:white;
+  outline:none;
+}
+
+.btn-primary:hover {
+  border-radius:2px;
+  color:white;
+  outline:none;
+}

@@ -1,0 +1,11 @@
+.modal-title{
+    margin-left:-35px;
+}
+
+.close{
+    outline: none;
+}
+
+.close:hover{
+    outline: none;
+}

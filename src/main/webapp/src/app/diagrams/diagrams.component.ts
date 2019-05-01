@@ -39,7 +39,7 @@ export class DiagramsComponent implements OnInit {
   /** We need some basic information what to display */
   public showGrid = false;
   public highlightNextPosition = false;
-  private _editable = true;
+  private _editable = false;
 
   public set editable(editable: boolean) {
     this._editable = editable;
@@ -57,21 +57,6 @@ export class DiagramsComponent implements OnInit {
     this.highlightNextPosition = !!doHighlight;
   }
 
-  /** Add new widget */
-  addWidget() {
-    const nextPosition = this.grid.getNextPosition();
-    if (nextPosition) {
-      this.initSetup.widgets.push({...nextPosition});
-    } else {
-      console.warn('No Space Available!! ');
-    }
-  }
-
-  /** Remove widget */
-  askDeleteWidget(index) {
-    console.log('deleting', index);
-    this.initSetup.widgets.splice(index, 1);
-  }
 
   deleteWidget() {
   }

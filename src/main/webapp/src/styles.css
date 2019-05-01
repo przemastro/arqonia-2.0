@@ -8,6 +8,7 @@ body,html{
     font-family:Montserrat,sans-serif;
     background-color:black;
     overflow: hidden;
+    outline: none;
 }
 a{
     text-decoration:none;
@@ -29,7 +30,7 @@ a:hover{
 	  z-index:-1;
 }
 .main .container{
-    background-color:rgba(28,51,83,.52);
+    background-color:rgba(19, 20, 20, 0.52);
     margin:0 auto;
 }
 

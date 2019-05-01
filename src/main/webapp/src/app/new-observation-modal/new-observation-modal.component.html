@@ -1,4 +1,4 @@
-<app-observation-modal>
+<app-observation-modal title="Add Observation">
   <div class="container">
     <form>
       <div class="form-check-inline">
@@ -17,36 +17,16 @@
         </label>
       </div>
       <div class="form-group">
-        <label for="object-name">Object Name </label>
-        <input type="text" class="form-control" placeholder="e.g. Vega" id="object-name" required/>
+        <input type="text" class="form-control" placeholder="OBJECT NAME" id="object-name" #objectName required/>
       </div>
       <div class="form-group">
-        <label for="start-date">Start Date</label>
         <input type="date" class="form-control" id="start-date" required/>
       </div>
       <div class="form-group">
-        <label for="end-date">End Date</label>
         <input type="date" class="form-control" id="end-date" required/>
       </div>
       <div class="form-group">
-        <label for="u-photometry">U Photometry</label>
-        <input type="file" accept="text/csv" id="u-photometry"/>
-      </div>
-      <div class="form-group">
-        <label for="v-photometry">V Photometry</label>
-        <input type="file" accept="text/csv" id="v-photometry"/>
-      </div>
-      <div class="form-group">
-        <label for="b-photometry">B Photometry</label>
-        <input type="file" accept="text/csv" id="b-photometry"/>
-      </div>
-      <div class="form-group">
-        <label for="r-photometry">R Photometry</label>
-        <input type="file" accept="text/csv" id="r-photometry"/>
-      </div>
-      <div class="form-group">
-        <label for="i-photometry">I Photometry</label>
-        <input type="file" accept="text/csv" id="i-photometry"/>
+        <input type="file" accept="text/csv" id="photometry" placeholder="PHOTOMETRY"/>
       </div>
       <div class="form-check-inline">
         <label class="form-check-label">
@@ -61,3 +41,6 @@
     </form>
   </div>
 </app-observation-modal>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-default" (click)="startProcessAdd(username.value, password.value);">Submit</button>
+</div>

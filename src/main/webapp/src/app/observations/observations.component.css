@@ -42,3 +42,25 @@
 background-color:rgba(3,50,128,.001) !important;
 border:0px solid;
 }
+
+.btn:hover{
+    outline: none;
+    border-radius: 2px;
+    color:white;
+}
+
+.btn{
+    outline: none;
+    border-radius: 2px;
+    color:white;
+}
+
+.url{
+    outline: none;
+    cursor: pointer;
+}
+
+.url:hover{
+    outline: none;
+    cursor: pointer;
+}

@@ -19,7 +19,7 @@ constructor(private modalService: NgbModal) {}
 
 observations = [
 {ObjectName: 'Aldebaran', Date: '2016-12-12 00:00:00',
-Observation: 'True', Owner: 'Jonh J. Rambo'}];
+Observation: 'View', Owner: 'Jonh J. Rambo'}];
 headObservations = ['Object Name', 'Date', 'Time Series', 'Owner'];
 
 openNewObservation() {

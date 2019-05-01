@@ -22,7 +22,7 @@
     -moz-appearance: none;
     text-indent: 1px;
     text-overflow: '';border-color:rgb(33, 134, 177);border-width:1px;border-right-width:0px;font-family:Montserrat,sans-serif;
-    font-weight: normal;z-index: 100" id="objectType">
+    font-weight: normal;z-index: 100;outline:none;" id="objectType">
               <option class="defualt-text">-- Select --</option>
               <option value="star">Star</option>
               <option value="planetoid">Planetoid</option>
@@ -31,7 +31,7 @@
 
             <input type="text" style="z-index: 100" class="form-control" id="search-top" placeholder="Search..."
                    required #object>
-            <button (click)="sendObject(object.value)" style="z-index: 100" routerLink="/diagrams" class="btn-search" type="submit">
+            <button (click)="sendObject(object.value)" style="z-index: 100;outline:none;" routerLink="/diagrams" class="btn-search" type="submit">
               <i class="glyphicon glyphicon-search"></i>
             </button>
           </div>

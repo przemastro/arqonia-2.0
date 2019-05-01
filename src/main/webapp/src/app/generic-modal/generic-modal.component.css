@@ -17,6 +17,13 @@
     border-color: white;
 }
 
+.close:hover{
+  outline: none;
+}
+
+.close{
+  outline: none;
+}
 
 
 
