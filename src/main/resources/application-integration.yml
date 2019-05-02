@@ -4,6 +4,7 @@ spring:
       database: arqonia2
       port: 27017
       uri: mongodb://localhost
+      password: password
 
 server:
   ssl:
@@ -13,3 +14,7 @@ server:
     key-store-password: secret
     key-password: secret
     key-alias: localhost
+
+arqonia:
+  admin:
+    password: password
