@@ -24,6 +24,7 @@ import { EditObservationModalComponent } from './edit-observation-modal/edit-obs
 import { RemoveObservationModalComponent } from './remove-observation-modal/remove-observation-modal.component';
 import { TimeSeriesModalComponent } from './time-series-modal/time-series-modal.component';
 import {OAuthModule} from "angular-oauth2-oidc";
+import { ChartsModule } from 'ng2-charts';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -62,7 +63,8 @@ import 'nvd3';
     FormsModule,
     HttpClientModule,
     NgbModule.forRoot(),
-    OAuthModule.forRoot()
+    OAuthModule.forRoot(),
+    ChartsModule
 ],
 providers: [NgbActiveModal],
 bootstrap: [AppComponent],
