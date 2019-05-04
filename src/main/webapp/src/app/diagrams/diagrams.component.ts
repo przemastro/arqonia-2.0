@@ -66,6 +66,9 @@ export class DiagramsComponent implements OnInit {
        pointRadius: 2,
        pointBackgroundColor: 'Orange',
        pointBorderColor: 'Orange',
+       pointHoverRadius: 5,
+       pointHoverBackgroundColor: 'Orange',
+       pointHoverBorderColor: 'Orange'
      }
    ];
   }
@@ -128,7 +131,10 @@ export class DiagramsComponent implements OnInit {
             data: this.data,
             pointRadius: 2,
             pointBackgroundColor: 'Orange',
-            pointBorderColor: 'Orange'
+            pointBorderColor: 'Orange',
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: 'Orange',
+            pointHoverBorderColor: 'Orange'
           }
         ];
          break; 
@@ -140,7 +146,10 @@ export class DiagramsComponent implements OnInit {
             data: this.data,
             pointRadius: 2,
             pointBackgroundColor: 'Orange',
-            pointBorderColor: 'Orange'
+            pointBorderColor: 'Orange',
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: 'Orange',
+            pointHoverBorderColor: 'Orange'
           }
         ];
          break; 

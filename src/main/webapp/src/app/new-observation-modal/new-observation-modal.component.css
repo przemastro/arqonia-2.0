@@ -18,7 +18,7 @@
     text-align:left;
     font-size:10px;
     color: rgba(33,134,177);
-    background-color:rgba(28,51,83);
+    background-color:rgba(17,39,66);
 }
 
 .error-message{
@@ -54,3 +54,49 @@
       color: white;
       outline: none;
   }
+
+  .btn-check:hover {
+    border-radius: 30px;
+    width: 240px;
+    height: 35px;
+    font-size: 12px;
+    border: 0px;
+    background-color: #333 !important;
+    color: white;
+    outline: none;
+}
+
+.btn-check {
+    border-radius: 30px;
+    width: 240px;
+    height: 35px;
+    font-size: 12px;
+    border: 0px;
+    background-color: #333 !important;
+    color: white;
+    outline: none;
+}
+
+  .btnMarginLeft {
+    margin-left: 15px;
+}
+
+.btnMarginRight {
+    margin-right: 10px;
+}
+
+.custom {
+    width: 70px !important;
+    height: 30px !important;
+}
+
+.customLong {
+    width: 85px !important;
+    height: 30px !important;
+}
+
+
+    .customYesNo {
+        width: 115px !important;
+        height: 30px !important;
+    }    

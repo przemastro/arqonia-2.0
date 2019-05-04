@@ -8,12 +8,13 @@
 <button routerLink="/" type="button" class="close" aria-label="Close" style="float: right">
   <span style="margin-right:-10px;float: right" aria-hidden="true">&times;</span>
 </button>
+
     <select class="btn" id="selectTimeSeries" style="width:140px;height:30px;margin-top:10px;margin-left:20px;background-color: rgba(28,51,83,.52)" (change)="selectDataSet($event)">
         <option style="background-color: rgba(28,51,83);border-width:0px;width:130px;" *ngFor="let serie of series" value= {{serie.id}}>
           {{serie.name}}
         </option>
     </select>
-
+<button class="btn" style="width:120px;height:30px;margin-top:10px;margin-left:20px;">DOWNLOAD</button>
   <div class="inner-container">
     <div class="dashboard-container">
       <ngx-widget-grid [rows]="rows" [columns]="cols" [highlightNextPosition]="highlightNextPosition"

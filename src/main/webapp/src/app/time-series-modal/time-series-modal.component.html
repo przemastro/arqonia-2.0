@@ -1,15 +1,19 @@
-<app-observation-modal>
-  <div class="container">
+<app-observation-modal title="View Time Series">
+  <div class="container" style="height:200px;max-height: 220px;overflow-y:auto!important;width:280px;">
     <form>
-      <table class="table table-striped table-sm">
-        <tr>
-          <th *ngFor="let head of headTimeSeries">{{head}}</th>
+      <table style="background-color: rgba(28,51,83);width:240px;height:220px;overflow-y: auto;border-collapse: collapse;" class="table table-striped table-sm">
+        <tr style="background-color: rgba(28,51,83);text-align: center;">
+          <th style="text-align: center;" *ngFor="let head of headTimeSeries">{{head}}</th>
         </tr>
-        <tr *ngFor="let series of timeSeries">
-          <td>{{series.photometryFlux}}</td>
-          <td>{{series.photometryTime}}</td>
+        <tr style="background-color: rgba(28,51,83);" *ngFor="let series of timeSeries">
+          <td style="text-align: center;border-top: none;">{{series.Flux}}</td>
+          <td style="text-align: center;border-top: none;">{{series.JulianDate}}</td>
+          <td style="text-align: center;border-top: none;">{{series.Error}}</td>
         </tr>
       </table>
     </form>
   </div>
 </app-observation-modal>
+<div style="margin-top:40px" class="modal-footer">
+    <button type="submit" class="btn btn-default" (click)="startProcessAdd(username.value, password.value);">Download</button>
+</div>

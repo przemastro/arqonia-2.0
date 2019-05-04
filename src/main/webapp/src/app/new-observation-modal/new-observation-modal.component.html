@@ -1,46 +1,35 @@
 <app-observation-modal title="Add Observation">
   <div class="container">
-    <form>
-      <div class="form-check-inline">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" id="star" name="object" checked="">Star
-        </label>
-      </div>
-      <div class="form-check-inline">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="object" id="planetoid">Planetoid
-        </label>
-      </div>
-      <div class="form-check-inline">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="object" id="comet">Comet
-        </label>
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="OBJECT NAME" id="object-name" #objectName required/>
-      </div>
-      <div class="form-group">
-        <input type="date" class="form-control" id="start-date" required/>
-      </div>
-      <div class="form-group">
-        <input type="date" class="form-control" id="end-date" required/>
-      </div>
-      <div class="form-group">
-        <input type="file" accept="text/csv" id="photometry" placeholder="PHOTOMETRY"/>
-      </div>
-      <div class="form-check-inline">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optradio" id="yes">Yes
-        </label>
-      </div>
-      <div class="form-check-inline">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optradio" id="no">No
-        </label>
-      </div>
-    </form>
+      <form>
+          <div class="btn-group" style="margin-bottom: -5px;">
+              <div style="background-color: rgba(28,51,83,.52) !important;border: 1px solid rgba(33,134,177);
+              border-top-left-radius:30px;" class="btn btn-default btnMarginLeft btnMarginRight custom">Star</div>
+              <div style="background-color: rgba(28,51,83,.52) !important;border: 1px solid rgba(33,134,177);" class="btn btn-default btnMarginRight customLong">Planetoid</div>
+              <div style="background-color: rgba(28,51,83,.52) !important;border: 1px solid rgba(33,134,177); 
+              border-top-right-radius:30px;" class="btn btn-default btnMarginRight custom">Comet</div>
+          </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="OBJECT NAME" id="object-name" #objectName required/>
+        </div>
+        <div class="form-group">
+          <input type="date" class="form-control" id="start-date" placeholder="START DATE" required/>
+        </div>
+        <div class="form-group">
+          <input type="date" class="form-control" id="end-date" placeholder="END DATE" required/>
+        </div>
+        <div class="form-group">
+          <input style="background-color: rgba(28,51,83,.52) !important;border: 1px solid rgba(33,134,177); 
+          border-radius:30px;margin-bottom: 10px" class="btn" type="file" accept="text/csv" id="photometry" placeholder="PHOTOMETRY"/>
+        </div>
+        <div class="btn-group" style="margin-left: 0px">
+            <div style="background-color: rgba(28,51,83,.52) !important;border: 1px solid rgba(33,134,177);
+            border-top-left-radius:30px;"class="btn btn-default pull-left btnMarginLeft btnMarginRight customYesNo">Private Data</div>
+            <div style="background-color: rgba(28,51,83,.52) !important;border: 1px solid rgba(33,134,177); 
+            border-top-right-radius:30px;"class="btn btn-default pull-left btnMarginRight customYesNo">Public Data</div>
+        </div>
+      </form>
   </div>
 </app-observation-modal>
-<div class="modal-footer">
+<div class="modal-footer" style="margin-top:-15px">
     <button type="submit" class="btn btn-default" (click)="startProcessAdd(username.value, password.value);">Submit</button>
 </div>
