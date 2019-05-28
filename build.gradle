@@ -121,40 +121,6 @@ task integrationTest(type: Test) {
 	classpath = sourceSets.integration.runtimeClasspath
 }
 
-def dockerDir = "$projectDir/docker"
-def dockerGroup = 'docker'
-
-task dockerBackendStop(type: Exec) {
-	workingDir "$dockerDir"
-	inputs.dir "$dockerDir"
-
-	group = "$dockerGroup"
-	
-	if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
-		commandLine "$dockerDir/mongo-import/docker_compose_down.bat"
-	} else {
-		commandLine "$dockerDir/mongo-import/docker_compose_down.sh"
-	}
-}
-
-task dockerBackendRun(type: Exec) {
-	dependsOn "angularBuildProd"
-	dependsOn "build"
-
-	workingDir "$dockerDir"
-	inputs.dir "$dockerDir"
-
-	group = "$dockerGroup"
-
-	if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
-		commandLine "$dockerDir/mongo-import/docker_compose_up.bat"
-	} else {
-		commandLine "$dockerDir/mongo-import/docker_compose_up.sh"
-	}
-
-	finalizedBy dockerBackendStop
-}
-
 def webappDir = "$projectDir/src/main/webapp"
 def angularGroup = 'angular'
 sourceSets {
@@ -173,21 +139,6 @@ task runAngularAndBackend(type: Exec) {
 	dependsOn "angularBuild"
 
 	finalizedBy "bootRun"
-}
-
-task angularBuildProd(type: Exec) {
-	// angularInstall should be run prior to this task
-	dependsOn "angularInstall"
-	workingDir "$webappDir"
-	inputs.dir "$webappDir"
-	// Add task to the standard build group
-	group = "$angularGroup"
-	// ng doesn't exist as a file in windows -> ng.cmd
-	if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
-		commandLine "ng.cmd", "build", "--configuration=production"
-	} else {
-		commandLine "ng", "build", "--configuration=production"
-	}
 }
 
 task angularBuild(type: Exec) {
