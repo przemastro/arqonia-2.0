@@ -87,9 +87,9 @@ class SecurityConfig(
 
     @Bean
     protected fun jwtTokenEnhancer(): JwtAccessTokenConverter {
-        val keyStoreKeyFactory = if (environment.activeProfiles.contains("integration")) {
+        val keyStoreKeyFactory = if (!environment.activeProfiles.contains("prod")) {
             KeyStoreKeyFactory(
-                    ClassPathResource("keystore/jwt/integration/jwt_arqonia.jks"),
+                    ClassPathResource("keystore/jwt/dev/jwt_arqonia.jks"),
                     adminPassword.toCharArray())
         } else {
             KeyStoreKeyFactory(

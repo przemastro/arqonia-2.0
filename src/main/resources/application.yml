@@ -5,7 +5,6 @@ spring:
       port: 27017
       database: arqonia2
       username: arqoniaMongoUser
-      password: "{cipher}4ffa699e0a2f174d483760975b1ce3161f57a8defa6dbc641bd48c64b0722b47f9a39507137505b7754413a970cc0bd3"
   profiles:
     active: local
   main:
@@ -76,7 +75,6 @@ vizier-queries:
 arqonia:
   admin:
     username: abekalarz
-    password: "{cipher}6db2597356ec55292cd52c96dbda9f545285f2c46690e96ba9d7ce5a67343fb229f3d6946c298ca08f9e4e80d9947c97"
 
 #management:
 #  endpoints:
