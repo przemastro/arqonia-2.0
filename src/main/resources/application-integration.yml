@@ -10,3 +10,9 @@ server:
     key-store-password: password
     key-password: password
     key-alias: tomcat
+
+simbadClient:
+  url: http://localhost:12345/simbad/sim-tap/sync
+
+vizierClient:
+  url: http://localhost:12345/TAPVizieR/tap/view

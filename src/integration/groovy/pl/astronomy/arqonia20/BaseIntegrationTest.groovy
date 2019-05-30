@@ -31,7 +31,7 @@ class BaseIntegrationTest extends Specification {
 
     @ClassRule
     @Shared
-    WireMockClassRule wiremock = new WireMockClassRule(12346)
+    WireMockClassRule wiremock = new WireMockClassRule(12345)
 
     @Autowired
     RestTemplate restTemplate
@@ -51,7 +51,7 @@ class BaseIntegrationTest extends Specification {
     }
 
     // Usage example: "prepareEntity(userDto, createBasicAuthHeaders("integrationClientId", "secret")),"
-    protected <T> HttpEntity<T> prepareEntity(T data, Map<String, List<String>> additionalHeaders = [:]) {
+    protected <T> HttpEntity<T> prepareEntity(T data = null, Map<String, List<String>> additionalHeaders = [:]) {
         def headers = new HttpHeaders() {{
             set("Content-Type", MediaType.APPLICATION_JSON_VALUE)
         }}

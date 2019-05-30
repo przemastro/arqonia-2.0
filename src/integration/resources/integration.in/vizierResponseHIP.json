@@ -1,0 +1,26 @@
+{
+  "data": [
+    [
+      "21421",
+      "8.65",
+      "8.76",
+      "0.11",
+      "0.12",
+      "B9",
+      "04 36 15.24",
+      "-03 32 08.6"
+    ]
+  ],
+  "meta": [
+    "object_name",
+    "V",
+    "B",
+    "B-V",
+    "V-I",
+    "spectral_type",
+    "RA",
+    "DE"
+  ],
+  "warnings": [],
+  "sql": "SELECT viz7.c1239hip_main.recno AS \"object_name\" , round(((viz7.c1239hip_main.Vmag/1000.0))::numeric,2) AS \"V\" , round(((viz7.c1239hip_main.B_V/1000.0))::numeric,3)+round(((viz7.c1239hip_main.Vmag/1000.0))::numeric,2) AS \"B\" , round(((viz7.c1239hip_main.B_V/1000.0))::numeric,3) AS \"B-V\" , round(((viz7.c1239hip_main.V_I/1000.0))::numeric,2) AS \"V-I\" , viz7.c1239hip_main.SpType AS \"spectral_type\" , viz7.c1239hip_main.RAhms AS \"RA\" , viz7.c1239hip_main.DEdms AS \"DE\"\nFROM viz7.c1239hip_main\nWHERE viz7.c1239hip_main.recno = '21421'\nLimit 100"
+}
