@@ -18,10 +18,10 @@ import javax.net.ssl.SSLContext
 @Profile("integration")
 class IntegrationConfiguration {
 
-    @Value('${server.ssl.trust-store}')
+    @Value('${server.ssl.key-store}')
     private Resource trustStore
 
-    @Value('${server.ssl.trust-store-password}')
+    @Value('${server.ssl.key-store-password}')
     private String trustStorePassword
 
     @Bean

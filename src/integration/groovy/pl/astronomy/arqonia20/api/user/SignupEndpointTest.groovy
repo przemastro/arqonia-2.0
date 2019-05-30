@@ -1,5 +1,6 @@
 package pl.astronomy.arqonia20.api.user
 
+
 import org.springframework.http.HttpMethod
 import pl.astronomy.arqonia20.BaseIntegrationTest
 import pl.astronomy.arqonia20.domain.user.User
