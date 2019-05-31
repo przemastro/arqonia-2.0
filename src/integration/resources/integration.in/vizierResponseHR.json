@@ -1,0 +1,26 @@
+{
+  "data": [
+    [
+      "1457",
+      "4.29",
+      "0.85",
+      "2.39",
+      "1.54",
+      "1.9",
+      "0.94",
+      "  K5+III"
+    ]
+  ],
+  "meta": [
+    "object_name",
+    "U",
+    "V",
+    "B",
+    "B-V",
+    "U-B",
+    "R-I",
+    "spectral_type"
+  ],
+  "warnings": [],
+  "sql": "SELECT viz2.c5050c.recno AS \"object_name\" , round(((viz2.c5050c.U_B/1000.0))::numeric,2)+round(((viz2.c5050c.B_V/1000.0))::numeric,2)+round(((viz2.c5050c.Vmag/1000.0))::numeric,2) AS \"U\" , round(((viz2.c5050c.Vmag/1000.0))::numeric,2) AS \"V\" , round(((viz2.c5050c.B_V/1000.0))::numeric,2)+round(((viz2.c5050c.Vmag/1000.0))::numeric,2) AS \"B\" , round(((viz2.c5050c.B_V/1000.0))::numeric,2) AS \"B-V\" , round(((viz2.c5050c.U_B/1000.0))::numeric,2) AS \"U-B\" , round(((viz2.c5050c.R_I/1000.0))::numeric,2) AS \"R-I\" , viz2.c5050c.SpType AS \"spectral_type\"\nFROM viz2.c5050c\nWHERE viz2.c5050c.recno = '1457'\nLimit 100"
+}

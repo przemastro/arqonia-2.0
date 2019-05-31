@@ -1,0 +1,16 @@
+{
+  "data": [
+    [
+      "5605",
+      "1.06",
+      "K5  "
+    ]
+  ],
+  "meta": [
+    "object_name",
+    "V",
+    "spectral_type"
+  ],
+  "warnings": [],
+  "sql": "SELECT viz2.c1113c.recno AS \"object_name\" , round(((viz2.c1113c.Vmag/100.0))::numeric,2) AS \"V\" , viz2.c1113c.SpType AS \"spectral_type\"\nFROM viz2.c1113c\nWHERE viz2.c1113c.recno = '5605'\nLimit 100"
+}

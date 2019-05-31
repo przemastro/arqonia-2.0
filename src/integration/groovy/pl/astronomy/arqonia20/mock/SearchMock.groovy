@@ -19,7 +19,7 @@ class SearchMock {
 
     def static stubVizierResponseSAO() {
         stubFor(post(urlPathEqualTo("/TAPVizieR/tap/view"))
-//                .withRequestBody(containing("I/131A/sao"))
+                .withRequestBody(containing("I%2F131A%2Fsao"))
                 .willReturn(aResponse()
                 .withStatus(HttpStatus.OK.value())
                 .withHeader(HttpHeaders.CONTENT_TYPE, "application/json")
@@ -29,7 +29,7 @@ class SearchMock {
 
     def static stubVizierResponseHIP() {
         stubFor(post(urlPathEqualTo("/TAPVizieR/tap/view"))
-//                .withRequestBody(containing("I/239/hip_main"))
+                .withRequestBody(containing("I%2F239%2Fhip_main"))
                 .willReturn(aResponse()
                 .withStatus(HttpStatus.OK.value())
                 .withHeader(HttpHeaders.CONTENT_TYPE, "application/json")
@@ -37,4 +37,43 @@ class SearchMock {
         ))
     }
 
+    def static stubVizierResponseTYC() {
+        stubFor(post(urlPathEqualTo("/TAPVizieR/tap/view"))
+                .withRequestBody(containing("I%2F239%2Ftyc_main"))
+                .willReturn(aResponse()
+                .withStatus(HttpStatus.OK.value())
+                .withHeader(HttpHeaders.CONTENT_TYPE, "application/json")
+                .withBody(getFileContent("integration.in/vizierResponseTYC.json"))
+        ))
+    }
+
+    def static stubVizierResponseHD() {
+        stubFor(post(urlPathEqualTo("/TAPVizieR/tap/view"))
+                .withRequestBody(containing("III%2F135A%2Fcatalog"))
+                .willReturn(aResponse()
+                .withStatus(HttpStatus.OK.value())
+                .withHeader(HttpHeaders.CONTENT_TYPE, "application/json")
+                .withBody(getFileContent("integration.in/vizierResponseHD.json"))
+        ))
+    }
+
+    def static stubVizierResponseHR() {
+        stubFor(post(urlPathEqualTo("/TAPVizieR/tap/view"))
+                .withRequestBody(containing("V%2F50%2Fcatalog"))
+                .willReturn(aResponse()
+                .withStatus(HttpStatus.OK.value())
+                .withHeader(HttpHeaders.CONTENT_TYPE, "application/json")
+                .withBody(getFileContent("integration.in/vizierResponseHD.json"))
+        ))
+    }
+
+    def static stubVizierResponseGC() {
+        stubFor(post(urlPathEqualTo("/TAPVizieR/tap/view"))
+                .withRequestBody(containing("I%2F113A%2Fcatalog"))
+                .willReturn(aResponse()
+                .withStatus(HttpStatus.OK.value())
+                .withHeader(HttpHeaders.CONTENT_TYPE, "application/json")
+                .withBody(getFileContent("integration.in/vizierResponseGC.json"))
+        ))
+    }
 }

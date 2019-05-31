@@ -1,0 +1,14 @@
+{
+  "data": [
+    [
+      "29139",
+      "K5 "
+    ]
+  ],
+  "meta": [
+    "object_name",
+    "spectral_type"
+  ],
+  "warnings": [],
+  "sql": "SELECT viz1.c3135c.recno AS \"object_name\" , viz1.c3135c.SpT AS \"spectral_type\"\nFROM viz1.c3135c\nWHERE viz1.c3135c.recno = '29139'\nLimit 100"
+}

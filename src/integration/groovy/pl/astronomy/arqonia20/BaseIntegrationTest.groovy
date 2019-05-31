@@ -13,16 +13,13 @@ import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
 import org.springframework.test.context.ActiveProfiles
-import org.springframework.test.context.ContextConfiguration
 import org.springframework.web.client.RestTemplate
-import pl.astronomy.arqonia20.config.IntegrationConfiguration
 import spock.lang.Shared
 import spock.lang.Specification
 
 @SpringBootTest(classes = [Application],
         properties = "application.environment=integration",
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ContextConfiguration(classes = [IntegrationConfiguration])
 @ActiveProfiles(profiles = "integration")
 class BaseIntegrationTest extends Specification {
 
