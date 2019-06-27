@@ -34,6 +34,7 @@
     "rxjs": "~6.4.0",
     "rxjs-compat": "^6.4.0",
     "tslib": "^1.9.0",
+    "three": "0.88.0",
     "zone.js": "~0.8.29"
   },
   "devDependencies": {

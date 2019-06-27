@@ -30,6 +30,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { NvD3Module } from 'ng2-nvd3';
 import { NgxWidgetGridModule } from 'ngx-widget-grid';
+
+import { SceneComponent } from "./scene/scene.component";
+
 import 'd3';
 import 'nvd3';
 
@@ -54,6 +57,7 @@ import 'nvd3';
     EditObservationModalComponent,
     RemoveObservationModalComponent,
     TimeSeriesModalComponent,
+    SceneComponent
   ],
   imports: [
     NvD3Module,
